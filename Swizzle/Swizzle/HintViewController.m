@@ -55,7 +55,8 @@ const NSString* kWordsToGuess =
     
     for (int i=0; i < NUM_DONT_USE_WORDS; i++)
     {
-        NSArray* dontUseArray = [_dontUseWords objectAtIndex:wordIndex];
+        NSArray* dontUseArray = _dontUseWords[wordIndex];
+        
         ((UILabel*)[self.view viewWithTag:i+100]).text = [dontUseArray objectAtIndex:i];
     }
 }

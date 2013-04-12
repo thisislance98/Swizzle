@@ -14,9 +14,15 @@
     NSString* _theWord;
     NSMutableArray* _currentLetters;
 }
+@property (strong, nonatomic) IBOutlet UILabel *correctLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (nonatomic,strong) NSString* currentWord;
 @property (strong, nonatomic) IBOutlet UILabel *wordInputLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *hintLabel;
+
+- (IBAction)clearButtonTouch:(id)sender;
+
+- (IBAction)undoButtonTouch:(id)sender;
 @end

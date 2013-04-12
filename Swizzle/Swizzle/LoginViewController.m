@@ -39,8 +39,7 @@
     if ([PFUser currentUser] && // Check if a user is cached
         [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) // Check if user is linked to Facebook
     {
-
-        
+        [self performSegueWithIdentifier:@"guessSegue" sender:self];
     }
     
     [PFFacebookUtils initializeFacebook];
@@ -71,6 +70,8 @@
         } else {
             NSLog(@"User with facebook logged in!");
         }
+        
+         [self performSegueWithIdentifier:@"guessSegue" sender:self];
     }];
 }
 
