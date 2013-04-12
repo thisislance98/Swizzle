@@ -32,7 +32,7 @@
             _theWord = [[objects lastObject] objectForKey:@"currentWord"];
             
             [weakSelf setupLetterButtons];
-            [weakSelf initBlankLetters];
+            [weakSelf updateLettersLabel];
             
         } else {
             // Log details of the failure
@@ -41,7 +41,7 @@
     }];
 }
 
--(void)initBlankLetters
+-(void)updateLettersLabel
 {
     self.wordInputLabel.text = @"";
     
@@ -51,11 +51,11 @@
     {
         if (letters.count > 0)
         {
-            self.wordInputLabel.text = [NSString stringWithFormat:@"%@_ ",self.wordInputLabel.text];
-            
+            self.wordInputLabel.text = [NSString stringWithFormat:@"%@ %@",self.wordInputLabel.text, [letters objectAtIndex:0]];
+            [letters removeObjectAtIndex:0];
         }
         else
-            self.wordInputLabel.text = [NSString stringWithFormat:@"%@_ ",self.wordInputLabel.text];
+            self.wordInputLabel.text = [NSString stringWithFormat:@"%@ _",self.wordInputLabel.text];
     }
 }
 
@@ -64,11 +64,39 @@
     UIButton* button = (UIButton*)sender;
 
     [self onLetterSelected:button.titleLabel.text];
+
 }
 
 -(void)onLetterSelected:(NSString*)letter
 {
+    [_currentLetters addObject:letter];
+    [self updateLettersLabel];
     
+    if (_currentLetters.count == _theWord.length)
+    {
+        BOOL isCorrectWord = YES;
+        
+        for (int i=0; i <  _theWord.length; i++)
+        {
+            NSString* correctLetter = [NSString stringWithFormat: @"%C", [_theWord characterAtIndex:i]];
+            NSString* inputLetter = _currentLetters[i];
+            
+            if ( [inputLetter isEqualToString:[correctLetter uppercaseString]] == NO)
+            {
+                isCorrectWord = NO;
+                break;
+            }
+        }
+        
+        if (isCorrectWord == YES)
+            [self onGotCorrectWord];
+    }
+    
+}
+
+-(void)onGotCorrectWord
+{
+    [self.correctLabel setHidden:NO];
 }
 
 
@@ -116,6 +144,19 @@
     
 }
 
+- (IBAction)clearButtonTouch:(id)sender {
+    if (_currentLetters.count == 0)
+        return;
+    
+    [_currentLetters removeAllObjects];
+    [self updateLettersLabel];
+}
 
-
+- (IBAction)undoButtonTouch:(id)sender {
+    if (_currentLetters.count == 0)
+        return;
+    
+    [_currentLetters removeObjectAtIndex:_currentLetters.count-1];
+    [self updateLettersLabel];
+}
 @end
