@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D62E2731718CC2B00624AE1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D62E2721718CC2B00624AE1 /* LoginViewController.m */; };
+		2D62E2751718CDC700624AE1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D62E2741718CDC700624AE1 /* FacebookSDK.framework */; };
+		2D62E27A1718D15E00624AE1 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D62E2791718D15E00624AE1 /* libsqlite3.0.dylib */; };
 		8A05977C171887B900C09EEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A05977B171887B900C09EEA /* UIKit.framework */; };
 		8A05977E171887B900C09EEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A05977D171887B900C09EEA /* Foundation.framework */; };
 		8A059780171887B900C09EEA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A05977F171887B900C09EEA /* CoreGraphics.framework */; };
@@ -36,6 +39,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D62E2711718CC2B00624AE1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		2D62E2721718CC2B00624AE1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		2D62E2741718CDC700624AE1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		2D62E2791718D15E00624AE1 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		8A059778171887B900C09EEA /* Swizzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swizzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A05977B171887B900C09EEA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8A05977D171887B900C09EEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -75,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D62E27A1718D15E00624AE1 /* libsqlite3.0.dylib in Frameworks */,
 				8A0597BA1718890D00C09EEA /* Accounts.framework in Frameworks */,
 				8A0597B81718890200C09EEA /* Social.framework in Frameworks */,
 				8A0597B6171888ED00C09EEA /* AdSupport.framework in Frameworks */,
@@ -91,6 +99,7 @@
 				8A05977C171887B900C09EEA /* UIKit.framework in Frameworks */,
 				8A05977E171887B900C09EEA /* Foundation.framework in Frameworks */,
 				8A0597A2171887CA00C09EEA /* Parse.framework in Frameworks */,
+				2D62E2751718CDC700624AE1 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,9 +109,7 @@
 		8A05976F171887B900C09EEA = {
 			isa = PBXGroup;
 			children = (
-				8A0597B91718890D00C09EEA /* Accounts.framework */,
-				8A0597B71718890200C09EEA /* Social.framework */,
-				8A0597B5171888ED00C09EEA /* AdSupport.framework */,
+				2D62E2791718D15E00624AE1 /* libsqlite3.0.dylib */,
 				8A059781171887B900C09EEA /* Swizzle */,
 				8A05977A171887B900C09EEA /* Frameworks */,
 				8A059779171887B900C09EEA /* Products */,
@@ -120,6 +127,10 @@
 		8A05977A171887B900C09EEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2D62E2741718CDC700624AE1 /* FacebookSDK.framework */,
+				8A0597B91718890D00C09EEA /* Accounts.framework */,
+				8A0597B71718890200C09EEA /* Social.framework */,
+				8A0597B5171888ED00C09EEA /* AdSupport.framework */,
 				8A0597B31718888B00C09EEA /* SystemConfiguration.framework */,
 				8A0597B11718888400C09EEA /* StoreKit.framework */,
 				8A0597AF1718887D00C09EEA /* Security.framework */,
@@ -148,6 +159,8 @@
 				8A05979A171887B900C09EEA /* HintViewController.m */,
 				8A0597BB1718A50100C09EEA /* GuessViewController.h */,
 				8A0597BC1718A50100C09EEA /* GuessViewController.m */,
+				2D62E2711718CC2B00624AE1 /* LoginViewController.h */,
+				2D62E2721718CC2B00624AE1 /* LoginViewController.m */,
 				8A059782171887B900C09EEA /* Supporting Files */,
 			);
 			path = Swizzle;
@@ -238,6 +251,7 @@
 				8A05978C171887B900C09EEA /* AppDelegate.m in Sources */,
 				8A05979B171887B900C09EEA /* HintViewController.m in Sources */,
 				8A0597BD1718A50100C09EEA /* GuessViewController.m in Sources */,
+				2D62E2731718CC2B00624AE1 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +392,7 @@
 				8A0597A0171887B900C09EEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
