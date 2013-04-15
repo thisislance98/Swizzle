@@ -4,32 +4,90 @@
 <array>
 	<dict>
 		<key>Word</key>
-		<string>Mexico</string>
+		<string>towel</string>
 		<key>Hints</key>
 		<array>
-			<string>Introduced chocolate, corn, and chillies to the world</string>
-			<string>Cabo San Lucas</string>
-			<string>Borders the USA</string>
+			<string>What gets wetter and wetter the more it dries?</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>Chocolate</string>
+		<string>rug</string>
 		<key>Hints</key>
 		<array>
-			<string>Dark kind reduces the risk of heart disease by one third</string>
-			<string>Contains caffeine and sugar</string>
-			<string>Cocoa beans</string>
+			<string>What goes up and down the stairs without moving?</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>Apple</string>
+		<string>cold</string>
 		<key>Hints</key>
 		<array>
-			<string>Celtic word for it is &quot;abhall&quot;</string>
-			<string>Red</string>
-			<string>Official state fruit of Washington</string>
+			<string>What can you catch but not throw?</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>nose</string>
+		<key>Hints</key>
+		<array>
+			<string>I can run but not walk. Wherever I go, thought follows close behind. What am I?</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>newspaper</string>
+		<key>Hints</key>
+		<array>
+			<string>What&apos;s black and white and red all over?</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>stamp</string>
+		<key>Hints</key>
+		<array>
+			<string>What goes around the world but stays in a corner?</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>sponge</string>
+		<key>Hints</key>
+		<array>
+			<string>I have holes in my top and bottom, my left and right, and in the middle. But I still hold water. What am I?</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>fire</string>
+		<key>Hints</key>
+		<array>
+			<string>Give me food, and I will live; give me water, and I will die. What am I?</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>coffin</string>
+		<key>Hints</key>
+		<array>
+			<string>The man who invented it doesn&apos;t want it. The man who bought it doesn&apos;t need it. The man who needs it doesn&apos;t know it. What is it?</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>secret</string>
+		<key>Hints</key>
+		<array>
+			<string>No sooner spoken than broken. What is it?</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>suicide</string>
+		<key>Hints</key>
+		<array>
+			<string>A certain crime is punishable if attempted but not punishable if committed. What is it?</string>
 		</array>
 	</dict>
 </array>

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D62E2731718CC2B00624AE1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D62E2721718CC2B00624AE1 /* LoginViewController.m */; };
 		2D62E2751718CDC700624AE1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D62E2741718CDC700624AE1 /* FacebookSDK.framework */; };
 		2D62E27A1718D15E00624AE1 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D62E2791718D15E00624AE1 /* libsqlite3.0.dylib */; };
 		8A05977C171887B900C09EEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A05977B171887B900C09EEA /* UIKit.framework */; };
@@ -15,13 +14,11 @@
 		8A059780171887B900C09EEA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A05977F171887B900C09EEA /* CoreGraphics.framework */; };
 		8A059786171887B900C09EEA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A059784171887B900C09EEA /* InfoPlist.strings */; };
 		8A059788171887B900C09EEA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A059787171887B900C09EEA /* main.m */; };
-		8A05978C171887B900C09EEA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A05978B171887B900C09EEA /* AppDelegate.m */; };
 		8A05978E171887B900C09EEA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A05978D171887B900C09EEA /* Default.png */; };
 		8A059790171887B900C09EEA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A05978F171887B900C09EEA /* Default@2x.png */; };
 		8A059792171887B900C09EEA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A059791171887B900C09EEA /* Default-568h@2x.png */; };
 		8A059795171887B900C09EEA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A059793171887B900C09EEA /* MainStoryboard_iPhone.storyboard */; };
 		8A059798171887B900C09EEA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A059796171887B900C09EEA /* MainStoryboard_iPad.storyboard */; };
-		8A05979B171887B900C09EEA /* HintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A05979A171887B900C09EEA /* HintViewController.m */; };
 		8A0597A2171887CA00C09EEA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0597A1171887CA00C09EEA /* Parse.framework */; };
 		8A0597A41718884600C09EEA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0597A31718884600C09EEA /* AudioToolbox.framework */; };
 		8A0597A61718884D00C09EEA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0597A51718884D00C09EEA /* CFNetwork.framework */; };
@@ -35,14 +32,17 @@
 		8A0597B6171888ED00C09EEA /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0597B5171888ED00C09EEA /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8A0597B81718890200C09EEA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0597B71718890200C09EEA /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8A0597BA1718890D00C09EEA /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0597B91718890D00C09EEA /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		8A0597BD1718A50100C09EEA /* GuessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0597BC1718A50100C09EEA /* GuessViewController.m */; };
+		8A47AD91171C6EFC00283AF9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A47AD85171C6EFC00283AF9 /* AppDelegate.m */; };
+		8A47AD94171C6EFC00283AF9 /* LetterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A47AD8B171C6EFC00283AF9 /* LetterButton.m */; };
+		8A47AD97171C6EFC00283AF9 /* WordObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A47AD90171C6EFC00283AF9 /* WordObj.m */; };
+		8A47AD9F171C6F4000283AF9 /* GuessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A47AD9A171C6F4000283AF9 /* GuessViewController.m */; };
+		8A47ADA0171C6F4000283AF9 /* HintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A47AD9C171C6F4000283AF9 /* HintViewController.m */; };
+		8A47ADA1171C6F4000283AF9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A47AD9E171C6F4000283AF9 /* LoginViewController.m */; };
+		8A47ADAA171CA2EC00283AF9 /* CoinsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A47ADA9171CA2EC00283AF9 /* CoinsController.m */; };
 		8A67F4E6171B8BA8005385C2 /* WordAndHints.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A67F4E5171B8BA8005385C2 /* WordAndHints.plist */; };
-		8A67F4E9171B8F7D005385C2 /* WordObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A67F4E8171B8F7D005385C2 /* WordObj.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D62E2711718CC2B00624AE1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		2D62E2721718CC2B00624AE1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2D62E2741718CDC700624AE1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		2D62E2791718D15E00624AE1 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		8A059778171887B900C09EEA /* Swizzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swizzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,15 +53,11 @@
 		8A059785171887B900C09EEA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8A059787171887B900C09EEA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8A059789171887B900C09EEA /* Swizzle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swizzle-Prefix.pch"; sourceTree = "<group>"; };
-		8A05978A171887B900C09EEA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		8A05978B171887B900C09EEA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8A05978D171887B900C09EEA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8A05978F171887B900C09EEA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8A059791171887B900C09EEA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8A059794171887B900C09EEA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		8A059797171887B900C09EEA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		8A059799171887B900C09EEA /* HintViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HintViewController.h; sourceTree = "<group>"; };
-		8A05979A171887B900C09EEA /* HintViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HintViewController.m; sourceTree = "<group>"; };
 		8A0597A1171887CA00C09EEA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		8A0597A31718884600C09EEA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8A0597A51718884D00C09EEA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -75,11 +71,21 @@
 		8A0597B5171888ED00C09EEA /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8A0597B71718890200C09EEA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		8A0597B91718890D00C09EEA /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		8A0597BB1718A50100C09EEA /* GuessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessViewController.h; sourceTree = "<group>"; };
-		8A0597BC1718A50100C09EEA /* GuessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessViewController.m; sourceTree = "<group>"; };
+		8A47AD84171C6EFC00283AF9 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8A47AD85171C6EFC00283AF9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8A47AD8A171C6EFC00283AF9 /* LetterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LetterButton.h; sourceTree = "<group>"; };
+		8A47AD8B171C6EFC00283AF9 /* LetterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LetterButton.m; sourceTree = "<group>"; };
+		8A47AD8F171C6EFC00283AF9 /* WordObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordObj.h; sourceTree = "<group>"; };
+		8A47AD90171C6EFC00283AF9 /* WordObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordObj.m; sourceTree = "<group>"; };
+		8A47AD99171C6F4000283AF9 /* GuessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessViewController.h; sourceTree = "<group>"; };
+		8A47AD9A171C6F4000283AF9 /* GuessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessViewController.m; sourceTree = "<group>"; };
+		8A47AD9B171C6F4000283AF9 /* HintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HintViewController.h; sourceTree = "<group>"; };
+		8A47AD9C171C6F4000283AF9 /* HintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HintViewController.m; sourceTree = "<group>"; };
+		8A47AD9D171C6F4000283AF9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		8A47AD9E171C6F4000283AF9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		8A47ADA8171CA2EC00283AF9 /* CoinsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinsController.h; sourceTree = "<group>"; };
+		8A47ADA9171CA2EC00283AF9 /* CoinsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinsController.m; sourceTree = "<group>"; };
 		8A67F4E5171B8BA8005385C2 /* WordAndHints.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = WordAndHints.plist; sourceTree = "<group>"; };
-		8A67F4E7171B8F7D005385C2 /* WordObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordObj.h; sourceTree = "<group>"; };
-		8A67F4E8171B8F7D005385C2 /* WordObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordObj.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,20 +162,11 @@
 		8A059781171887B900C09EEA /* Swizzle */ = {
 			isa = PBXGroup;
 			children = (
-				8A05978A171887B900C09EEA /* AppDelegate.h */,
-				8A05978B171887B900C09EEA /* AppDelegate.m */,
 				8A059793171887B900C09EEA /* MainStoryboard_iPhone.storyboard */,
 				8A059796171887B900C09EEA /* MainStoryboard_iPad.storyboard */,
-				8A059799171887B900C09EEA /* HintViewController.h */,
-				8A05979A171887B900C09EEA /* HintViewController.m */,
-				8A0597BB1718A50100C09EEA /* GuessViewController.h */,
-				8A0597BC1718A50100C09EEA /* GuessViewController.m */,
-				2D62E2711718CC2B00624AE1 /* LoginViewController.h */,
-				2D62E2721718CC2B00624AE1 /* LoginViewController.m */,
+				8A47AD83171C6EFC00283AF9 /* Classes */,
 				8A67F4E4171B8B8D005385C2 /* Resources */,
 				8A059782171887B900C09EEA /* Supporting Files */,
-				8A67F4E7171B8F7D005385C2 /* WordObj.h */,
-				8A67F4E8171B8F7D005385C2 /* WordObj.m */,
 			);
 			path = Swizzle;
 			sourceTree = "<group>";
@@ -186,6 +183,35 @@
 				8A059791171887B900C09EEA /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8A47AD83171C6EFC00283AF9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8A47AD84171C6EFC00283AF9 /* AppDelegate.h */,
+				8A47AD85171C6EFC00283AF9 /* AppDelegate.m */,
+				8A47AD8A171C6EFC00283AF9 /* LetterButton.h */,
+				8A47AD8B171C6EFC00283AF9 /* LetterButton.m */,
+				8A47ADA8171CA2EC00283AF9 /* CoinsController.h */,
+				8A47ADA9171CA2EC00283AF9 /* CoinsController.m */,
+				8A47AD8F171C6EFC00283AF9 /* WordObj.h */,
+				8A47AD90171C6EFC00283AF9 /* WordObj.m */,
+				8A47AD98171C6F4000283AF9 /* ViewControllers */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		8A47AD98171C6F4000283AF9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8A47AD99171C6F4000283AF9 /* GuessViewController.h */,
+				8A47AD9A171C6F4000283AF9 /* GuessViewController.m */,
+				8A47AD9B171C6F4000283AF9 /* HintViewController.h */,
+				8A47AD9C171C6F4000283AF9 /* HintViewController.m */,
+				8A47AD9D171C6F4000283AF9 /* LoginViewController.h */,
+				8A47AD9E171C6F4000283AF9 /* LoginViewController.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		8A67F4E4171B8B8D005385C2 /* Resources */ = {
@@ -265,11 +291,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A059788171887B900C09EEA /* main.m in Sources */,
-				8A05978C171887B900C09EEA /* AppDelegate.m in Sources */,
-				8A05979B171887B900C09EEA /* HintViewController.m in Sources */,
-				8A0597BD1718A50100C09EEA /* GuessViewController.m in Sources */,
-				2D62E2731718CC2B00624AE1 /* LoginViewController.m in Sources */,
-				8A67F4E9171B8F7D005385C2 /* WordObj.m in Sources */,
+				8A47AD91171C6EFC00283AF9 /* AppDelegate.m in Sources */,
+				8A47AD94171C6EFC00283AF9 /* LetterButton.m in Sources */,
+				8A47AD97171C6EFC00283AF9 /* WordObj.m in Sources */,
+				8A47AD9F171C6F4000283AF9 /* GuessViewController.m in Sources */,
+				8A47ADA0171C6F4000283AF9 /* HintViewController.m in Sources */,
+				8A47ADA1171C6F4000283AF9 /* LoginViewController.m in Sources */,
+				8A47ADAA171CA2EC00283AF9 /* CoinsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +399,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Swizzle/Swizzle-Prefix.pch";
 				INFOPLIST_FILE = "Swizzle/Swizzle-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -386,6 +415,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Swizzle/Swizzle-Prefix.pch";
 				INFOPLIST_FILE = "Swizzle/Swizzle-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

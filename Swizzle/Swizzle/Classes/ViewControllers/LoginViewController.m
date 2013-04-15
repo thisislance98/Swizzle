@@ -78,7 +78,6 @@
 -(void)transitionToFirstScreen
 {
     
-    
     [self performSegueWithIdentifier:@"guessSegue" sender:self];
 }
 
