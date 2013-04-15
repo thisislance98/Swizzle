@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Word</key>
+		<string>Mexico</string>
+		<key>Hints</key>
+		<array>
+			<string>Introduced chocolate, corn, and chillies to the world</string>
+			<string>Cabo San Lucas</string>
+			<string>Borders the USA</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>Chocolate</string>
+		<key>Hints</key>
+		<array>
+			<string>Dark kind reduces the risk of heart disease by one third</string>
+			<string>Contains caffeine and sugar</string>
+			<string>Cocoa beans</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>Apple</string>
+		<key>Hints</key>
+		<array>
+			<string>Celtic word for it is &quot;abhall&quot;</string>
+			<string>Red</string>
+			<string>Official state fruit of Washington</string>
+		</array>
+	</dict>
+</array>
+</plist>

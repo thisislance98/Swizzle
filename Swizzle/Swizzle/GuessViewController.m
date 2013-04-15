@@ -9,6 +9,7 @@
 #import "GuessViewController.h"
 
 
+
 @implementation GuessViewController
 
 
@@ -17,38 +18,80 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    
+    [self initWordObjs];
+    
     _currentLetters = [[NSMutableArray alloc] init];
     _nameLabel.text = [[PFUser currentUser] username];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"GameData"];
-    [query whereKeyExists:@"currentHint"];
-
+    [self setupForWordAtIndex:_currentWordObjIndex];
     
-    __weak GuessViewController* weakSelf = self;
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            
-            weakSelf.hintLabel.text = [[objects lastObject] objectForKey:@"currentHint"];
-            _theWord = [[objects lastObject] objectForKey:@"currentWord"];
-            
-            [weakSelf setupLetterButtons];
-            [weakSelf updateLettersLabel];
-            
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+//    PFQuery *query = [PFQuery queryWithClassName:@"GameData"];
+//    [query whereKeyExists:@"currentHint"];
+//
+//    
+//    __weak GuessViewController* weakSelf = self;
+//    
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            
+//            weakSelf.hintLabel.text = [[objects lastObject] objectForKey:@"currentHint"];
+//            _theWord = [[objects lastObject] objectForKey:@"currentWord"];
+//            
+//            [weakSelf setupLetterButtons:_theWord];
+//            [weakSelf updateLettersLabel:_currentLetters];
+//            
+//        } else {
+//            // Log details of the failure
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//    }];
 }
 
--(void)updateLettersLabel
+-(void)setupForWordAtIndex:(int)index
+{
+    _currentWordObjIndex = index;
+    _currentWordObj = [_allWordObjs objectAtIndex:_currentWordObjIndex];
+    _hintIndex = 0;
+    
+    [self.hintButton setHidden:NO];
+    [self setupLetterButtons:_currentWordObj.word];
+    
+    [_currentLetters removeAllObjects];
+    [self updateLettersLabel:_currentLetters];
+    
+    self.hintLabel.text = [_currentWordObj.hints objectAtIndex:0];
+}
+
+-(void)gotoNextWord
+{
+    [self.correctLabel setHidden:YES];
+    _currentWordObjIndex = (_currentWordObjIndex + 1) % _allWordObjs.count;
+    [self setupForWordAtIndex:_currentWordObjIndex];
+}
+
+-(void)initWordObjs
+{
+    _allWordObjs = [[NSMutableArray alloc] init];
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"WordAndHints" ofType:@"plist"];
+    NSArray* words = [NSArray arrayWithContentsOfFile:path];
+    
+    for (NSDictionary* wordDict in words)
+    {
+        NSString* word = [wordDict objectForKey:@"Word"];
+        NSArray* hints = [wordDict objectForKey:@"Hints"];
+        [_allWordObjs addObject:[[WordObj alloc] initWithWord:word andHints:hints]];
+    }
+}
+
+
+-(void)updateLettersLabel:(NSArray*)currentLetters
 {
     self.wordInputLabel.text = @"";
     
-    NSMutableArray* letters = [[NSMutableArray alloc] initWithArray:_currentLetters];
+    NSMutableArray* letters = [[NSMutableArray alloc] initWithArray:currentLetters];
     
-    for (int i=0; i < _theWord.length; i++)
+    for (int i=0; i < _currentWordObj.word.length; i++)
     {
         if (letters.count > 0)
         {
@@ -71,15 +114,15 @@
 -(void)onLetterSelected:(NSString*)letter
 {
     [_currentLetters addObject:letter];
-    [self updateLettersLabel];
+    [self updateLettersLabel:_currentLetters];
     
-    if (_currentLetters.count == _theWord.length)
+    if (_currentLetters.count == _currentWordObj.word.length)
     {
         BOOL isCorrectWord = YES;
         
-        for (int i=0; i <  _theWord.length; i++)
+        for (int i=0; i <  _currentWordObj.word.length; i++)
         {
-            NSString* correctLetter = [NSString stringWithFormat: @"%C", [_theWord characterAtIndex:i]];
+            NSString* correctLetter = [NSString stringWithFormat: @"%C", [_currentWordObj.word characterAtIndex:i]];
             NSString* inputLetter = _currentLetters[i];
             
             if ( [inputLetter isEqualToString:[correctLetter uppercaseString]] == NO)
@@ -98,17 +141,20 @@
 -(void)onGotCorrectWord
 {
     [self.correctLabel setHidden:NO];
+    [self performSelector:@selector(gotoNextWord) withObject:nil afterDelay:2];
 }
 
 
--(void)setupLetterButtons
+// sets the letter titles on all the buttons to include all the letters in the word along and the rest being random
+-(void)setupLetterButtons:(NSString*)theWord
 {
     NSMutableArray* letters = [[NSMutableArray alloc] init];
     NSMutableArray* buttonTags = [[NSMutableArray alloc] init];
     
-    for (int i=0; i < _theWord.length; i++)
+    // create an array with all the letters in the word
+    for (int i=0; i < theWord.length; i++)
     {
-        NSString* theLetter = [NSString stringWithFormat: @"%C", [_theWord characterAtIndex:i]];
+        NSString* theLetter = [NSString stringWithFormat: @"%C", [theWord characterAtIndex:i]];
         
         [letters addObject:[theLetter uppercaseString]];
     }
@@ -127,6 +173,8 @@
         UIButton* button = (UIButton*)[self.view viewWithTag:tag.integerValue];
         [button addTarget:self action:@selector(letterButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
         
+        
+        // if there are letters left in the array add one
         if (letters.count > 0)
         {
             int letterIndex = arc4random() % letters.count;
@@ -134,7 +182,7 @@
             [letters removeObjectAtIndex:letterIndex];
             [button setTitle:letter forState:UIControlStateNormal];
         }
-        else
+        else // add a random letter
         {
             NSString *allLetters = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             NSString* randomLetter = [NSString stringWithFormat: @"%C", [allLetters characterAtIndex:arc4random()%allLetters.length]];
@@ -145,19 +193,31 @@
     
 }
 
+- (IBAction)nextHintTouch:(id)sender {
+    _hintIndex++;
+    
+    if (_hintIndex == 2)
+    {
+        [self.hintButton setHidden:YES];
+    }
+    self.hintLabel.text = [_currentWordObj.hints objectAtIndex:_hintIndex];
+    
+}
+
 - (IBAction)clearButtonTouch:(id)sender {
     if (_currentLetters.count == 0)
         return;
     
     [_currentLetters removeAllObjects];
-    [self updateLettersLabel];
+    [self updateLettersLabel:_currentLetters];
 }
+
 
 - (IBAction)undoButtonTouch:(id)sender {
     if (_currentLetters.count == 0)
         return;
     
     [_currentLetters removeObjectAtIndex:_currentLetters.count-1];
-    [self updateLettersLabel];
+    [self updateLettersLabel:_currentLetters];
 }
 @end

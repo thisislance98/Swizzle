@@ -8,12 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "WordObj.h"
 
 @interface GuessViewController : UIViewController
 {
-    NSString* _theWord;
+    WordObj* _currentWordObj;
+    int _currentWordObjIndex;
+    int _hintIndex;
     NSMutableArray* _currentLetters;
+    
+    NSMutableArray* _allWordObjs;
+    
 }
+@property (weak, nonatomic) IBOutlet UIButton *hintButton;
+
 @property (strong, nonatomic) IBOutlet UILabel *correctLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -21,6 +29,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *wordInputLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *hintLabel;
+- (IBAction)nextHintTouch:(id)sender;
 
 - (IBAction)clearButtonTouch:(id)sender;
 
