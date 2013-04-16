@@ -26,7 +26,7 @@
     [super viewDidLoad];
     
     _slotMachine = [[SlotMachine alloc] init];
-    self.coins = 500;
+    self.coins = 100;
     
     [self playAndSetLabels];
 }
