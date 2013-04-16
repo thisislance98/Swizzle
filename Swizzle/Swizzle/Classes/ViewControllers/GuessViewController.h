@@ -23,7 +23,6 @@
     
     NSMutableArray* _allWordObjs;
     
-    
 }
 
 @property (strong, nonatomic) IBOutlet UILabel *coinsLabel;
