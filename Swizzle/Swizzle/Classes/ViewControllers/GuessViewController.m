@@ -60,10 +60,12 @@
     for (int i=0; i < letterCount; i++)
     {
         UILabel* blankLabel =  [self deepLabelCopy:self.startBlankLabel];
+       
         blankLabel.center = CGPointMake(offset + blankLabel.center.x + i * blankLabel.frame.size.width, blankLabel.center.y);
         [blankLabel setHidden:NO];
         [self.view addSubview:blankLabel];
         [self.blankLabels addObject:blankLabel];
+        [self.view sendSubviewToBack:blankLabel];
     }
 }
 
@@ -92,9 +94,13 @@
         int tagIndex = arc4random() % buttonTags.count;
         NSNumber* tag = [buttonTags objectAtIndex:tagIndex];
         [buttonTags removeObjectAtIndex:tagIndex];
-        UIButton* button = (UIButton*)[self.view viewWithTag:tag.integerValue];
-        [button addTarget:self action:@selector(letterButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
+        LetterButton* button = (LetterButton*)[self.view viewWithTag:tag.integerValue];
+        button.startPos = button.center;
         
+        [button addTarget:self action:@selector(letterButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
+        UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPanButton:)];
+        
+        [button addGestureRecognizer:panGestureRecognizer];
         
         // if there are letters left in the array add one
         if (letters.count > 0)
@@ -109,6 +115,7 @@
             NSString *allLetters = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             NSString* randomLetter = [NSString stringWithFormat: @"%C", [allLetters characterAtIndex:arc4random()%allLetters.length]];
             [button setTitle:randomLetter forState:UIControlStateNormal];
+
         }
     }
 }
@@ -226,6 +233,18 @@
     return nil;
 }
 
+-(int)getIndexForLetterButton:(LetterButton*)letterButton
+{
+    for (int i=0; i < self.blankLabels.count; i++)
+    {
+        UILabel* label = self.blankLabels[i];
+        if (label.center.x == letterButton.center.x && label.center.y == letterButton.center.y)
+            return i;
+    }
+    
+    return -1;
+}
+
 -(NSString*)getLetterButtonLetterAtIndex:(int)index
 {
     LetterButton* button = [self getLetterButtonAtIndex:index];
@@ -253,21 +272,20 @@
 -(void)moveLetterButton:(LetterButton*)letterButton toSlotAtIndex:(int)index
 {
     [_letterButtons addObject:letterButton];
-    
-    int labelIndex = index;
-    UILabel* blankLabel = self.blankLabels[labelIndex];
-    [blankLabel setHidden:YES];
+
+
+    UILabel* blankLabel = self.blankLabels[index];
     
     if (blankLabel == nil)
         return;
     
-    letterButton.startPos = letterButton.center;
-    
+    [blankLabel setHidden:YES];    
+
     [UIView animateWithDuration:.5 animations:^(void)
      {
          letterButton.center = blankLabel.center;
+         
      }];
-    
     
     if ([self didGetCorrectWord])
         [self onGotCorrectWord];
@@ -275,11 +293,9 @@
 
 -(void)onLetterSelected:(LetterButton*)letterButton
 {
-    if (_letterButtons.count == self.blankLabels.count)
-        return;
     
     // is the button in the bottom letter pad?
-    if ([_letterButtons containsObject:letterButton] == NO)
+    if ([_letterButtons containsObject:letterButton] == NO && _letterButtons.count < self.blankLabels.count)
     {
         [self moveLetterButton:letterButton toSlotAtIndex:[self getFirstVisibleBlankLabelIndex]];
     }
@@ -296,16 +312,10 @@
 
 -(void)resetLetterButton:(LetterButton*)button animated:(BOOL)animated
 {
+    int index = [self getIndexForLetterButton:button];
     
-    // first show the blank label that this button is leaving
-    for (UILabel* blankLabel in self.blankLabels)
-    {
-        if (blankLabel.center.x == button.center.x)
-        {
-            [blankLabel setHidden:NO];
-            break;
-        }
-    }
+    if (index != -1)
+        [self.blankLabels[index] setHidden:NO];
     
     if (animated)
     {
@@ -329,13 +339,35 @@
     }
 }
 
-
-
 #pragma mark - button handlers
+
+-(void)didPanButton:(UIPanGestureRecognizer*)recognizer
+{
+    LetterButton* button = (LetterButton*)recognizer.view;
+    static CGPoint startPos;
+    
+    if (recognizer.state == UIGestureRecognizerStateBegan )
+    {
+        startPos = button.center;
+        
+        if ([_letterButtons containsObject:button])
+            [self.blankLabels[[self getIndexForLetterButton:button]] setHidden:NO];
+    }
+    else if (recognizer.state == UIGestureRecognizerStateEnded)
+        [self onLetterSelected:button];
+    else
+    {
+        CGPoint delta = [recognizer translationInView:self.view];
+        button.center = CGPointMake(startPos.x + delta.x, startPos.y + delta.y);
+    }
+}
 
 -(void)letterButtonTouch:(id)sender
 {
     LetterButton* button = (LetterButton*)sender;
+    
+    if ([_letterButtons containsObject:button])
+        [self.blankLabels[[self getIndexForLetterButton:button]] setHidden:NO];
     
     [self onLetterSelected:button];
     
