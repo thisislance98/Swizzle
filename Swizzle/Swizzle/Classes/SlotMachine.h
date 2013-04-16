@@ -15,6 +15,7 @@ typedef enum
     SlotItemTypeCherry,
     SlotItemTypeSeven,
     SlotItemTypeDoubleSeven,
+    SlotItemTypeTripleSeven,
     SlotItemTypeBar,
     SlotItemTypeSmiley,
     SlotItemCOUNT

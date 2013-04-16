@@ -43,8 +43,10 @@
         case SlotItemTypeCherry:
             return @"Cherry";
         case SlotItemTypeDoubleSeven:
-            return @"7";
+            return @"7 7";
         case SlotItemTypeSeven:
+            return @"7";
+        case SlotItemTypeTripleSeven:
             return @"7 7 7";
         case SlotItemTypeBar:
             return @"BAR";
