@@ -13,6 +13,7 @@
 
 #define BUY_LETTER_COST 10
 #define NUM_WIN_COINS 20
+#define NUM_HINTS 4
 
 @interface GuessViewController : UIViewController
 {

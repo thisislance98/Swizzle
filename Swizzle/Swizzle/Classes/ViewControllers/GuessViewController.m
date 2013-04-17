@@ -10,6 +10,7 @@
 #import "CoinsController.h"
 
 
+
 @implementation GuessViewController
 
 
@@ -41,12 +42,16 @@
     _hintIndex = 0;
     
  //   [self.hintButton setHidden:NO];
+    [self resetLetterButtons:_letterButtons];
     [self setupLetterButtons:_currentWordObj.word];
     [self setupLetterLabels:_currentWordObj.word.length];
-    [self resetLetterButtons:_letterButtons];
+    
 
-    self.hintLabel.text = [_currentWordObj.hints objectAtIndex:0];
+    // this will stop the hint words from cycling
+    self.hintLabel.alpha = 0;
+    [self cycleHintWords];
 }
+
 
 -(void)setupLetterLabels:(int)letterCount
 {
@@ -61,7 +66,7 @@
     {
         UILabel* blankLabel =  [self deepLabelCopy:self.startBlankLabel];
        
-        blankLabel.center = CGPointMake(offset + blankLabel.center.x + i * blankLabel.frame.size.width, blankLabel.center.y);
+        blankLabel.center = CGPointMake(offset + blankLabel.center.x + i * (blankLabel.frame.size.width+10), blankLabel.center.y);
         [blankLabel setHidden:NO];
         [self.view addSubview:blankLabel];
         [self.blankLabels addObject:blankLabel];
@@ -136,6 +141,39 @@
 }
 
 #pragma mark word functions
+
+-(void)cycleHintWords
+{
+    self.hintLabel.text = [_currentWordObj.hints objectAtIndex:_hintIndex];
+    
+    __weak GuessViewController* weakSelf = self;
+    
+    [UIView animateWithDuration:1 animations:^(void)
+     {
+         weakSelf.hintLabel.alpha = 1;
+         
+     }completion:^(BOOL finished)
+     {
+         if (finished)
+         {
+             [UIView animateWithDuration:1 delay:1 options:UIViewAnimationOptionCurveEaseInOut animations:^(void)
+              {
+                  weakSelf.hintLabel.alpha = 0;
+                  
+              }completion:^(BOOL finished)
+              {
+                  if (finished)
+                  {
+                      _hintIndex = (_hintIndex + 1) % _currentWordObj.hints.count;
+                      
+                      [weakSelf cycleHintWords];
+                  }
+              }];
+         }
+         
+     }];
+    
+}
 
 -(void)gotoNextWord
 {
@@ -270,7 +308,7 @@
         
         float dist = [self distanceFrom:label.center to:button.center];
         
-        if (dist < minDist && dist < 100)
+        if (dist < minDist && dist < 30)
         {
             minDist = dist;
             retIndex = i;
@@ -303,9 +341,12 @@
     
     [blankLabel setHidden:YES];    
 
-    [UIView animateWithDuration:.5 animations:^(void)
+    [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^(void)
      {
          letterButton.center = blankLabel.center;
+         
+     }completion:^(BOOL finished)
+     {
          
      }];
     
@@ -358,10 +399,14 @@
     {
         if (animated)
         {
-            [UIView animateWithDuration:.5 animations:^(void)
+            [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^(void)
              {
                  button.center = button.startPos;
+             }completion:^(BOOL complete)
+             {
+             
              }];
+ 
         }
         else
             button.center = button.startPos;

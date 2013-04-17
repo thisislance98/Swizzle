@@ -4,26 +4,35 @@
 <array>
 	<dict>
 		<key>Word</key>
-		<string>towel</string>
+		<string>car</string>
 		<key>Hints</key>
 		<array>
-			<string>What gets wetter and wetter the more it dries?</string>
+			<string>wheel</string>
+			<string>engine</string>
+			<string>trunk</string>
+			<string>seats</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>rug</string>
+		<string>cat</string>
 		<key>Hints</key>
 		<array>
-			<string>What goes up and down the stairs without moving?</string>
+			<string>fur</string>
+			<string>tail</string>
+			<string>mouse</string>
+			<string>feline</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>cold</string>
+		<string>house</string>
 		<key>Hints</key>
 		<array>
-			<string>What can you catch but not throw?</string>
+			<string>garage</string>
+			<string>roof</string>
+			<string>rooms</string>
+			<string>floor</string>
 		</array>
 	</dict>
 	<dict>
@@ -31,31 +40,43 @@
 		<string>nose</string>
 		<key>Hints</key>
 		<array>
-			<string>I can run but not walk. Wherever I go, thought follows close behind. What am I?</string>
+			<string>smell</string>
+			<string>face</string>
+			<string>breath</string>
+			<string>protruding</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>newspaper</string>
+		<string>fish</string>
 		<key>Hints</key>
 		<array>
-			<string>What&apos;s black and white and red all over?</string>
+			<string>water</string>
+			<string>gills</string>
+			<string>swim</string>
+			<string>pet</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>stamp</string>
+		<string>computer</string>
 		<key>Hints</key>
 		<array>
-			<string>What goes around the world but stays in a corner?</string>
+			<string>screen</string>
+			<string>keyboard</string>
+			<string>mouse</string>
+			<string>internet</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>sponge</string>
+		<string>washington</string>
 		<key>Hints</key>
 		<array>
-			<string>I have holes in my top and bottom, my left and right, and in the middle. But I still hold water. What am I?</string>
+			<string>apples</string>
+			<string>seattle</string>
+			<string>northwest</string>
+			<string>spokane</string>
 		</array>
 	</dict>
 	<dict>
@@ -63,31 +84,43 @@
 		<string>fire</string>
 		<key>Hints</key>
 		<array>
-			<string>Give me food, and I will live; give me water, and I will die. What am I?</string>
+			<string>camping</string>
+			<string>wood</string>
+			<string>hot</string>
+			<string>orange</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>coffin</string>
+		<string>lid</string>
 		<key>Hints</key>
 		<array>
-			<string>The man who invented it doesn&apos;t want it. The man who bought it doesn&apos;t need it. The man who needs it doesn&apos;t know it. What is it?</string>
+			<string>top</string>
+			<string>container</string>
+			<string>seal</string>
+			<string>plastic</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>secret</string>
+		<string>gravity</string>
 		<key>Hints</key>
 		<array>
-			<string>No sooner spoken than broken. What is it?</string>
+			<string>newton</string>
+			<string>apple</string>
+			<string>fall</string>
+			<string>weight</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>suicide</string>
+		<string>death</string>
 		<key>Hints</key>
 		<array>
-			<string>A certain crime is punishable if attempted but not punishable if committed. What is it?</string>
+			<string>coffin</string>
+			<string>end</string>
+			<string>hostpital</string>
+			<string>funeral</string>
 		</array>
 	</dict>
 </array>

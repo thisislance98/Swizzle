@@ -53,7 +53,7 @@
 		2D08BA55171E099100A1833A /* SlotMachineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlotMachineViewController.m; sourceTree = "<group>"; };
 		2D62E2741718CDC700624AE1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		2D62E2791718D15E00624AE1 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		8A059778171887B900C09EEA /* Swizzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swizzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A059778171887B900C09EEA /* Word4Words.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Word4Words.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A05977B171887B900C09EEA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8A05977D171887B900C09EEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8A05977F171887B900C09EEA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -138,7 +138,7 @@
 		8A059779171887B900C09EEA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8A059778171887B900C09EEA /* Swizzle.app */,
+				8A059778171887B900C09EEA /* Word4Words.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -252,7 +252,7 @@
 			);
 			name = Swizzle;
 			productName = Swizzle;
-			productReference = 8A059778171887B900C09EEA /* Swizzle.app */;
+			productReference = 8A059778171887B900C09EEA /* Word4Words.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -416,7 +416,7 @@
 				GCC_PREFIX_HEADER = "Swizzle/Swizzle-Prefix.pch";
 				INFOPLIST_FILE = "Swizzle/Swizzle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Word4Words;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -432,7 +432,7 @@
 				GCC_PREFIX_HEADER = "Swizzle/Swizzle-Prefix.pch";
 				INFOPLIST_FILE = "Swizzle/Swizzle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Word4Words;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
