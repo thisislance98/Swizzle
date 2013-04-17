@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D08BA51171DFF6800A1833A /* SlotMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08BA50171DFF6800A1833A /* SlotMachine.m */; };
+		2D08BA53171E08CD00A1833A /* SlotMachine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D08BA52171E08CD00A1833A /* SlotMachine.storyboard */; };
+		2D08BA56171E099100A1833A /* SlotMachineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08BA55171E099100A1833A /* SlotMachineViewController.m */; };
 		2D62E2751718CDC700624AE1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D62E2741718CDC700624AE1 /* FacebookSDK.framework */; };
 		2D62E27A1718D15E00624AE1 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D62E2791718D15E00624AE1 /* libsqlite3.0.dylib */; };
 		8A05977C171887B900C09EEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A05977B171887B900C09EEA /* UIKit.framework */; };
@@ -43,6 +46,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D08BA4F171DFF6800A1833A /* SlotMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlotMachine.h; sourceTree = "<group>"; };
+		2D08BA50171DFF6800A1833A /* SlotMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlotMachine.m; sourceTree = "<group>"; };
+		2D08BA52171E08CD00A1833A /* SlotMachine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SlotMachine.storyboard; sourceTree = "<group>"; };
+		2D08BA54171E099100A1833A /* SlotMachineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlotMachineViewController.h; sourceTree = "<group>"; };
+		2D08BA55171E099100A1833A /* SlotMachineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlotMachineViewController.m; sourceTree = "<group>"; };
 		2D62E2741718CDC700624AE1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		2D62E2791718D15E00624AE1 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		8A059778171887B900C09EEA /* Swizzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swizzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +172,7 @@
 			children = (
 				8A059793171887B900C09EEA /* MainStoryboard_iPhone.storyboard */,
 				8A059796171887B900C09EEA /* MainStoryboard_iPad.storyboard */,
+				2D08BA52171E08CD00A1833A /* SlotMachine.storyboard */,
 				8A47AD83171C6EFC00283AF9 /* Classes */,
 				8A67F4E4171B8B8D005385C2 /* Resources */,
 				8A059782171887B900C09EEA /* Supporting Files */,
@@ -196,6 +205,8 @@
 				8A47ADA9171CA2EC00283AF9 /* CoinsController.m */,
 				8A47AD8F171C6EFC00283AF9 /* WordObj.h */,
 				8A47AD90171C6EFC00283AF9 /* WordObj.m */,
+				2D08BA4F171DFF6800A1833A /* SlotMachine.h */,
+				2D08BA50171DFF6800A1833A /* SlotMachine.m */,
 				8A47AD98171C6F4000283AF9 /* ViewControllers */,
 			);
 			path = Classes;
@@ -204,6 +215,8 @@
 		8A47AD98171C6F4000283AF9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2D08BA54171E099100A1833A /* SlotMachineViewController.h */,
+				2D08BA55171E099100A1833A /* SlotMachineViewController.m */,
 				8A47AD99171C6F4000283AF9 /* GuessViewController.h */,
 				8A47AD9A171C6F4000283AF9 /* GuessViewController.m */,
 				8A47AD9B171C6F4000283AF9 /* HintViewController.h */,
@@ -280,6 +293,7 @@
 				8A059795171887B900C09EEA /* MainStoryboard_iPhone.storyboard in Resources */,
 				8A059798171887B900C09EEA /* MainStoryboard_iPad.storyboard in Resources */,
 				8A67F4E6171B8BA8005385C2 /* WordAndHints.plist in Resources */,
+				2D08BA53171E08CD00A1833A /* SlotMachine.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +312,8 @@
 				8A47ADA0171C6F4000283AF9 /* HintViewController.m in Sources */,
 				8A47ADA1171C6F4000283AF9 /* LoginViewController.m in Sources */,
 				8A47ADAA171CA2EC00283AF9 /* CoinsController.m in Sources */,
+				2D08BA51171DFF6800A1833A /* SlotMachine.m in Sources */,
+				2D08BA56171E099100A1833A /* SlotMachineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
