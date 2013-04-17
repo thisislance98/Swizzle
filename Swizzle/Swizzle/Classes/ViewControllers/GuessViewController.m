@@ -213,7 +213,7 @@
         
         if ([[button.titleLabel.text uppercaseString] isEqualToString:correctLetter])
         {
-            [self resetLetterButton:button animated:NO];
+            [self resetLetterButton:button animated:NO sendToStartPos:YES];
             [self moveLetterButton:button toSlotAtIndex:index];
         }
     }
@@ -257,6 +257,28 @@
     return [[NSString stringWithFormat: @"%C", [correctWord characterAtIndex:index]] uppercaseString];
 }
 
+-(int)getCloseBlankSlotIndex:(LetterButton*)button
+{
+    float minDist = 99999;
+    int retIndex = -1;
+    
+    for (int i=0; i < self.blankLabels.count; i++)
+    {
+        UILabel* label = self.blankLabels[i];
+        if (label.isHidden == YES)
+            continue;
+        
+        float dist = [self distanceFrom:label.center to:button.center];
+        
+        if (dist < minDist && dist < 100)
+        {
+            minDist = dist;
+            retIndex = i;
+        }
+    }
+    return retIndex;
+}
+
 
 -(NSMutableArray*)getAllLetterButtons
 {
@@ -291,12 +313,27 @@
         [self onGotCorrectWord];
 }
 
+
+-(void)onLetterPanned:(LetterButton*)letterButton
+{
+    int slotIndex = [self getCloseBlankSlotIndex:letterButton];
+    
+    if (slotIndex != -1)
+    {
+        [self resetLetterButton:letterButton animated:NO sendToStartPos:NO];
+        [self moveLetterButton:letterButton toSlotAtIndex:slotIndex];
+    }
+    else
+        [self resetLetterButton:letterButton];
+}
+
 -(void)onLetterSelected:(LetterButton*)letterButton
 {
-    
+
     // is the button in the bottom letter pad?
     if ([_letterButtons containsObject:letterButton] == NO && _letterButtons.count < self.blankLabels.count)
     {
+        
         [self moveLetterButton:letterButton toSlotAtIndex:[self getFirstVisibleBlankLabelIndex]];
     }
     else // its up in the word part
@@ -307,25 +344,28 @@
 
 -(void)resetLetterButton:(LetterButton*)button
 {
-    [self resetLetterButton:button animated:YES];
+    [self resetLetterButton:button animated:YES sendToStartPos:YES];
 }
 
--(void)resetLetterButton:(LetterButton*)button animated:(BOOL)animated
+-(void)resetLetterButton:(LetterButton*)button animated:(BOOL)animated sendToStartPos:(BOOL)sendToStartPos
 {
     int index = [self getIndexForLetterButton:button];
     
     if (index != -1)
         [self.blankLabels[index] setHidden:NO];
     
-    if (animated)
+    if (sendToStartPos)
     {
-        [UIView animateWithDuration:.5 animations:^(void)
-         {
-             button.center = button.startPos;
-         }];
+        if (animated)
+        {
+            [UIView animateWithDuration:.5 animations:^(void)
+             {
+                 button.center = button.startPos;
+             }];
+        }
+        else
+            button.center = button.startPos;
     }
-    else
-        button.center = button.startPos;
     
     [_letterButtons removeObject:button];
 }
@@ -354,13 +394,14 @@
             [self.blankLabels[[self getIndexForLetterButton:button]] setHidden:NO];
     }
     else if (recognizer.state == UIGestureRecognizerStateEnded)
-        [self onLetterSelected:button];
+        [self onLetterPanned:button];
     else
     {
         CGPoint delta = [recognizer translationInView:self.view];
         button.center = CGPointMake(startPos.x + delta.x, startPos.y + delta.y);
     }
 }
+
 
 -(void)letterButtonTouch:(id)sender
 {
@@ -448,6 +489,13 @@
     }
     
     return indicies;
+}
+
+-(float)distanceFrom:(CGPoint)point1 to:(CGPoint)point2
+{
+    CGFloat xDist = (point2.x - point1.x);
+    CGFloat yDist = (point2.y - point1.y);
+    return sqrt((xDist * xDist) + (yDist * yDist));
 }
 
 @end
