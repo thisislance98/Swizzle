@@ -42,9 +42,10 @@
     _hintIndex = 0;
     
  //   [self.hintButton setHidden:NO];
+    [self setupLetterLabels:_currentWordObj.word.length];
     [self resetLetterButtons:_letterButtons];
     [self setupLetterButtons:_currentWordObj.word];
-    [self setupLetterLabels:_currentWordObj.word.length];
+    
     
 
     // this will stop the hint words from cycling
@@ -66,7 +67,7 @@
     {
         UILabel* blankLabel =  [self deepLabelCopy:self.startBlankLabel];
        
-        blankLabel.center = CGPointMake(offset + blankLabel.center.x + i * (blankLabel.frame.size.width+10), blankLabel.center.y);
+        blankLabel.center = CGPointMake(offset + blankLabel.center.x + i * (blankLabel.frame.size.width), blankLabel.center.y);
         [blankLabel setHidden:NO];
         [self.view addSubview:blankLabel];
         [self.blankLabels addObject:blankLabel];

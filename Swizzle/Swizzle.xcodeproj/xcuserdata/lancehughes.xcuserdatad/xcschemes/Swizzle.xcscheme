@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8A059777171887B900C09EEA"
-               BuildableName = "Swizzle.app"
+               BuildableName = "Word4Words.app"
                BlueprintName = "Swizzle"
                ReferencedContainer = "container:Swizzle.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A059777171887B900C09EEA"
-            BuildableName = "Swizzle.app"
+            BuildableName = "Word4Words.app"
             BlueprintName = "Swizzle"
             ReferencedContainer = "container:Swizzle.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A059777171887B900C09EEA"
-            BuildableName = "Swizzle.app"
+            BuildableName = "Word4Words.app"
             BlueprintName = "Swizzle"
             ReferencedContainer = "container:Swizzle.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A059777171887B900C09EEA"
-            BuildableName = "Swizzle.app"
+            BuildableName = "Word4Words.app"
             BlueprintName = "Swizzle"
             ReferencedContainer = "container:Swizzle.xcodeproj">
          </BuildableReference>
