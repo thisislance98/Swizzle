@@ -39,7 +39,6 @@
 		8A47AD94171C6EFC00283AF9 /* LetterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A47AD8B171C6EFC00283AF9 /* LetterButton.m */; };
 		8A47AD97171C6EFC00283AF9 /* WordObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A47AD90171C6EFC00283AF9 /* WordObj.m */; };
 		8A47AD9F171C6F4000283AF9 /* GuessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A47AD9A171C6F4000283AF9 /* GuessViewController.m */; };
-		8A47ADA0171C6F4000283AF9 /* HintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A47AD9C171C6F4000283AF9 /* HintViewController.m */; };
 		8A47ADA1171C6F4000283AF9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A47AD9E171C6F4000283AF9 /* LoginViewController.m */; };
 		8A47ADAA171CA2EC00283AF9 /* CoinsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A47ADA9171CA2EC00283AF9 /* CoinsController.m */; };
 		8A67F4E6171B8BA8005385C2 /* WordAndHints.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A67F4E5171B8BA8005385C2 /* WordAndHints.plist */; };
@@ -117,8 +116,6 @@
 		8A47AD90171C6EFC00283AF9 /* WordObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordObj.m; sourceTree = "<group>"; };
 		8A47AD99171C6F4000283AF9 /* GuessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessViewController.h; sourceTree = "<group>"; };
 		8A47AD9A171C6F4000283AF9 /* GuessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessViewController.m; sourceTree = "<group>"; };
-		8A47AD9B171C6F4000283AF9 /* HintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HintViewController.h; sourceTree = "<group>"; };
-		8A47AD9C171C6F4000283AF9 /* HintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HintViewController.m; sourceTree = "<group>"; };
 		8A47AD9D171C6F4000283AF9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		8A47AD9E171C6F4000283AF9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8A47ADA8171CA2EC00283AF9 /* CoinsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinsController.h; sourceTree = "<group>"; };
@@ -260,6 +257,8 @@
 			children = (
 				8A47AD84171C6EFC00283AF9 /* AppDelegate.h */,
 				8A47AD85171C6EFC00283AF9 /* AppDelegate.m */,
+				8A7DA436172754D70091249C /* BlankSlot.h */,
+				8A7DA437172754D70091249C /* BlankSlot.m */,
 				8A47AD8A171C6EFC00283AF9 /* LetterButton.h */,
 				8A47AD8B171C6EFC00283AF9 /* LetterButton.m */,
 				8A47ADA8171CA2EC00283AF9 /* CoinsController.h */,
@@ -269,8 +268,6 @@
 				2D08BA4F171DFF6800A1833A /* SlotMachine.h */,
 				2D08BA50171DFF6800A1833A /* SlotMachine.m */,
 				8A47AD98171C6F4000283AF9 /* ViewControllers */,
-				8A7DA436172754D70091249C /* BlankSlot.h */,
-				8A7DA437172754D70091249C /* BlankSlot.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -282,8 +279,6 @@
 				2D08BA55171E099100A1833A /* SlotMachineViewController.m */,
 				8A47AD99171C6F4000283AF9 /* GuessViewController.h */,
 				8A47AD9A171C6F4000283AF9 /* GuessViewController.m */,
-				8A47AD9B171C6F4000283AF9 /* HintViewController.h */,
-				8A47AD9C171C6F4000283AF9 /* HintViewController.m */,
 				8A47AD9D171C6F4000283AF9 /* LoginViewController.h */,
 				8A47AD9E171C6F4000283AF9 /* LoginViewController.m */,
 			);
@@ -454,7 +449,6 @@
 				8A47AD94171C6EFC00283AF9 /* LetterButton.m in Sources */,
 				8A47AD97171C6EFC00283AF9 /* WordObj.m in Sources */,
 				8A47AD9F171C6F4000283AF9 /* GuessViewController.m in Sources */,
-				8A47ADA0171C6F4000283AF9 /* HintViewController.m in Sources */,
 				8A47ADA1171C6F4000283AF9 /* LoginViewController.m in Sources */,
 				8A47ADAA171CA2EC00283AF9 /* CoinsController.m in Sources */,
 				2D08BA51171DFF6800A1833A /* SlotMachine.m in Sources */,

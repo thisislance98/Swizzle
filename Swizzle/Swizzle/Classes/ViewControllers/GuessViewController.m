@@ -27,13 +27,18 @@
     
     [self setupForWordAtIndex:0];
     
-    self.coinsLabel.text = [[CoinsController sharedController] coinsString];
+    self.bonesLabel.text = [[CoinsController sharedController] coinsString];
     
     
     for (LetterButton* button in self.allLetterButtons)
     {
         [button.titleLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:23]];
     }
+    
+    [self.hintLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:34]];
+    
+    [self.bonesLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:24]];
+    
 }
 
 #pragma mark - setup functions
@@ -66,7 +71,7 @@
     }
     [self.blankSlots removeAllObjects];
     
-    float letterPadding = 10;
+    float letterPadding = 5;
     
     float lastLabelXPos = self.startBlankImage.center.x + ((letterCount-1) * self.startBlankImage.frame.size.width + letterPadding);
     float center = (lastLabelXPos + self.startBlankImage.center.x) / 2;
@@ -88,7 +93,7 @@
 -(void)setupLetterButtons:(NSString*)theWord
 {
     NSMutableArray* letters = [[NSMutableArray alloc] init];
-    NSMutableArray* buttonTags = [[NSMutableArray alloc] init];
+    NSMutableArray* letterButtons = [[NSMutableArray alloc] initWithArray:self.allLetterButtons];
     
     // create an array with all the letters in the word
     for (int i=0; i < theWord.length; i++)
@@ -97,19 +102,13 @@
         
         [letters addObject:[theLetter uppercaseString]];
     }
-    
-    for (int i=100; i <= 111; i++)
-    {
-        [buttonTags addObject:[NSNumber numberWithInt:i]];
-    }
-    
-    int buttonCount = buttonTags.count;
+
+    int buttonCount = self.allLetterButtons.count;
     for (int i=0; i < buttonCount; i++)
     {
-        int tagIndex = arc4random() % buttonTags.count;
-        NSNumber* tag = [buttonTags objectAtIndex:tagIndex];
-        [buttonTags removeObjectAtIndex:tagIndex];
-        LetterButton* button = (LetterButton*)[self.view viewWithTag:tag.integerValue];
+        int index = arc4random() % letterButtons.count;
+        LetterButton* button = letterButtons[index];
+        [letterButtons removeObjectAtIndex:index];
         button.startPos = button.center;
         
         [button addTarget:self action:@selector(letterButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
@@ -197,7 +196,7 @@
 -(void)onGotCorrectWord
 {
     [self.correctLabel setHidden:NO];
-    [[CoinsController sharedController] increaseCoins:NUM_WIN_COINS labelToUpdate:self.coinsLabel];
+    [[CoinsController sharedController] increaseCoins:NUM_WIN_COINS labelToUpdate:self.bonesLabel];
     [self performSelector:@selector(gotoNextWord) withObject:nil afterDelay:2];
 }
 
@@ -232,6 +231,10 @@
 {
     // first get the index of a blank slot or one that has an incorrect letter
     NSArray* indicies = [self getIncorrectOrBlankIndicies];
+    
+    if (indicies.count == 0)
+        return;
+    
     int index = [((NSNumber*)indicies[arc4random() % indicies.count]) intValue];
     NSString* correctLetter = [self getCorrectLetterAtIndex:index];
     
@@ -272,13 +275,8 @@
 {
     BlankSlot* blankAtIndex = self.blankSlots[index];
     
-    for (LetterButton* button in _letterButtons)
-    {
-        if (button.center.x == blankAtIndex.center.x)
-            return button;
-    }
+    return blankAtIndex.button;
     
-    return nil;
 }
 
 -(int)getIndexForLetterButton:(LetterButton*)letterButton
@@ -286,7 +284,7 @@
     for (int i=0; i < self.blankSlots.count; i++)
     {
         BlankSlot* slot = self.blankSlots[i];
-        if (slot.center.x == letterButton.center.x && slot.center.y == letterButton.center.y)
+        if (slot.button == letterButton)
             return i;
     }
     
@@ -313,7 +311,7 @@
     for (int i=0; i < self.blankSlots.count; i++)
     {
         BlankSlot* slot = self.blankSlots[i];
-        if (slot.isTaken == YES)
+        if (slot.button != nil)
             continue;
         
         float dist = [self distanceFrom:slot.center to:button.center];
@@ -338,11 +336,16 @@
     if (blankSlot == nil)
         return;
     
-    blankSlot.isTaken = YES;
-
+    blankSlot.button = letterButton;
+    
+    __weak GuessViewController* weakSelf = self;
     [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^(void)
      {
-         letterButton.center = blankSlot.center;
+        
+         [weakSelf scaleButton:letterButton scale:SMALL_BUTTON_SCALE];
+
+         letterButton.center = CGPointMake(blankSlot.center.x, blankSlot.center.y+2)  ;
+         
          
      }completion:^(BOOL finished)
      {
@@ -394,7 +397,7 @@
     if (index != -1)
     {
         BlankSlot* slot = self.blankSlots[index];
-        slot.isTaken = NO;
+        slot.button = nil;
     }
     
     if (sendToStartPos)
@@ -404,6 +407,7 @@
             [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^(void)
              {
                  button.center = button.startPos;
+                 button.frame = button.startFrame;
              }completion:^(BOOL complete)
              {
              
@@ -411,7 +415,10 @@
  
         }
         else
+        {
             button.center = button.startPos;
+            [self scaleButton:button scale:1];
+        }
     }
     
     [_letterButtons removeObject:button];
@@ -440,7 +447,13 @@
         if ([_letterButtons containsObject:button])
         {
             BlankSlot* slot = self.blankSlots[[self getIndexForLetterButton:button]];
-            slot.isTaken = NO;
+            slot.button = nil;
+            
+            
+            [UIView animateWithDuration:.3 animations:^(void)
+            {
+                button.frame = button.startFrame;
+            }];
         }
     }
     else if (recognizer.state == UIGestureRecognizerStateEnded)
@@ -460,7 +473,7 @@
     if ([_letterButtons containsObject:button])
     {
         BlankSlot* slot = self.blankSlots[[self getIndexForLetterButton:button]];
-        slot.isTaken = NO;
+        slot.button = nil;
     }
     
     [self onLetterSelected:button];
@@ -480,11 +493,11 @@
 
 - (IBAction)buyLetterTouch:(id)sender {
     
-    if ([[CoinsController sharedController] buyForAmount:BUY_LETTER_COST labelToUpdate:self.coinsLabel])
+    if ([[CoinsController sharedController] buyForAmount:BUY_LETTER_COST labelToUpdate:self.bonesLabel])
     {
         [self buyLetter];
         
-        self.coinsLabel.text = [[CoinsController sharedController] coinsString];
+        self.bonesLabel.text = [[CoinsController sharedController] coinsString];
     }
     
 }
@@ -504,7 +517,7 @@
     for (int i=0; i < self.blankSlots.count; i++) 
     {
         BlankSlot* slot = self.blankSlots[i];
-        if (slot.isTaken == NO)
+        if (slot.button == nil)
             return i;
     }
     return -1;
@@ -516,7 +529,7 @@
     
     for (int i=0; i < self.blankSlots.count; i++)
     {
-        if (((BlankSlot*)self.blankSlots[i]).isTaken == NO)
+        if (((BlankSlot*)self.blankSlots[i]).button == nil)
             [indicies addObject:@(i)];
         else if ( [[self getLetterButtonLetterAtIndex:i] isEqualToString:[self getCorrectLetterAtIndex:i]] == NO)
         {
@@ -525,6 +538,16 @@
     }
     
     return indicies;
+}
+
+-(void)scaleButton:(LetterButton*)button scale:(float)scale;
+{
+    CGRect frame = button.startFrame;
+    frame.origin = button.frame.origin;
+    frame.size.width = scale * frame.size.width;
+    frame.size.height = scale * frame.size.height;
+    
+    button.frame = frame;
 }
 
 -(float)distanceFrom:(CGPoint)point1 to:(CGPoint)point2

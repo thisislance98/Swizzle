@@ -15,6 +15,7 @@
 #define BUY_LETTER_COST 10
 #define NUM_WIN_COINS 20
 #define NUM_HINTS 4
+#define SMALL_BUTTON_SCALE .85
 
 @interface GuessViewController : UIViewController
 {
@@ -27,7 +28,7 @@
     
 }
 
-@property (strong, nonatomic) IBOutlet UILabel *coinsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *bonesLabel;
 
 @property (nonatomic, strong) NSMutableArray* blankSlots;
 @property (weak, nonatomic) IBOutlet UIButton *hintButton;

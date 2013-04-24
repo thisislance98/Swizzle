@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LetterButton.h"
 
 @interface BlankSlot : UIImageView
 {
     
 }
 
-@property (readwrite) BOOL isTaken;
+@property (weak,nonatomic) LetterButton* button;
 @end
