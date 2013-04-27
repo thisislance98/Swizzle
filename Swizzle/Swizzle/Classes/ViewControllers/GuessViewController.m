@@ -65,6 +65,12 @@
 
 -(void)setupLetterLabels:(int)letterCount
 {
+    if (letterCount > MAX_NUM_LETTERS)
+    {
+        NSLog(@"ERROR: TOO MANY LETTERS!");
+        return;
+    }
+    
     for (BlankSlot* slot in self.blankSlots)
     {
         [slot removeFromSuperview];
@@ -73,7 +79,7 @@
     
     float letterPadding = 5;
     
-    float lastLabelXPos = self.startBlankImage.center.x + ((letterCount-1) * self.startBlankImage.frame.size.width + letterPadding);
+    float lastLabelXPos = self.startBlankImage.center.x + ((letterCount+1) * self.startBlankImage.frame.size.width + letterPadding);
     float center = (lastLabelXPos + self.startBlankImage.center.x) / 2;
     float screenCenter = [[UIScreen mainScreen] bounds].size.width / 2;
     float offset = screenCenter - center;
@@ -87,6 +93,9 @@
         [self.view insertSubview:blankSlot belowSubview:self.startBlankImage];
         [self.blankSlots addObject:blankSlot];
     }
+    
+    CGPoint lastBlankCenter = ((UIImageView*)self.blankSlots[self.blankSlots.count-1]).center;
+    self.facebookButton.center =  CGPointMake(lastBlankCenter.x + self.startBlankImage.frame.size.width + letterPadding*2, self.facebookButton.center.y);
 }
 
 // sets the letter titles on all the buttons to include all the letters in the word along and the rest being random
@@ -560,6 +569,39 @@
 - (void)viewDidUnload {
     [self setAllLetterButtons:nil];
     [self setStartBlankImage:nil];
+    [self setFacebookButton:nil];
     [super viewDidUnload];
 }
+
+
+#pragma -mark Facebook Stuff
+
+-(void)publishToFBWall
+{
+
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"Uploaded thru app",  @"message", nil];
+    [params setObject:[UIImage imageNamed:@"clear_btn1.png"] forKey:@"source"];
+//    [params setObject:[UIImage imageNamed:@"image-name.png"] forKey:@"source"];
+    FBRequest* request = [FBRequest requestWithGraphPath:@"me/photos" parameters:params HTTPMethod:@"POST" ];
+
+ //   FBRequest* request = [FBRequest requestForPostStatusUpdate:<#(NSString *)#>:@"me/photos"];
+ //   FBRequest* request = [FBRequest req:<#(UIImage *)#>:@"test test"];
+//    FBRequest * request = [[FBRequest alloc] initWithSession:[PFFacebookUtils session] graphPath:@"me" parameters:params HTTPMethod:@"POST"];
+ 
+    // Send request to Facebook
+    [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        if (!error) {
+            // result is a dictionary with the user's Facebook data
+
+            NSLog(@"Facebook request complete");
+        }
+        else
+        {
+            NSLog(@"got FB error: %@",[error localizedDescription]);
+        }
+    }];
+}
+
+
 @end
