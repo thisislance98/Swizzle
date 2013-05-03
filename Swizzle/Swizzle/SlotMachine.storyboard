@@ -86,6 +86,16 @@
             <point key="canvasLocation" x="480" y="-295"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="SlotMachineViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SlotMachineViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="playTapped:"/>
+                <relationship kind="outlet" name="coinsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="slotContainerView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
