@@ -18,6 +18,7 @@
                   clientKey:@"q7JwCcHdckdPkRdPXHAj3sIA7Gl8NViNFIPUtgUh"];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
     return YES;
 }

@@ -10,6 +10,7 @@
 #import "CoinsController.h"
 
 
+
 @implementation GuessViewController
 
 
@@ -18,16 +19,25 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    
     [self initWordObjs];
     
-    self.blankLabels = [[NSMutableArray alloc] init];
+    self.blankSlots = [[NSMutableArray alloc] init];
     _letterButtons = [[NSMutableArray alloc] init];
     _nameLabel.text = [[PFUser currentUser] username];
     
     [self setupForWordAtIndex:0];
     
-    self.coinsLabel.text = [[CoinsController sharedController] coinsString];
+    self.bonesLabel.text = [[CoinsController sharedController] coinsString];
+    
+    
+    for (LetterButton* button in self.allLetterButtons)
+    {
+        [button.titleLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:23]];
+    }
+    
+    [self.hintLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:34]];
+    
+    [self.bonesLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:24]];
     
 }
 
@@ -41,39 +51,58 @@
     _hintIndex = 0;
     
  //   [self.hintButton setHidden:NO];
-    [self setupLetterButtons:_currentWordObj.word];
     [self setupLetterLabels:_currentWordObj.word.length];
     [self resetLetterButtons:_letterButtons];
+    [self setupLetterButtons:_currentWordObj.word];
+    
+    
 
-    self.hintLabel.text = [_currentWordObj.hints objectAtIndex:0];
+    // this will stop the hint words from cycling
+    self.hintLabel.alpha = 0;
+    [self cycleHintWords];
 }
+
 
 -(void)setupLetterLabels:(int)letterCount
 {
-    [self.blankLabels removeAllObjects];
+    if (letterCount > MAX_NUM_LETTERS)
+    {
+        NSLog(@"ERROR: TOO MANY LETTERS!");
+        return;
+    }
     
-    float lastLabelXPos = self.startBlankLabel.center.x + ((letterCount-1) * self.startBlankLabel.frame.size.width);
-    float center = (lastLabelXPos + self.startBlankLabel.center.x) / 2;
+    for (BlankSlot* slot in self.blankSlots)
+    {
+        [slot removeFromSuperview];
+    }
+    [self.blankSlots removeAllObjects];
+    
+    float letterPadding = 5;
+    
+    float lastLabelXPos = self.startBlankImage.center.x + ((letterCount+1) * self.startBlankImage.frame.size.width + letterPadding);
+    float center = (lastLabelXPos + self.startBlankImage.center.x) / 2;
     float screenCenter = [[UIScreen mainScreen] bounds].size.width / 2;
     float offset = screenCenter - center;
     
     for (int i=0; i < letterCount; i++)
     {
-        UILabel* blankLabel =  [self deepLabelCopy:self.startBlankLabel];
-       
-        blankLabel.center = CGPointMake(offset + blankLabel.center.x + i * blankLabel.frame.size.width, blankLabel.center.y);
-        [blankLabel setHidden:NO];
-        [self.view addSubview:blankLabel];
-        [self.blankLabels addObject:blankLabel];
-        [self.view sendSubviewToBack:blankLabel];
+        BlankSlot* blankSlot = [[BlankSlot alloc] initWithImage:[UIImage imageNamed:@"empty_slot.png"]];
+        
+        blankSlot.center = CGPointMake(offset + self.startBlankImage.center.x + i * (blankSlot.frame.size.width + letterPadding), self.startBlankImage.center.y);
+    
+        [self.view insertSubview:blankSlot belowSubview:self.startBlankImage];
+        [self.blankSlots addObject:blankSlot];
     }
+    
+    CGPoint lastBlankCenter = ((UIImageView*)self.blankSlots[self.blankSlots.count-1]).center;
+    self.facebookButton.center =  CGPointMake(lastBlankCenter.x + self.startBlankImage.frame.size.width + letterPadding*2, self.facebookButton.center.y);
 }
 
 // sets the letter titles on all the buttons to include all the letters in the word along and the rest being random
 -(void)setupLetterButtons:(NSString*)theWord
 {
     NSMutableArray* letters = [[NSMutableArray alloc] init];
-    NSMutableArray* buttonTags = [[NSMutableArray alloc] init];
+    NSMutableArray* letterButtons = [[NSMutableArray alloc] initWithArray:self.allLetterButtons];
     
     // create an array with all the letters in the word
     for (int i=0; i < theWord.length; i++)
@@ -82,19 +111,13 @@
         
         [letters addObject:[theLetter uppercaseString]];
     }
-    
-    for (int i=100; i <= 111; i++)
-    {
-        [buttonTags addObject:[NSNumber numberWithInt:i]];
-    }
-    
-    int buttonCount = buttonTags.count;
+
+    int buttonCount = self.allLetterButtons.count;
     for (int i=0; i < buttonCount; i++)
     {
-        int tagIndex = arc4random() % buttonTags.count;
-        NSNumber* tag = [buttonTags objectAtIndex:tagIndex];
-        [buttonTags removeObjectAtIndex:tagIndex];
-        LetterButton* button = (LetterButton*)[self.view viewWithTag:tag.integerValue];
+        int index = arc4random() % letterButtons.count;
+        LetterButton* button = letterButtons[index];
+        [letterButtons removeObjectAtIndex:index];
         button.startPos = button.center;
         
         [button addTarget:self action:@selector(letterButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
@@ -137,6 +160,39 @@
 
 #pragma mark word functions
 
+-(void)cycleHintWords
+{
+    self.hintLabel.text = [_currentWordObj.hints objectAtIndex:_hintIndex];
+    
+    __weak GuessViewController* weakSelf = self;
+    
+    [UIView animateWithDuration:1 animations:^(void)
+     {
+         weakSelf.hintLabel.alpha = 1;
+         
+     }completion:^(BOOL finished)
+     {
+         if (finished)
+         {
+             [UIView animateWithDuration:1 delay:1 options:UIViewAnimationOptionCurveEaseInOut animations:^(void)
+              {
+                  weakSelf.hintLabel.alpha = 0;
+                  
+              }completion:^(BOOL finished)
+              {
+                  if (finished)
+                  {
+                      _hintIndex = (_hintIndex + 1) % _currentWordObj.hints.count;
+                      
+                      [weakSelf cycleHintWords];
+                  }
+              }];
+         }
+         
+     }];
+    
+}
+
 -(void)gotoNextWord
 {
     [self.correctLabel setHidden:YES];
@@ -149,7 +205,7 @@
 -(void)onGotCorrectWord
 {
     [self.correctLabel setHidden:NO];
-    [[CoinsController sharedController] increaseCoins:NUM_WIN_COINS labelToUpdate:self.coinsLabel];
+    [[CoinsController sharedController] increaseCoins:NUM_WIN_COINS labelToUpdate:self.bonesLabel];
     [self performSelector:@selector(gotoNextWord) withObject:nil afterDelay:2];
 }
 
@@ -184,6 +240,10 @@
 {
     // first get the index of a blank slot or one that has an incorrect letter
     NSArray* indicies = [self getIncorrectOrBlankIndicies];
+    
+    if (indicies.count == 0)
+        return;
+    
     int index = [((NSNumber*)indicies[arc4random() % indicies.count]) intValue];
     NSString* correctLetter = [self getCorrectLetterAtIndex:index];
     
@@ -194,7 +254,7 @@
         [self resetLetterButton:currentLetterButtonAtIndex];
     
     // now find the letter we want to place.. first we check the letters below
-    for (LetterButton* button in [self getAllLetterButtons])
+    for (LetterButton* button in self.allLetterButtons)
     {
         if ([_letterButtons containsObject:button])
             continue;
@@ -213,7 +273,7 @@
         
         if ([[button.titleLabel.text uppercaseString] isEqualToString:correctLetter])
         {
-            [self resetLetterButton:button animated:NO];
+            [self resetLetterButton:button animated:NO sendToStartPos:YES];
             [self moveLetterButton:button toSlotAtIndex:index];
         }
     }
@@ -222,23 +282,18 @@
 
 -(LetterButton*)getLetterButtonAtIndex:(int)index
 {
-    UILabel* blankAtIndex = self.blankLabels[index];
+    BlankSlot* blankAtIndex = self.blankSlots[index];
     
-    for (LetterButton* button in _letterButtons)
-    {
-        if (button.center.x == blankAtIndex.center.x)
-            return button;
-    }
+    return blankAtIndex.button;
     
-    return nil;
 }
 
 -(int)getIndexForLetterButton:(LetterButton*)letterButton
 {
-    for (int i=0; i < self.blankLabels.count; i++)
+    for (int i=0; i < self.blankSlots.count; i++)
     {
-        UILabel* label = self.blankLabels[i];
-        if (label.center.x == letterButton.center.x && label.center.y == letterButton.center.y)
+        BlankSlot* slot = self.blankSlots[i];
+        if (slot.button == letterButton)
             return i;
     }
     
@@ -257,33 +312,52 @@
     return [[NSString stringWithFormat: @"%C", [correctWord characterAtIndex:index]] uppercaseString];
 }
 
-
--(NSMutableArray*)getAllLetterButtons
+-(int)getCloseBlankSlotIndex:(LetterButton*)button
 {
-    NSMutableArray* buttons = [[NSMutableArray alloc] init];
+    float minDist = 99999;
+    int retIndex = -1;
     
-    for (int i=100; i <= 111; i++)
+    for (int i=0; i < self.blankSlots.count; i++)
     {
-        [buttons addObject:[self.view viewWithTag:i]];
+        BlankSlot* slot = self.blankSlots[i];
+        if (slot.button != nil)
+            continue;
+        
+        float dist = [self distanceFrom:slot.center to:button.center];
+        
+        if (dist < minDist && dist < 30)
+        {
+            minDist = dist;
+            retIndex = i;
+        }
     }
-    return buttons;
+    return retIndex;
 }
+
 
 -(void)moveLetterButton:(LetterButton*)letterButton toSlotAtIndex:(int)index
 {
     [_letterButtons addObject:letterButton];
 
 
-    UILabel* blankLabel = self.blankLabels[index];
+    BlankSlot* blankSlot = self.blankSlots[index];
     
-    if (blankLabel == nil)
+    if (blankSlot == nil)
         return;
     
-    [blankLabel setHidden:YES];    
-
-    [UIView animateWithDuration:.5 animations:^(void)
+    blankSlot.button = letterButton;
+    
+    __weak GuessViewController* weakSelf = self;
+    [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^(void)
      {
-         letterButton.center = blankLabel.center;
+        
+         [weakSelf scaleButton:letterButton scale:SMALL_BUTTON_SCALE];
+
+         letterButton.center = CGPointMake(blankSlot.center.x, blankSlot.center.y+2)  ;
+         
+         
+     }completion:^(BOOL finished)
+     {
          
      }];
     
@@ -291,12 +365,27 @@
         [self onGotCorrectWord];
 }
 
+
+-(void)onLetterPanned:(LetterButton*)letterButton
+{
+    int slotIndex = [self getCloseBlankSlotIndex:letterButton];
+    
+    if (slotIndex != -1)
+    {
+        [self resetLetterButton:letterButton animated:NO sendToStartPos:NO];
+        [self moveLetterButton:letterButton toSlotAtIndex:slotIndex];
+    }
+    else
+        [self resetLetterButton:letterButton];
+}
+
 -(void)onLetterSelected:(LetterButton*)letterButton
 {
-    
+
     // is the button in the bottom letter pad?
-    if ([_letterButtons containsObject:letterButton] == NO && _letterButtons.count < self.blankLabels.count)
+    if ([_letterButtons containsObject:letterButton] == NO && _letterButtons.count < self.blankSlots.count)
     {
+        
         [self moveLetterButton:letterButton toSlotAtIndex:[self getFirstVisibleBlankLabelIndex]];
     }
     else // its up in the word part
@@ -307,25 +396,39 @@
 
 -(void)resetLetterButton:(LetterButton*)button
 {
-    [self resetLetterButton:button animated:YES];
+    [self resetLetterButton:button animated:YES sendToStartPos:YES];
 }
 
--(void)resetLetterButton:(LetterButton*)button animated:(BOOL)animated
+-(void)resetLetterButton:(LetterButton*)button animated:(BOOL)animated sendToStartPos:(BOOL)sendToStartPos
 {
     int index = [self getIndexForLetterButton:button];
     
     if (index != -1)
-        [self.blankLabels[index] setHidden:NO];
-    
-    if (animated)
     {
-        [UIView animateWithDuration:.5 animations:^(void)
-         {
-             button.center = button.startPos;
-         }];
+        BlankSlot* slot = self.blankSlots[index];
+        slot.button = nil;
     }
-    else
-        button.center = button.startPos;
+    
+    if (sendToStartPos)
+    {
+        if (animated)
+        {
+            [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^(void)
+             {
+                 button.center = button.startPos;
+                 button.frame = button.startFrame;
+             }completion:^(BOOL complete)
+             {
+             
+             }];
+ 
+        }
+        else
+        {
+            button.center = button.startPos;
+            [self scaleButton:button scale:1];
+        }
+    }
     
     [_letterButtons removeObject:button];
 }
@@ -351,10 +454,19 @@
         startPos = button.center;
         
         if ([_letterButtons containsObject:button])
-            [self.blankLabels[[self getIndexForLetterButton:button]] setHidden:NO];
+        {
+            BlankSlot* slot = self.blankSlots[[self getIndexForLetterButton:button]];
+            slot.button = nil;
+            
+            
+            [UIView animateWithDuration:.3 animations:^(void)
+            {
+                button.frame = button.startFrame;
+            }];
+        }
     }
     else if (recognizer.state == UIGestureRecognizerStateEnded)
-        [self onLetterSelected:button];
+        [self onLetterPanned:button];
     else
     {
         CGPoint delta = [recognizer translationInView:self.view];
@@ -362,12 +474,16 @@
     }
 }
 
+
 -(void)letterButtonTouch:(id)sender
 {
     LetterButton* button = (LetterButton*)sender;
     
     if ([_letterButtons containsObject:button])
-        [self.blankLabels[[self getIndexForLetterButton:button]] setHidden:NO];
+    {
+        BlankSlot* slot = self.blankSlots[[self getIndexForLetterButton:button]];
+        slot.button = nil;
+    }
     
     [self onLetterSelected:button];
     
@@ -386,11 +502,11 @@
 
 - (IBAction)buyLetterTouch:(id)sender {
     
-    if ([[CoinsController sharedController] buyForAmount:BUY_LETTER_COST labelToUpdate:self.coinsLabel])
+    if ([[CoinsController sharedController] buyForAmount:BUY_LETTER_COST labelToUpdate:self.bonesLabel])
     {
         [self buyLetter];
         
-        self.coinsLabel.text = [[CoinsController sharedController] coinsString];
+        self.bonesLabel.text = [[CoinsController sharedController] coinsString];
     }
     
 }
@@ -403,31 +519,14 @@
 }
 
 
-- (IBAction)undoButtonTouch:(id)sender {
-    if (_letterButtons.count == 0)
-        return;
-    
-    LetterButton* lastButton = _letterButtons[_letterButtons.count-1];
-    [self resetLetterButton:lastButton];
-}
-
 #pragma mark - helper functions
-
--(UILabel*)deepLabelCopy:(UILabel*)label
-{
-    UILabel *duplicateLabel = [[UILabel alloc] initWithFrame:label.frame];
-    duplicateLabel.text = label.text;
-    duplicateLabel.textColor = label.textColor;
-    
-    return duplicateLabel;
-}
 
 -(int)getFirstVisibleBlankLabelIndex
 {
-    for (int i=0; i < self.blankLabels.count; i++) 
+    for (int i=0; i < self.blankSlots.count; i++) 
     {
-        UILabel* label = self.blankLabels[i];
-        if (label.isHidden == NO)
+        BlankSlot* slot = self.blankSlots[i];
+        if (slot.button == nil)
             return i;
     }
     return -1;
@@ -437,9 +536,9 @@
 {
     NSMutableArray* indicies = [[NSMutableArray alloc] init];
     
-    for (int i=0; i < self.blankLabels.count; i++)
+    for (int i=0; i < self.blankSlots.count; i++)
     {
-        if (((UILabel*)self.blankLabels[i]).isHidden == NO)
+        if (((BlankSlot*)self.blankSlots[i]).button == nil)
             [indicies addObject:@(i)];
         else if ( [[self getLetterButtonLetterAtIndex:i] isEqualToString:[self getCorrectLetterAtIndex:i]] == NO)
         {
@@ -449,5 +548,60 @@
     
     return indicies;
 }
+
+-(void)scaleButton:(LetterButton*)button scale:(float)scale;
+{
+    CGRect frame = button.startFrame;
+    frame.origin = button.frame.origin;
+    frame.size.width = scale * frame.size.width;
+    frame.size.height = scale * frame.size.height;
+    
+    button.frame = frame;
+}
+
+-(float)distanceFrom:(CGPoint)point1 to:(CGPoint)point2
+{
+    CGFloat xDist = (point2.x - point1.x);
+    CGFloat yDist = (point2.y - point1.y);
+    return sqrt((xDist * xDist) + (yDist * yDist));
+}
+
+- (void)viewDidUnload {
+    [self setAllLetterButtons:nil];
+    [self setStartBlankImage:nil];
+    [self setFacebookButton:nil];
+    [super viewDidUnload];
+}
+
+
+#pragma -mark Facebook Stuff
+
+-(void)publishToFBWall
+{
+
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"Uploaded thru app",  @"message", nil];
+    [params setObject:[UIImage imageNamed:@"clear_btn1.png"] forKey:@"source"];
+//    [params setObject:[UIImage imageNamed:@"image-name.png"] forKey:@"source"];
+    FBRequest* request = [FBRequest requestWithGraphPath:@"me/photos" parameters:params HTTPMethod:@"POST" ];
+
+ //   FBRequest* request = [FBRequest requestForPostStatusUpdate:<#(NSString *)#>:@"me/photos"];
+ //   FBRequest* request = [FBRequest req:<#(UIImage *)#>:@"test test"];
+//    FBRequest * request = [[FBRequest alloc] initWithSession:[PFFacebookUtils session] graphPath:@"me" parameters:params HTTPMethod:@"POST"];
+ 
+    // Send request to Facebook
+    [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        if (!error) {
+            // result is a dictionary with the user's Facebook data
+
+            NSLog(@"Facebook request complete");
+        }
+        else
+        {
+            NSLog(@"got FB error: %@",[error localizedDescription]);
+        }
+    }];
+}
+
 
 @end

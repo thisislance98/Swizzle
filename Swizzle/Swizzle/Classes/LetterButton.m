@@ -10,4 +10,13 @@
 
 @implementation LetterButton
 
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    self.startFrame = self.frame;
+    
+    return self;
+}
+
 @end

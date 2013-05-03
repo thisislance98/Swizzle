@@ -14,5 +14,5 @@
 }
 
 @property (readwrite) CGPoint startPos;
-
+@property (readwrite) CGRect startFrame;
 @end
