@@ -10,11 +10,10 @@
 
 static CGFloat kImageHeight = 66.0f;
 
-@interface SlotView()
+@interface SlotView()<UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSArray *scrollImageViews;
-
 
 @end
 
@@ -23,7 +22,8 @@ static CGFloat kImageHeight = 66.0f;
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    if (self) {
+    if (self)
+    {
         
         _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
         
@@ -37,6 +37,7 @@ static CGFloat kImageHeight = 66.0f;
                               ];
         
         CGFloat yPos = 0;
+        
         for (UIView *view in _scrollImageViews)
         {
             view.contentMode = UIViewContentModeScaleAspectFit;
@@ -51,16 +52,9 @@ static CGFloat kImageHeight = 66.0f;
         
         [self addSubview:_scrollView];
     }
+    
     return self;
 }
 
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
- }
- */
 
 @end
