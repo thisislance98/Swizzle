@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SlotView : UIView
+@interface SlotView : UIScrollView
 
 @end

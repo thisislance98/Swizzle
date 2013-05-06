@@ -36,21 +36,18 @@
                                 <rect key="frame" x="203" y="101" width="87" height="206"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" id="8Fa-sd-lrB" customClass="SlotView">
-                                <rect key="frame" x="13" y="101" width="87" height="206"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="0K4-mv-6E2" customClass="SlotView">
+                                <rect key="frame" x="13" y="107" width="87" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="wFN-gh-QXu" customClass="SlotView">
-                                <rect key="frame" x="108" y="101" width="87" height="206"/>
+                            </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="JXY-v1-TWv">
+                                <rect key="frame" x="108" y="107" width="87" height="193"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="fnh-IV-7dw" customClass="SlotView">
-                                <rect key="frame" x="202" y="101" width="87" height="206"/>
+                            </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="XNg-ip-IQ4">
+                                <rect key="frame" x="203" y="107" width="87" height="193"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
+                            </scrollView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="pipe_bones_01@2x.png" id="DbC-Z8-EhM">
                                 <rect key="frame" x="178" y="289" width="142" height="196"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -101,11 +98,12 @@
         <class className="SlotMachineViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SlotMachineViewController.h"/>
             <relationships>
+                <relationship kind="action" name="playTapped:"/>
                 <relationship kind="outlet" name="coinsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="slotContainerView" candidateClass="UIView"/>
             </relationships>
         </class>
-        <class className="SlotView" superclassName="UIView">
+        <class className="SlotView" superclassName="UIScrollView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SlotView.h"/>
         </class>
     </classes>
