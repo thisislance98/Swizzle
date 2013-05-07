@@ -8,12 +8,12 @@
 
 #import "SlotView.h"
 
-static CGFloat kImageHeight = 100.0f;
+static CGFloat kImageHeight = 66.0f;
 static CGFloat kImageWidth = 87.0f;
 
 @interface SlotView()<UIScrollViewDelegate>
 
-@property (nonatomic, strong) NSArray *scrollImageViewNames;
+@property (nonatomic, strong) NSArray *scrollImages;
 @property (nonatomic, strong) NSMutableArray *visibleImages;
 @property (nonatomic, strong) UIView *containerView;
 @property NSUInteger imageIndex;
@@ -46,7 +46,7 @@ static CGFloat kImageWidth = 87.0f;
 
 - (void)initialize
 {
-    _scrollImageViewNames = @[@"bone_slot",@"ball_slot"];
+    _scrollImages = @[[UIImage imageNamed:@"bone_slot"],[UIImage imageNamed:@"ball_slot"],[UIImage imageNamed:@"3bone_slot"],[UIImage imageNamed:@"squirrel_slot"],[UIImage imageNamed:@"collar_slot"],[UIImage imageNamed:@"cat_slot"]];
     _visibleImages = [NSMutableArray array];
     
     self.contentSize = CGSizeMake(CGRectGetWidth(self.bounds),1000);
@@ -77,6 +77,7 @@ static CGFloat kImageWidth = 87.0f;
             CGPoint center = [_containerView convertPoint:imageView.center toView:self];
             center.y += (centerOffsetY - currentOffset.y);
             imageView.center = [self convertPoint:center toView:_containerView];
+            imageView.image = [self imageForYPos:imageView.frame.origin.y];
         }
     }
 }
@@ -139,15 +140,19 @@ static CGFloat kImageWidth = 87.0f;
 }
 - (UIImageView *)insertImageAtYPos:(CGFloat)yPos
 {
-    NSLog(@"ypos:%f , ratio: %f",yPos,(yPos / kImageHeight));
-    int index = yPos / kImageHeight;
-    index %= _scrollImageViewNames.count;
-     NSLog(@"index: %d",index);
-    NSString *imageViewName = _scrollImageViewNames[index];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageViewName]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[self imageForYPos:yPos]];
     imageView.frame = CGRectMake(0, yPos, kImageWidth, kImageHeight);
     [_containerView addSubview:imageView];
     return imageView;
+}
+
+- (UIImage *)imageForYPos:(CGFloat)yPos
+{
+    NSLog(@"ypos:%f , ratio: %f",yPos ,(yPos  / kImageHeight));
+    int index = yPos / kImageHeight;
+    index %= _scrollImages.count;
+    NSLog(@"index: %d",index);
+    return _scrollImages[index];
 }
 
 - (CGFloat)placeNewImageOnBottom:(CGFloat)bottomEdge
