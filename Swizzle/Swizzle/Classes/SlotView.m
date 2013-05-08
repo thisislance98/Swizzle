@@ -63,6 +63,14 @@ static CGFloat kImageWidth = 87.0f;
     [self scrollRectToVisible:CGRectMake(0,kImageHeight,kImageWidth,kImageWidth) animated:NO];
 }
 
+- (void)spin
+{
+    [UIView animateWithDuration:3.0f animations:^{
+       [self setContentOffset:CGPointMake(0, kImageHeight * 3) animated:YES];
+    }];
+   
+}
+
 - (void)addImage:(UIImage*)image atPosition:(int)position
 {
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
@@ -73,10 +81,12 @@ static CGFloat kImageWidth = 87.0f;
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    if (self.contentOffset.y <=([_scrollImages count]-1)*kImageHeight) {
+    if (self.contentOffset.y <=([_scrollImages count]-1)*kImageHeight)
+    {
         [self setContentOffset:CGPointMake(0,([_scrollImages count]+([_scrollImages count]-1))*kImageHeight)];
     }
-    else if (self.contentOffset.x >=(2*([_scrollImages count]))*kImageHeight) {
+    else if (self.contentOffset.y >=(2*([_scrollImages count]))*kImageHeight)
+    {
         [self setContentOffset:CGPointMake(0,([_scrollImages count])*kImageHeight)];
     }
 }

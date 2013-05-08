@@ -10,4 +10,6 @@
 
 @interface SlotView : UIScrollView
 
+- (void)spin;
+
 @end

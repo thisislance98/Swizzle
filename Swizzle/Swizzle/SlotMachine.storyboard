@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="FIC-i7-2et">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="FIC-i7-2et">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -36,15 +36,15 @@
                                 <rect key="frame" x="203" y="101" width="87" height="206"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="0K4-mv-6E2" customClass="SlotView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" id="0K4-mv-6E2" customClass="SlotView">
                                 <rect key="frame" x="13" y="107" width="87" height="193"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="JXY-v1-TWv" customClass="SlotView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" id="JXY-v1-TWv" customClass="SlotView">
                                 <rect key="frame" x="108" y="107" width="87" height="193"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="XNg-ip-IQ4" customClass="SlotView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" id="XNg-ip-IQ4" customClass="SlotView">
                                 <rect key="frame" x="203" y="107" width="87" height="193"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
@@ -79,6 +79,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outletCollection property="slots" destination="0K4-mv-6E2" id="sb7-pk-KMv"/>
+                        <outletCollection property="slots" destination="JXY-v1-TWv" id="ft1-g7-86g"/>
+                        <outletCollection property="slots" destination="XNg-ip-IQ4" id="33J-ud-Fok"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UcR-gZ-QQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -99,8 +104,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SlotMachineViewController.h"/>
             <relationships>
                 <relationship kind="action" name="playTapped:"/>
-                <relationship kind="outlet" name="coinsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="slotContainerView" candidateClass="UIView"/>
+                <relationship kind="outletCollection" name="slots" candidateClass="SlotView"/>
             </relationships>
         </class>
         <class className="SlotView" superclassName="UIScrollView">

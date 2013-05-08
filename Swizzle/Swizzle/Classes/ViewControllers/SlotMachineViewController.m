@@ -8,14 +8,15 @@
 
 #import "SlotMachineViewController.h"
 #import "SlotMachine.h"
+#import "SlotView.h"
 
 @interface SlotMachineViewController ()
 
 @property (nonatomic)  NSInteger coins;
 @property (nonatomic, strong) SlotMachine *slotMachine;
 
-@property (weak, nonatomic) IBOutlet UIView *slotContainerView;
-@property (weak, nonatomic) IBOutlet UILabel *coinsLabel;
+@property (strong, nonatomic) IBOutletCollection(SlotView) NSArray *slots;
+
 
 @end
 
@@ -39,20 +40,18 @@
     for (int i = 0; i < slots.count; i++)
     {
         SlotItemType slotItemType = [slots[i] integerValue];
-        UILabel *slotLabel = (UILabel *)[_slotContainerView viewWithTag:(i + 1)];
-        slotLabel.text = [SlotMachine nameForSlotType:slotItemType];
     }
 }
 
 - (void)setCoins:(NSInteger)coins
 {
     _coins = coins;
-    _coinsLabel.text = [NSString stringWithFormat:@"%d",coins];
 }
 
 - (IBAction)playTapped:(id)sender
 {
-    [self playAndSetLabels];
+ //   [self playAndSetLabels];
+    [_slots makeObjectsPerformSelector:@selector(spin)];
 }
 
 
