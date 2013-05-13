@@ -79,11 +79,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outletCollection property="slots" destination="0K4-mv-6E2" id="sb7-pk-KMv"/>
-                        <outletCollection property="slots" destination="JXY-v1-TWv" id="ft1-g7-86g"/>
-                        <outletCollection property="slots" destination="XNg-ip-IQ4" id="33J-ud-Fok"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UcR-gZ-QQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -99,18 +94,6 @@
         <image name="pipe_bones_01@2x.png" width="285" height="392"/>
         <image name="slider@2x.png" width="174" height="412"/>
     </resources>
-    <classes>
-        <class className="SlotMachineViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SlotMachineViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="playTapped:"/>
-                <relationship kind="outletCollection" name="slots" candidateClass="SlotView"/>
-            </relationships>
-        </class>
-        <class className="SlotView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SlotView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

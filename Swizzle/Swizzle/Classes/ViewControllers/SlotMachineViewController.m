@@ -34,12 +34,14 @@
 
 - (void)playAndSetLabels
 {
-     NSArray *slots = [_slotMachine playWithCoins:&_coins];
+    NSArray *slots = [_slotMachine playWithCoins:&_coins];
     self.coins = _coins;
     
     for (int i = 0; i < slots.count; i++)
     {
         SlotItemType slotItemType = [slots[i] integerValue];
+        SlotView *slotView = (SlotView *)[self.view viewWithTag:(i+1)];
+        [slotView spinToSlotType:slotItemType delay:(i * 0.25)];
     }
 }
 
@@ -50,8 +52,7 @@
 
 - (IBAction)playTapped:(id)sender
 {
- //   [self playAndSetLabels];
-    [_slots makeObjectsPerformSelector:@selector(spin)];
+   [self playAndSetLabels];
 }
 
 

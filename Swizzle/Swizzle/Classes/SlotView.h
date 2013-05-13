@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SlotMachine.h"
 
 @interface SlotView : UIScrollView
 
-- (void)spin;
+- (void)spinToSlotType:(SlotItemType)slotType delay:(NSTimeInterval)delay;
 
 @end

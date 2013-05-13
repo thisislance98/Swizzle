@@ -14,6 +14,7 @@ static CGFloat kImageWidth = 87.0f;
 @interface SlotView()<UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSArray *scrollImages;
+@property (nonatomic) SlotItemType slotItemType;
 
 @end
 
@@ -45,7 +46,6 @@ static CGFloat kImageWidth = 87.0f;
 {
     _scrollImages = @[[UIImage imageNamed:@"bone_slot"],[UIImage imageNamed:@"ball_slot"],[UIImage imageNamed:@"3bone_slot"],[UIImage imageNamed:@"squirrel_slot"],[UIImage imageNamed:@"collar_slot"],[UIImage imageNamed:@"cat_slot"]];
     
-    self.contentSize = CGSizeMake(CGRectGetWidth(self.bounds),1000);
     self.showsVerticalScrollIndicator = NO;
     self.bounces = NO;
     
@@ -60,15 +60,41 @@ static CGFloat kImageWidth = 87.0f;
     }
     
     self.contentSize = CGSizeMake(kImageWidth, (3*[_scrollImages count])* kImageHeight);
-    [self scrollRectToVisible:CGRectMake(0,kImageHeight,kImageWidth,kImageWidth) animated:NO];
+    self.contentOffset = CGPointMake(0, ([_scrollImages count]+([_scrollImages count]-1))*kImageHeight);
 }
 
-- (void)spin
+- (void)spinToSlotType:(SlotItemType)slotType delay:(NSTimeInterval)delay
 {
-    [UIView animateWithDuration:3.0f animations:^{
-       [self setContentOffset:CGPointMake(0, kImageHeight * 3) animated:YES];
-    }];
-   
+    _slotItemType = slotType;
+    [self animateWithCount:5 delay:delay];
+}
+
+- (void)animateWithCount:(int)count delay:(NSTimeInterval)delay
+{
+    [UIView animateWithDuration:0.2
+                          delay:delay
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^
+     {
+         if (count == 0)
+         {
+             self.contentOffset = CGPointMake(0, (_slotItemType)*kImageHeight);
+         }
+         else
+         {
+             self.contentOffset = CGPointMake(0, ([_scrollImages count]-1)*kImageHeight);
+         }
+         
+     } completion:^(BOOL finished)
+     {
+         if (count != 0)
+         {
+             self.contentOffset = CGPointMake(0, ([_scrollImages count]+([_scrollImages count]-1))*kImageHeight);
+             [self animateWithCount:(count - 1) delay:0];
+         }
+         
+     }];
+    
 }
 
 - (void)addImage:(UIImage*)image atPosition:(int)position
@@ -76,19 +102,6 @@ static CGFloat kImageWidth = 87.0f;
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     imageView.frame = CGRectMake(0, position*(kImageHeight), kImageWidth, kImageHeight);
     [self addSubview:imageView];
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    
-    if (self.contentOffset.y <=([_scrollImages count]-1)*kImageHeight)
-    {
-        [self setContentOffset:CGPointMake(0,([_scrollImages count]+([_scrollImages count]-1))*kImageHeight)];
-    }
-    else if (self.contentOffset.y >=(2*([_scrollImages count]))*kImageHeight)
-    {
-        [self setContentOffset:CGPointMake(0,([_scrollImages count])*kImageHeight)];
-    }
 }
 
 @end
