@@ -74,6 +74,7 @@
                                 </state>
                                 <connections>
                                     <action selector="playTapped:" destination="FIC-i7-2et" eventType="touchUpInside" id="N0U-NL-Fbf"/>
+                                    <action selector="playTapped:" destination="FIC-i7-2et" eventType="touchDragOutside" id="d5f-IG-hFA"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L3z-BV-Wm6">

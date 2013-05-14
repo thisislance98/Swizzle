@@ -11,6 +11,10 @@
 #import "SlotView.h"
 
 @interface SlotMachineViewController ()<SlotViewDelegate>
+{
+    UIButton *_playButton;
+    BOOL _playing;
+}
 
 @property (nonatomic)  NSInteger coins;
 @property (nonatomic)  BOOL didWin;
@@ -58,6 +62,12 @@
 
 - (IBAction)playTapped:(id)sender
 {
+    if (_playing) return;
+    
+    _playing = YES;
+    
+    _playButton = sender;
+    _playButton.userInteractionEnabled = NO;
     [self play];
     [self animateLever];
 }
@@ -128,9 +138,12 @@
 
 - (void)slotViewDidFinishAnimation
 {
+    [_playButton performSelector:@selector(setUserInteractionEnabled:) withObject:@(YES) afterDelay:2.0f];
+    
     (_didWin) ? [self animateWin] : [self animateLoss];
     
     _bonesLabel.text = [NSString stringWithFormat:@"%d",_coins];
+    _playing = NO;
 }
 
 - (void)animateImageView:(UIImageView *)imageView

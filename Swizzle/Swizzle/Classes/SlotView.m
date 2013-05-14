@@ -47,6 +47,7 @@ static CGFloat kImageWidth = 87.0f;
     _scrollImages = @[[UIImage imageNamed:@"bone_slot"],[UIImage imageNamed:@"ball_slot"],[UIImage imageNamed:@"3bone_slot"],[UIImage imageNamed:@"squirrel_slot"],[UIImage imageNamed:@"collar_slot"],[UIImage imageNamed:@"cat_slot"]];
     
     self.showsVerticalScrollIndicator = NO;
+    self.userInteractionEnabled = NO;
     self.bounces = NO;
     
     for (int i =0; i < [_scrollImages count]; i++) {
