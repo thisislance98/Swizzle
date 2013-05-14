@@ -58,7 +58,7 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="lever01@2x.png" id="hyI-ZZ-bKz">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XgM-VH-8km">
                                 <rect key="frame" x="234" y="15" width="86" height="81"/>
@@ -90,6 +90,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="bgView" destination="om4-Cw-57S" id="pmc-eO-7xR"/>
                         <outlet property="bonesLabel" destination="L3z-BV-Wm6" id="5XJ-wI-KL9"/>
                         <outlet property="bowl" destination="XiN-8q-YII" id="zHP-s0-14Y"/>
                         <outlet property="doggy" destination="P60-6M-yWC" id="4MH-lG-PwI"/>
@@ -116,6 +117,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SlotMachineViewController.h"/>
             <relationships>
                 <relationship kind="action" name="playTapped:"/>
+                <relationship kind="outlet" name="bgView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="bonesLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="bowl" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="doggy" candidateClass="UIImageView"/>

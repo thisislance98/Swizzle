@@ -23,6 +23,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *leverImage;
 @property (weak, nonatomic) IBOutlet UIImageView *doggy;
+@property (weak, nonatomic) IBOutlet UIImageView *bgView;
 @property (weak, nonatomic) IBOutlet UIImageView *pipe;
 @property (weak, nonatomic) IBOutlet UIImageView *bowl;
 @property (weak, nonatomic) IBOutlet UILabel *bonesLabel;
@@ -35,12 +36,29 @@
 {
     [super viewDidLoad];
     
+    [self readjustHeightForiPhone5];
+    
     _slotMachine = [[SlotMachine alloc] init];
     self.coins = 100;
     [self.bonesLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:24]];
     _bonesLabel.text = [NSString stringWithFormat:@"%d",_coins];
     
     [self animateDogIdle];
+}
+
+- (void)readjustHeightForiPhone5
+{
+    if (self.view.frame.size.height > 480)
+    {
+        for (UIView *view in self.view.subviews)
+        {
+            if (view != _bgView)
+            {
+                view.center = CGPointMake(view.center.x, view.center.y + 40.0f);
+            }
+        }
+    }
+    
 }
 
 - (void)play
