@@ -378,112 +378,189 @@
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>green</string>
+		<string>maximum</string>
 		<key>Hints</key>
 		<array>
-			<string>grass</string>
-			<string>jade</string>
-			<string>emeralds</string>
-			<string>money</string>
+			<string>utmost</string>
+			<string>peak</string>
+			<string>greatest</string>
+			<string>top</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>green</string>
+		<string>jealous</string>
 		<key>Hints</key>
 		<array>
-			<string>grass</string>
-			<string>jade</string>
-			<string>emeralds</string>
-			<string>money</string>
+			<string>covet</string>
+			<string>envy</string>
+			<string>wanting</string>
+			<string>rivalry</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>green</string>
+		<string>bored</string>
 		<key>Hints</key>
 		<array>
-			<string>grass</string>
-			<string>jade</string>
-			<string>emeralds</string>
-			<string>money</string>
+			<string>disinterest</string>
+			<string>tedium</string>
+			<string>dull</string>
+			<string>yawn</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>green</string>
+		<string>faint</string>
 		<key>Hints</key>
 		<array>
-			<string>grass</string>
-			<string>jade</string>
-			<string>emeralds</string>
-			<string>money</string>
+			<string>blackout</string>
+			<string>collapse</string>
+			<string>dizzy</string>
+			<string>unconscious</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>green</string>
+		<string>distinct</string>
 		<key>Hints</key>
 		<array>
-			<string>grass</string>
-			<string>jade</string>
-			<string>emeralds</string>
-			<string>money</string>
+			<string>clear</string>
+			<string>sharp</string>
+			<string>specific</string>
+			<string>unambiguous</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>green</string>
+		<string>positive</string>
 		<key>Hints</key>
 		<array>
-			<string>grass</string>
-			<string>jade</string>
-			<string>emeralds</string>
-			<string>money</string>
+			<string>affirmative</string>
+			<string>assured</string>
+			<string>good</string>
+			<string>optimistic</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>green</string>
+		<string>idol</string>
 		<key>Hints</key>
 		<array>
-			<string>grass</string>
-			<string>jade</string>
-			<string>emeralds</string>
-			<string>money</string>
+			<string>deity</string>
+			<string>icon</string>
+			<string>hero</string>
+			<string>admired</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>green</string>
+		<string>baby</string>
 		<key>Hints</key>
 		<array>
-			<string>grass</string>
-			<string>jade</string>
-			<string>emeralds</string>
-			<string>money</string>
+			<string>womb</string>
+			<string>young</string>
+			<string>infant</string>
+			<string>newborn</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>green</string>
+		<string>night</string>
 		<key>Hints</key>
 		<array>
-			<string>grass</string>
-			<string>jade</string>
-			<string>emeralds</string>
-			<string>money</string>
+			<string>dark</string>
+			<string>sundown</string>
+			<string>dusk</string>
+			<string>stars</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Word</key>
-		<string>green</string>
+		<string>obscure</string>
 		<key>Hints</key>
 		<array>
-			<string>grass</string>
-			<string>jade</string>
-			<string>emeralds</string>
-			<string>money</string>
+			<string>vague</string>
+			<string>ambiguous</string>
+			<string>uncertain</string>
+			<string>indistinct</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>coat</string>
+		<key>Hints</key>
+		<array>
+			<string>zipper</string>
+			<string>hood</string>
+			<string>warmth</string>
+			<string>jacket</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>tan</string>
+		<key>Hints</key>
+		<array>
+			<string>sun</string>
+			<string>skin</string>
+			<string>dark</string>
+			<string>beach</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>market</string>
+		<key>Hints</key>
+		<array>
+			<string>bazaar</string>
+			<string>farmers</string>
+			<string>barter</string>
+			<string>goods</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>archaic</string>
+		<key>Hints</key>
+		<array>
+			<string>ancient</string>
+			<string>old</string>
+			<string>primitive</string>
+			<string>obsolete</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>store</string>
+		<key>Hints</key>
+		<array>
+			<string>shop</string>
+			<string>outlet</string>
+			<string>department</string>
+			<string>convenience</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>create</string>
+		<key>Hints</key>
+		<array>
+			<string>make</string>
+			<string>design</string>
+			<string>build</string>
+			<string>formulate</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Word</key>
+		<string>mosque</string>
+		<key>Hints</key>
+		<array>
+			<string>temple</string>
+			<string>muslim</string>
+			<string>worship</string>
+			<string>church</string>
 		</array>
 	</dict>
 </array>
