@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "SlotMachine.h"
 
+@protocol SlotViewDelegate <NSObject>
+
+- (void)slotViewDidFinishAnimation;
+
+@end
+
 @interface SlotView : UIScrollView
+
+@property (nonatomic, assign) id<SlotViewDelegate> slotDelegate;
 
 - (void)spinToSlotType:(SlotItemType)slotType delay:(NSTimeInterval)delay;
 

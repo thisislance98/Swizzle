@@ -92,6 +92,10 @@ static CGFloat kImageWidth = 87.0f;
              self.contentOffset = CGPointMake(0, ([_scrollImages count]+([_scrollImages count]-1))*kImageHeight);
              [self animateWithCount:(count - 1) delay:0];
          }
+         else
+         {
+             [_slotDelegate slotViewDidFinishAnimation];
+         }
          
      }];
     

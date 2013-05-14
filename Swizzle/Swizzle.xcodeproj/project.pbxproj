@@ -16,11 +16,11 @@
 		2DCB3372173459C7007E8636 /* 3bone_slot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB333A173459C7007E8636 /* 3bone_slot@2x.png */; };
 		2DCB3373173459C7007E8636 /* ball_slot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB333B173459C7007E8636 /* ball_slot@2x.png */; };
 		2DCB3374173459C7007E8636 /* bone_slot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB333C173459C7007E8636 /* bone_slot@2x.png */; };
-		2DCB3375173459C7007E8636 /* bowl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB333D173459C7007E8636 /* bowl@2x.png */; };
-		2DCB3376173459C7007E8636 /* bowl1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB333E173459C7007E8636 /* bowl1@2x.png */; };
-		2DCB3377173459C7007E8636 /* bowl2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB333F173459C7007E8636 /* bowl2@2x.png */; };
-		2DCB3378173459C7007E8636 /* bowl3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3340173459C7007E8636 /* bowl3@2x.png */; };
-		2DCB3379173459C7007E8636 /* bowl4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3341173459C7007E8636 /* bowl4@2x.png */; };
+		2DCB3375173459C7007E8636 /* bowl01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB333D173459C7007E8636 /* bowl01@2x.png */; };
+		2DCB3376173459C7007E8636 /* bowl02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB333E173459C7007E8636 /* bowl02@2x.png */; };
+		2DCB3377173459C7007E8636 /* bowl03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB333F173459C7007E8636 /* bowl03@2x.png */; };
+		2DCB3378173459C7007E8636 /* bowl04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3340173459C7007E8636 /* bowl04@2x.png */; };
+		2DCB3379173459C7007E8636 /* bowl05@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3341173459C7007E8636 /* bowl05@2x.png */; };
 		2DCB337A173459C7007E8636 /* Case@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3342173459C7007E8636 /* Case@2x.png */; };
 		2DCB337B173459C7007E8636 /* cat_slot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3343173459C7007E8636 /* cat_slot@2x.png */; };
 		2DCB337C173459C7007E8636 /* collar_slot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3344173459C7007E8636 /* collar_slot@2x.png */; };
@@ -40,12 +40,12 @@
 		2DCB338A173459C7007E8636 /* idle_slots_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3352173459C7007E8636 /* idle_slots_02@2x.png */; };
 		2DCB338B173459C7007E8636 /* idle_slots_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3353173459C7007E8636 /* idle_slots_03@2x.png */; };
 		2DCB338C173459C7007E8636 /* idle_slots_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3354173459C7007E8636 /* idle_slots_04@2x.png */; };
-		2DCB338D173459C7007E8636 /* lever1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3355173459C7007E8636 /* lever1@2x.png */; };
-		2DCB338E173459C7007E8636 /* lever2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3356173459C7007E8636 /* lever2@2x.png */; };
-		2DCB338F173459C7007E8636 /* lever3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3357173459C7007E8636 /* lever3@2x.png */; };
-		2DCB3390173459C7007E8636 /* lever4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3358173459C7007E8636 /* lever4@2x.png */; };
-		2DCB3391173459C7007E8636 /* lever5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3359173459C7007E8636 /* lever5@2x.png */; };
-		2DCB3392173459C7007E8636 /* lever6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB335A173459C7007E8636 /* lever6@2x.png */; };
+		2DCB338D173459C7007E8636 /* lever01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3355173459C7007E8636 /* lever01@2x.png */; };
+		2DCB338E173459C7007E8636 /* lever02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3356173459C7007E8636 /* lever02@2x.png */; };
+		2DCB338F173459C7007E8636 /* lever03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3357173459C7007E8636 /* lever03@2x.png */; };
+		2DCB3390173459C7007E8636 /* lever04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3358173459C7007E8636 /* lever04@2x.png */; };
+		2DCB3391173459C7007E8636 /* lever05@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB3359173459C7007E8636 /* lever05@2x.png */; };
+		2DCB3392173459C7007E8636 /* lever06@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB335A173459C7007E8636 /* lever06@2x.png */; };
 		2DCB3393173459C7007E8636 /* pipe_bones_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB335B173459C7007E8636 /* pipe_bones_01@2x.png */; };
 		2DCB3394173459C7007E8636 /* pipe_bones_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB335C173459C7007E8636 /* pipe_bones_02@2x.png */; };
 		2DCB3395173459C7007E8636 /* pipe_bones_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCB335D173459C7007E8636 /* pipe_bones_03@2x.png */; };
@@ -134,7 +134,7 @@
 /* Begin PBXFileReference section */
 		2D08BA4F171DFF6800A1833A /* SlotMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlotMachine.h; sourceTree = "<group>"; };
 		2D08BA50171DFF6800A1833A /* SlotMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlotMachine.m; sourceTree = "<group>"; };
-		2D08BA52171E08CD00A1833A /* SlotMachine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SlotMachine.storyboard; sourceTree = "<group>"; };
+		2D08BA52171E08CD00A1833A /* SlotMachine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SlotMachine.storyboard; path = ../../SlotMachine.storyboard; sourceTree = "<group>"; };
 		2D08BA54171E099100A1833A /* SlotMachineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlotMachineViewController.h; sourceTree = "<group>"; };
 		2D08BA55171E099100A1833A /* SlotMachineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlotMachineViewController.m; sourceTree = "<group>"; };
 		2D62E2741718CDC700624AE1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
@@ -144,11 +144,11 @@
 		2DCB333A173459C7007E8636 /* 3bone_slot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "3bone_slot@2x.png"; path = "SlotMachine/3bone_slot@2x.png"; sourceTree = "<group>"; };
 		2DCB333B173459C7007E8636 /* ball_slot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ball_slot@2x.png"; path = "SlotMachine/ball_slot@2x.png"; sourceTree = "<group>"; };
 		2DCB333C173459C7007E8636 /* bone_slot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bone_slot@2x.png"; path = "SlotMachine/bone_slot@2x.png"; sourceTree = "<group>"; };
-		2DCB333D173459C7007E8636 /* bowl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bowl@2x.png"; path = "SlotMachine/bowl@2x.png"; sourceTree = "<group>"; };
-		2DCB333E173459C7007E8636 /* bowl1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bowl1@2x.png"; path = "SlotMachine/bowl1@2x.png"; sourceTree = "<group>"; };
-		2DCB333F173459C7007E8636 /* bowl2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bowl2@2x.png"; path = "SlotMachine/bowl2@2x.png"; sourceTree = "<group>"; };
-		2DCB3340173459C7007E8636 /* bowl3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bowl3@2x.png"; path = "SlotMachine/bowl3@2x.png"; sourceTree = "<group>"; };
-		2DCB3341173459C7007E8636 /* bowl4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bowl4@2x.png"; path = "SlotMachine/bowl4@2x.png"; sourceTree = "<group>"; };
+		2DCB333D173459C7007E8636 /* bowl01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bowl01@2x.png"; path = "SlotMachine/bowl01@2x.png"; sourceTree = "<group>"; };
+		2DCB333E173459C7007E8636 /* bowl02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bowl02@2x.png"; path = "SlotMachine/bowl02@2x.png"; sourceTree = "<group>"; };
+		2DCB333F173459C7007E8636 /* bowl03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bowl03@2x.png"; path = "SlotMachine/bowl03@2x.png"; sourceTree = "<group>"; };
+		2DCB3340173459C7007E8636 /* bowl04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bowl04@2x.png"; path = "SlotMachine/bowl04@2x.png"; sourceTree = "<group>"; };
+		2DCB3341173459C7007E8636 /* bowl05@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bowl05@2x.png"; path = "SlotMachine/bowl05@2x.png"; sourceTree = "<group>"; };
 		2DCB3342173459C7007E8636 /* Case@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Case@2x.png"; path = "SlotMachine/Case@2x.png"; sourceTree = "<group>"; };
 		2DCB3343173459C7007E8636 /* cat_slot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cat_slot@2x.png"; path = "SlotMachine/cat_slot@2x.png"; sourceTree = "<group>"; };
 		2DCB3344173459C7007E8636 /* collar_slot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "collar_slot@2x.png"; path = "SlotMachine/collar_slot@2x.png"; sourceTree = "<group>"; };
@@ -168,12 +168,12 @@
 		2DCB3352173459C7007E8636 /* idle_slots_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "idle_slots_02@2x.png"; path = "SlotMachine/idle_slots_02@2x.png"; sourceTree = "<group>"; };
 		2DCB3353173459C7007E8636 /* idle_slots_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "idle_slots_03@2x.png"; path = "SlotMachine/idle_slots_03@2x.png"; sourceTree = "<group>"; };
 		2DCB3354173459C7007E8636 /* idle_slots_04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "idle_slots_04@2x.png"; path = "SlotMachine/idle_slots_04@2x.png"; sourceTree = "<group>"; };
-		2DCB3355173459C7007E8636 /* lever1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lever1@2x.png"; path = "SlotMachine/lever1@2x.png"; sourceTree = "<group>"; };
-		2DCB3356173459C7007E8636 /* lever2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lever2@2x.png"; path = "SlotMachine/lever2@2x.png"; sourceTree = "<group>"; };
-		2DCB3357173459C7007E8636 /* lever3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lever3@2x.png"; path = "SlotMachine/lever3@2x.png"; sourceTree = "<group>"; };
-		2DCB3358173459C7007E8636 /* lever4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lever4@2x.png"; path = "SlotMachine/lever4@2x.png"; sourceTree = "<group>"; };
-		2DCB3359173459C7007E8636 /* lever5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lever5@2x.png"; path = "SlotMachine/lever5@2x.png"; sourceTree = "<group>"; };
-		2DCB335A173459C7007E8636 /* lever6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lever6@2x.png"; path = "SlotMachine/lever6@2x.png"; sourceTree = "<group>"; };
+		2DCB3355173459C7007E8636 /* lever01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lever01@2x.png"; path = "SlotMachine/lever01@2x.png"; sourceTree = "<group>"; };
+		2DCB3356173459C7007E8636 /* lever02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lever02@2x.png"; path = "SlotMachine/lever02@2x.png"; sourceTree = "<group>"; };
+		2DCB3357173459C7007E8636 /* lever03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lever03@2x.png"; path = "SlotMachine/lever03@2x.png"; sourceTree = "<group>"; };
+		2DCB3358173459C7007E8636 /* lever04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lever04@2x.png"; path = "SlotMachine/lever04@2x.png"; sourceTree = "<group>"; };
+		2DCB3359173459C7007E8636 /* lever05@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lever05@2x.png"; path = "SlotMachine/lever05@2x.png"; sourceTree = "<group>"; };
+		2DCB335A173459C7007E8636 /* lever06@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lever06@2x.png"; path = "SlotMachine/lever06@2x.png"; sourceTree = "<group>"; };
 		2DCB335B173459C7007E8636 /* pipe_bones_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pipe_bones_01@2x.png"; path = "SlotMachine/pipe_bones_01@2x.png"; sourceTree = "<group>"; };
 		2DCB335C173459C7007E8636 /* pipe_bones_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pipe_bones_02@2x.png"; path = "SlotMachine/pipe_bones_02@2x.png"; sourceTree = "<group>"; };
 		2DCB335D173459C7007E8636 /* pipe_bones_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pipe_bones_03@2x.png"; path = "SlotMachine/pipe_bones_03@2x.png"; sourceTree = "<group>"; };
@@ -304,11 +304,11 @@
 				2DCB333A173459C7007E8636 /* 3bone_slot@2x.png */,
 				2DCB333B173459C7007E8636 /* ball_slot@2x.png */,
 				2DCB333C173459C7007E8636 /* bone_slot@2x.png */,
-				2DCB333D173459C7007E8636 /* bowl@2x.png */,
-				2DCB333E173459C7007E8636 /* bowl1@2x.png */,
-				2DCB333F173459C7007E8636 /* bowl2@2x.png */,
-				2DCB3340173459C7007E8636 /* bowl3@2x.png */,
-				2DCB3341173459C7007E8636 /* bowl4@2x.png */,
+				2DCB333D173459C7007E8636 /* bowl01@2x.png */,
+				2DCB333E173459C7007E8636 /* bowl02@2x.png */,
+				2DCB333F173459C7007E8636 /* bowl03@2x.png */,
+				2DCB3340173459C7007E8636 /* bowl04@2x.png */,
+				2DCB3341173459C7007E8636 /* bowl05@2x.png */,
 				2DCB3342173459C7007E8636 /* Case@2x.png */,
 				2DCB3343173459C7007E8636 /* cat_slot@2x.png */,
 				2DCB3344173459C7007E8636 /* collar_slot@2x.png */,
@@ -328,12 +328,12 @@
 				2DCB3352173459C7007E8636 /* idle_slots_02@2x.png */,
 				2DCB3353173459C7007E8636 /* idle_slots_03@2x.png */,
 				2DCB3354173459C7007E8636 /* idle_slots_04@2x.png */,
-				2DCB3355173459C7007E8636 /* lever1@2x.png */,
-				2DCB3356173459C7007E8636 /* lever2@2x.png */,
-				2DCB3357173459C7007E8636 /* lever3@2x.png */,
-				2DCB3358173459C7007E8636 /* lever4@2x.png */,
-				2DCB3359173459C7007E8636 /* lever5@2x.png */,
-				2DCB335A173459C7007E8636 /* lever6@2x.png */,
+				2DCB3355173459C7007E8636 /* lever01@2x.png */,
+				2DCB3356173459C7007E8636 /* lever02@2x.png */,
+				2DCB3357173459C7007E8636 /* lever03@2x.png */,
+				2DCB3358173459C7007E8636 /* lever04@2x.png */,
+				2DCB3359173459C7007E8636 /* lever05@2x.png */,
+				2DCB335A173459C7007E8636 /* lever06@2x.png */,
 				2DCB335B173459C7007E8636 /* pipe_bones_01@2x.png */,
 				2DCB335C173459C7007E8636 /* pipe_bones_02@2x.png */,
 				2DCB335D173459C7007E8636 /* pipe_bones_03@2x.png */,
@@ -408,7 +408,6 @@
 			children = (
 				8A059793171887B900C09EEA /* MainStoryboard_iPhone.storyboard */,
 				8A059796171887B900C09EEA /* MainStoryboard_iPad.storyboard */,
-				2D08BA52171E08CD00A1833A /* SlotMachine.storyboard */,
 				8A47AD83171C6EFC00283AF9 /* Classes */,
 				8A67F4E4171B8B8D005385C2 /* Resources */,
 				8A059782171887B900C09EEA /* Supporting Files */,
@@ -457,6 +456,7 @@
 			children = (
 				2D08BA54171E099100A1833A /* SlotMachineViewController.h */,
 				2D08BA55171E099100A1833A /* SlotMachineViewController.m */,
+				2D08BA52171E08CD00A1833A /* SlotMachine.storyboard */,
 				8A47AD99171C6F4000283AF9 /* GuessViewController.h */,
 				8A47AD9A171C6F4000283AF9 /* GuessViewController.m */,
 				8A47AD9D171C6F4000283AF9 /* LoginViewController.h */,
@@ -618,11 +618,11 @@
 				2DCB3372173459C7007E8636 /* 3bone_slot@2x.png in Resources */,
 				2DCB3373173459C7007E8636 /* ball_slot@2x.png in Resources */,
 				2DCB3374173459C7007E8636 /* bone_slot@2x.png in Resources */,
-				2DCB3375173459C7007E8636 /* bowl@2x.png in Resources */,
-				2DCB3376173459C7007E8636 /* bowl1@2x.png in Resources */,
-				2DCB3377173459C7007E8636 /* bowl2@2x.png in Resources */,
-				2DCB3378173459C7007E8636 /* bowl3@2x.png in Resources */,
-				2DCB3379173459C7007E8636 /* bowl4@2x.png in Resources */,
+				2DCB3375173459C7007E8636 /* bowl01@2x.png in Resources */,
+				2DCB3376173459C7007E8636 /* bowl02@2x.png in Resources */,
+				2DCB3377173459C7007E8636 /* bowl03@2x.png in Resources */,
+				2DCB3378173459C7007E8636 /* bowl04@2x.png in Resources */,
+				2DCB3379173459C7007E8636 /* bowl05@2x.png in Resources */,
 				2DCB337A173459C7007E8636 /* Case@2x.png in Resources */,
 				2DCB337B173459C7007E8636 /* cat_slot@2x.png in Resources */,
 				2DCB337C173459C7007E8636 /* collar_slot@2x.png in Resources */,
@@ -642,12 +642,12 @@
 				2DCB338A173459C7007E8636 /* idle_slots_02@2x.png in Resources */,
 				2DCB338B173459C7007E8636 /* idle_slots_03@2x.png in Resources */,
 				2DCB338C173459C7007E8636 /* idle_slots_04@2x.png in Resources */,
-				2DCB338D173459C7007E8636 /* lever1@2x.png in Resources */,
-				2DCB338E173459C7007E8636 /* lever2@2x.png in Resources */,
-				2DCB338F173459C7007E8636 /* lever3@2x.png in Resources */,
-				2DCB3390173459C7007E8636 /* lever4@2x.png in Resources */,
-				2DCB3391173459C7007E8636 /* lever5@2x.png in Resources */,
-				2DCB3392173459C7007E8636 /* lever6@2x.png in Resources */,
+				2DCB338D173459C7007E8636 /* lever01@2x.png in Resources */,
+				2DCB338E173459C7007E8636 /* lever02@2x.png in Resources */,
+				2DCB338F173459C7007E8636 /* lever03@2x.png in Resources */,
+				2DCB3390173459C7007E8636 /* lever04@2x.png in Resources */,
+				2DCB3391173459C7007E8636 /* lever05@2x.png in Resources */,
+				2DCB3392173459C7007E8636 /* lever06@2x.png in Resources */,
 				2DCB3393173459C7007E8636 /* pipe_bones_01@2x.png in Resources */,
 				2DCB3394173459C7007E8636 /* pipe_bones_02@2x.png in Resources */,
 				2DCB3395173459C7007E8636 /* pipe_bones_03@2x.png in Resources */,
