@@ -52,7 +52,7 @@
                                 <rect key="frame" x="202" y="349" width="88" height="121"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="idle_slots_01@2x.png" id="P60-6M-yWC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="idle_slots_01@2x.png" id="P60-6M-yWC">
                                 <rect key="frame" x="20" y="352" width="123" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
