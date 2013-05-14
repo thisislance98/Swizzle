@@ -33,6 +33,7 @@
     
     _slotMachine = [[SlotMachine alloc] init];
     self.coins = 100;
+    [self.bonesLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:24]];
     _bonesLabel.text = [NSString stringWithFormat:@"%d",_coins];
     
     [self animateDogIdle];
@@ -127,7 +128,7 @@
 
 - (void)slotViewDidFinishAnimation
 {
-    (_didWin) ?  [self animateWin]: [self animateLoss];
+    (_didWin) ? [self animateWin] : [self animateLoss];
     
     _bonesLabel.text = [NSString stringWithFormat:@"%d",_coins];
 }
