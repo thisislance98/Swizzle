@@ -24,10 +24,8 @@ typedef enum
 
 @interface SlotMachine : NSObject
 
-@property (nonatomic, strong) NSArray *slots;
+@property (nonatomic, strong) NSArray *resultSlots;
 
-+ (NSString *)nameForSlotType:(SlotItemType)type;
-
-- (NSArray *)playWithCoins:(NSInteger *)coins;
+- (BOOL)playWithCoins:(NSInteger *)coins;
 
 @end

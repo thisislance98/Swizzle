@@ -15,6 +15,13 @@
 
 @end
 
+@interface SlotMachine()
+{
+    NSArray *_slots;
+}
+
+@end
+
 
 @implementation SlotMachine
 
@@ -57,25 +64,28 @@
     }
 }
 
-- (NSArray *)playWithCoins:(NSInteger *)coins
+- (BOOL)playWithCoins:(NSInteger *)coins
 {
     if (*coins < 10) return nil;
     
     NSMutableArray *resultSlots = [NSMutableArray array];
     
-    for (Slot *slot in self.slots)
+    for (Slot *slot in _slots)
     {
         [resultSlots addObject:@([slot randomSlotItem])];
     }
     
-    *coins = [self amountFromSlots:resultSlots amount:*coins];
+    NSInteger amountWon  = [self amountFromSlots:resultSlots amount:*coins];
+    BOOL didWin = (amountWon > *coins);
     
-    return resultSlots;
+    *coins = amountWon;
+    
+    _resultSlots = resultSlots;
+    return didWin;
 }
 
 - (NSInteger)amountFromSlots:(NSArray *)slotItems amount:(NSInteger)amount
 {
-    amount = amount - 10;
     int addedAmount = 0;
     NSCountedSet *countedSet = [[NSCountedSet alloc] initWithArray:slotItems];
     
@@ -89,7 +99,7 @@
         }
         if (count == 2)
         {
-            addedAmount = 12;
+            addedAmount = 10;
             break;
         }
     }

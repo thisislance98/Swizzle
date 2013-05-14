@@ -13,11 +13,15 @@
 @interface SlotMachineViewController ()<SlotViewDelegate>
 
 @property (nonatomic)  NSInteger coins;
+@property (nonatomic)  BOOL didWin;
+
 @property (nonatomic, strong) SlotMachine *slotMachine;
+
 @property (weak, nonatomic) IBOutlet UIImageView *leverImage;
 @property (weak, nonatomic) IBOutlet UIImageView *doggy;
 @property (weak, nonatomic) IBOutlet UIImageView *pipe;
 @property (weak, nonatomic) IBOutlet UIImageView *bowl;
+@property (weak, nonatomic) IBOutlet UILabel *bonesLabel;
 
 @end
 
@@ -29,20 +33,21 @@
     
     _slotMachine = [[SlotMachine alloc] init];
     self.coins = 100;
+    _bonesLabel.text = [NSString stringWithFormat:@"%d",_coins];
     
     [self animateDogIdle];
 }
 
-- (void)playAndSetLabels
+- (void)play
 {
-    NSArray *slots = [_slotMachine playWithCoins:&_coins];
-    self.coins = _coins;
+    _didWin = [_slotMachine playWithCoins:&_coins];
     
-    for (int i = 0; i < slots.count; i++)
+    for (int i = 0; i < _slotMachine.resultSlots.count; i++)
     {
-        SlotItemType slotItemType = [slots[i] integerValue];
+        SlotItemType slotItemType = [_slotMachine.resultSlots[i] integerValue];
         SlotView *slotView = (SlotView *)[self.view viewWithTag:(i+1)];
         [slotView spinToSlotType:slotItemType delay:(1 * 0.15)];
+        
         if (i == 2)
         {
             slotView.slotDelegate = self;
@@ -50,39 +55,10 @@
     }
 }
 
-- (void)setCoins:(NSInteger)coins
-{
-    _coins = coins;
-}
-
 - (IBAction)playTapped:(id)sender
 {
+    [self play];
     [self animateLever];
-    [self playAndSetLabels];
-}
-
-- (void)animateImageView:(UIImageView *)imageView
-              WithImages:(NSArray *)images
-                duration:(NSTimeInterval)duration
-{
-    [imageView setAnimationImages:images];
-    
-    [imageView setAnimationDuration:duration];
-    imageView.animationRepeatCount = 1;
-    
-    [imageView startAnimating];
-}
-
-- (NSArray *)imagesFromName:(NSString *)name count:(NSInteger)count
-{
-    NSMutableArray *images = [NSMutableArray arrayWithCapacity:count];
-    
-    for (int i = 0; i < count; i++)
-    {
-        [images addObject:[UIImage imageNamed:[NSString stringWithFormat:@"%@%.2d",name,i+1]]];
-    }
-    
-    return images;
 }
 
 - (void)animateLever
@@ -137,11 +113,6 @@
     [self performSelector:@selector(animateDogIdle) withObject:nil afterDelay:2.0f];
 }
 
-- (void)slotViewDidFinishAnimation
-{
-    (arc4random_uniform(2) == 0) ?  [self animateWin]: [self animateLoss];
-}
-
 - (void)animateWin
 {
     [self animateDogHappy];
@@ -154,6 +125,35 @@
     [self animateDogSad];
 }
 
+- (void)slotViewDidFinishAnimation
+{
+    (_didWin) ?  [self animateWin]: [self animateLoss];
+    
+    _bonesLabel.text = [NSString stringWithFormat:@"%d",_coins];
+}
 
+- (void)animateImageView:(UIImageView *)imageView
+              WithImages:(NSArray *)images
+                duration:(NSTimeInterval)duration
+{
+    [imageView setAnimationImages:images];
+    
+    [imageView setAnimationDuration:duration];
+    imageView.animationRepeatCount = 1;
+    
+    [imageView startAnimating];
+}
+
+- (NSArray *)imagesFromName:(NSString *)name count:(NSInteger)count
+{
+    NSMutableArray *images = [NSMutableArray arrayWithCapacity:count];
+    
+    for (int i = 0; i < count; i++)
+    {
+        [images addObject:[UIImage imageNamed:[NSString stringWithFormat:@"%@%.2d",name,i+1]]];
+    }
+    
+    return images;
+}
 
 @end

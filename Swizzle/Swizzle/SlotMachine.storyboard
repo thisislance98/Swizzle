@@ -76,12 +76,20 @@
                                     <action selector="playTapped:" destination="FIC-i7-2et" eventType="touchUpInside" id="N0U-NL-Fbf"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L3z-BV-Wm6">
+                                <rect key="frame" x="206" y="442" width="80" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="bonesLabel" destination="L3z-BV-Wm6" id="5XJ-wI-KL9"/>
                         <outlet property="bowl" destination="XiN-8q-YII" id="zHP-s0-14Y"/>
                         <outlet property="doggy" destination="P60-6M-yWC" id="4MH-lG-PwI"/>
                         <outlet property="leverImage" destination="hyI-ZZ-bKz" id="QpD-Vf-a8G"/>
@@ -107,6 +115,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SlotMachineViewController.h"/>
             <relationships>
                 <relationship kind="action" name="playTapped:"/>
+                <relationship kind="outlet" name="bonesLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="bowl" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="doggy" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="leverImage" candidateClass="UIImageView"/>
