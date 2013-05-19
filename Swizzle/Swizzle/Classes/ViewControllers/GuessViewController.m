@@ -25,8 +25,6 @@
     _letterButtons = [[NSMutableArray alloc] init];
     _nameLabel.text = [[PFUser currentUser] username];
     
-    [self setupForWordAtIndex:0];
-    
     self.bonesLabel.text = [[CoinsController sharedController] coinsString];
     
     
@@ -38,7 +36,11 @@
     [self.hintLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:34]];
     
     [self.bonesLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:24]];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self gotoNextWord];
 }
 
 #pragma mark - setup functions
@@ -50,13 +52,13 @@
     _currentWordObj = [_allWordObjs objectAtIndex:_currentWordObjIndex];
     _hintIndex = 0;
     
- //   [self.hintButton setHidden:NO];
+    //   [self.hintButton setHidden:NO];
     [self setupLetterLabels:_currentWordObj.word.length];
     [self resetLetterButtons:_letterButtons];
     [self setupLetterButtons:_currentWordObj.word];
     
     
-
+    
     // this will stop the hint words from cycling
     self.hintLabel.alpha = 0;
     [self cycleHintWords];
@@ -89,7 +91,7 @@
         BlankSlot* blankSlot = [[BlankSlot alloc] initWithImage:[UIImage imageNamed:@"empty_slot.png"]];
         
         blankSlot.center = CGPointMake(offset + self.startBlankImage.center.x + i * (blankSlot.frame.size.width + letterPadding), self.startBlankImage.center.y);
-    
+        
         [self.view insertSubview:blankSlot belowSubview:self.startBlankImage];
         [self.blankSlots addObject:blankSlot];
     }
@@ -111,7 +113,7 @@
         
         [letters addObject:[theLetter uppercaseString]];
     }
-
+    
     int buttonCount = self.allLetterButtons.count;
     for (int i=0; i < buttonCount; i++)
     {
@@ -138,7 +140,7 @@
             NSString *allLetters = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             NSString* randomLetter = [NSString stringWithFormat: @"%C", [allLetters characterAtIndex:arc4random()%allLetters.length]];
             [button setTitle:randomLetter forState:UIControlStateNormal];
-
+            
         }
     }
 }
@@ -196,8 +198,9 @@
 -(void)gotoNextWord
 {
     [self.correctLabel setHidden:YES];
-    _currentWordObjIndex = (_currentWordObjIndex + 1) % _allWordObjs.count;
+    _currentWordObjIndex = (_currentWordObjIndex) % _allWordObjs.count;
     [self setupForWordAtIndex:_currentWordObjIndex];
+    _currentWordObjIndex++;
 }
 
 
@@ -206,7 +209,15 @@
 {
     [self.correctLabel setHidden:NO];
     [[CoinsController sharedController] increaseCoins:NUM_WIN_COINS labelToUpdate:self.bonesLabel];
-    [self performSelector:@selector(gotoNextWord) withObject:nil afterDelay:2];
+    [self showSlotMachine];
+    //[self performSelector:@selector(gotoNextWord) withObject:nil afterDelay:2];
+}
+
+- (void)showSlotMachine
+{
+    UIViewController *vc = [[UIStoryboard storyboardWithName:@"SlotMachine" bundle:nil] instantiateInitialViewController];
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 -(BOOL)didGetCorrectWord
@@ -267,7 +278,7 @@
     }
     
     // otherwise the letter we want to place is at the top so we just move it
-    for (int i=_letterButtons.count-1; i >=0; i--) 
+    for (int i=_letterButtons.count-1; i >=0; i--)
     {
         LetterButton* button = _letterButtons[i];
         
@@ -338,8 +349,8 @@
 -(void)moveLetterButton:(LetterButton*)letterButton toSlotAtIndex:(int)index
 {
     [_letterButtons addObject:letterButton];
-
-
+    
+    
     BlankSlot* blankSlot = self.blankSlots[index];
     
     if (blankSlot == nil)
@@ -350,9 +361,9 @@
     __weak GuessViewController* weakSelf = self;
     [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^(void)
      {
-        
+         
          [weakSelf scaleButton:letterButton scale:SMALL_BUTTON_SCALE];
-
+         
          letterButton.center = CGPointMake(blankSlot.center.x, blankSlot.center.y+2)  ;
          
          
@@ -381,7 +392,7 @@
 
 -(void)onLetterSelected:(LetterButton*)letterButton
 {
-
+    
     // is the button in the bottom letter pad?
     if ([_letterButtons containsObject:letterButton] == NO && _letterButtons.count < self.blankSlots.count)
     {
@@ -419,9 +430,9 @@
                  button.frame = button.startFrame;
              }completion:^(BOOL complete)
              {
-             
+                 
              }];
- 
+            
         }
         else
         {
@@ -460,9 +471,9 @@
             
             
             [UIView animateWithDuration:.3 animations:^(void)
-            {
-                button.frame = button.startFrame;
-            }];
+             {
+                 button.frame = button.startFrame;
+             }];
         }
     }
     else if (recognizer.state == UIGestureRecognizerStateEnded)
@@ -523,7 +534,7 @@
 
 -(int)getFirstVisibleBlankLabelIndex
 {
-    for (int i=0; i < self.blankSlots.count; i++) 
+    for (int i=0; i < self.blankSlots.count; i++)
     {
         BlankSlot* slot = self.blankSlots[i];
         if (slot.button == nil)
@@ -578,22 +589,22 @@
 
 -(void)publishToFBWall
 {
-
+    
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"Uploaded thru app",  @"message", nil];
     [params setObject:[UIImage imageNamed:@"clear_btn1.png"] forKey:@"source"];
-//    [params setObject:[UIImage imageNamed:@"image-name.png"] forKey:@"source"];
+    //    [params setObject:[UIImage imageNamed:@"image-name.png"] forKey:@"source"];
     FBRequest* request = [FBRequest requestWithGraphPath:@"me/photos" parameters:params HTTPMethod:@"POST" ];
-
- //   FBRequest* request = [FBRequest requestForPostStatusUpdate:<#(NSString *)#>:@"me/photos"];
- //   FBRequest* request = [FBRequest req:<#(UIImage *)#>:@"test test"];
-//    FBRequest * request = [[FBRequest alloc] initWithSession:[PFFacebookUtils session] graphPath:@"me" parameters:params HTTPMethod:@"POST"];
- 
+    
+    //   FBRequest* request = [FBRequest requestForPostStatusUpdate:<#(NSString *)#>:@"me/photos"];
+    //   FBRequest* request = [FBRequest req:<#(UIImage *)#>:@"test test"];
+    //    FBRequest * request = [[FBRequest alloc] initWithSession:[PFFacebookUtils session] graphPath:@"me" parameters:params HTTPMethod:@"POST"];
+    
     // Send request to Facebook
     [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         if (!error) {
             // result is a dictionary with the user's Facebook data
-
+            
             NSLog(@"Facebook request complete");
         }
         else
