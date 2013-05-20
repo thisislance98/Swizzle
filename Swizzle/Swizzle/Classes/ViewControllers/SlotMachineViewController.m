@@ -8,6 +8,7 @@
 
 #import "SlotMachineViewController.h"
 #import "SlotMachine.h"
+#import "CoinsController.h"
 #import "SlotView.h"
 
 @interface SlotMachineViewController ()<SlotViewDelegate>
@@ -39,11 +40,17 @@
     [self readjustHeightForiPhone5];
     
     _slotMachine = [[SlotMachine alloc] init];
-    self.coins = 100;
+    self.coins = [CoinsController sharedController].coins;
     [self.bonesLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:24]];
     _bonesLabel.text = [NSString stringWithFormat:@"%d",_coins];
     
     [self animateDogIdle];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
 }
 
 - (void)readjustHeightForiPhone5
@@ -58,7 +65,6 @@
             }
         }
     }
-    
 }
 
 - (void)play
@@ -108,7 +114,7 @@
 
 - (void)animateDogHappy
 {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateDogIdle) object:nil];
     
     [self animateImageView:_doggy
                 WithImages:[self imagesFromName:@"happy_slots_" count:11]
@@ -133,7 +139,7 @@
 
 - (void)animateDogSad
 {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateDogIdle) object:nil];
     
     [self animateImageView:_doggy
                 WithImages:[self imagesFromName:@"sad_slots_" count:11]
@@ -156,12 +162,17 @@
 
 - (void)slotViewDidFinishAnimation
 {
-    [_playButton performSelector:@selector(setUserInteractionEnabled:) withObject:@(YES) afterDelay:2.0f];
+    [self performSelector:@selector(goBackToMainViewController) withObject:nil afterDelay:2.0f];
     
     (_didWin) ? [self animateWin] : [self animateLoss];
     
     _bonesLabel.text = [NSString stringWithFormat:@"%d",_coins];
     _playing = NO;
+}
+
+- (void)goBackToMainViewController
+{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)animateImageView:(UIImageView *)imageView

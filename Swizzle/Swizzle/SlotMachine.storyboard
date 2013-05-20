@@ -16,7 +16,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="pipe_bones_01@2x.png" id="DbC-Z8-EhM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="pipe_bones@2x.png" id="DbC-Z8-EhM">
                                 <rect key="frame" x="178" y="271" width="142" height="196"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -107,9 +107,9 @@
         <image name="Case@2x.png" width="640" height="960"/>
         <image name="Slot_bg@2x.png" width="640" height="960"/>
         <image name="bowl03@2x.png" width="177" height="242"/>
-        <image name="idle_slots_01@2x.png" width="247" height="231"/>
+        <image name="idle_slots_01@2x.png" width="313" height="260"/>
         <image name="lever01@2x.png" width="640" height="960"/>
-        <image name="pipe_bones_01@2x.png" width="285" height="392"/>
+        <image name="pipe_bones@2x.png" width="285" height="392"/>
         <image name="slider@2x.png" width="174" height="412"/>
     </resources>
     <classes>

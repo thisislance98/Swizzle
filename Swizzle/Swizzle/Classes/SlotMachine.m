@@ -66,7 +66,7 @@
 
 - (BOOL)playWithCoins:(NSInteger *)coins
 {
-    if (*coins < 10) return nil;
+    if (*coins < 10) return NO;
     
     NSMutableArray *resultSlots = [NSMutableArray array];
     
