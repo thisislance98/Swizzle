@@ -7,28 +7,24 @@
 //
 
 #import "LoginViewController.h"
+#import "UIImageView+AnimateImages.h"
 #import <Parse/PFFacebookUtils.h>
 
 @interface LoginViewController ()
 
 @property (nonatomic, weak) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, weak) IBOutlet UIImageView* pupImageView;
 
 @end
 
 @implementation LoginViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self animatePuppy];
+    
 	// Do any additional setup after loading the view.
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     spinner.center = CGPointMake(160, 240);
@@ -45,11 +41,12 @@
     [PFFacebookUtils initializeFacebook];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)animatePuppy
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [_pupImageView animateWithImages:[UIImageView imagesFromName:@"login_pup_" count:4] duration:1.0f];
+    [self performSelector:@selector(animatePuppy) withObject:nil afterDelay:7.0f];
 }
+
 
 - (IBAction)loginButtonTouchHandler:(id)sender  {
     // The permissions requested from the user
@@ -77,7 +74,6 @@
 
 -(void)transitionToFirstScreen
 {
-    
     [self performSegueWithIdentifier:@"guessSegue" sender:self];
 }
 

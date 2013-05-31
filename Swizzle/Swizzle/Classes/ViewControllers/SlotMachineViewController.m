@@ -9,6 +9,7 @@
 #import "SlotMachineViewController.h"
 #import "SlotMachine.h"
 #import "CoinsController.h"
+#import "UIImageView+AnimateImages.h"
 #import "SlotView.h"
 
 @interface SlotMachineViewController ()<SlotViewDelegate>
@@ -98,15 +99,13 @@
 
 - (void)animateLever
 {
-    [self animateImageView:_leverImage
-                WithImages:[self imagesFromName:@"lever" count:5]
+    [_leverImage animateWithImages:[UIImageView imagesFromName:@"lever" count:5]
                   duration:0.31f];
 }
 
 - (void)animateDogIdle
 {
-    [self animateImageView:_doggy
-                WithImages:[self imagesFromName:@"idle_slots_" count:4]
+    [_doggy animateWithImages:[UIImageView imagesFromName:@"idle_slots_" count:4]
                   duration:0.31f];
     
     [self performSelector:@selector(animateDogIdle) withObject:nil afterDelay:0.31f];
@@ -116,8 +115,7 @@
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateDogIdle) object:nil];
     
-    [self animateImageView:_doggy
-                WithImages:[self imagesFromName:@"happy_slots_" count:11]
+    [_doggy animateWithImages:[UIImageView imagesFromName:@"happy_slots_" count:11]
                   duration:2.0f];
     
     [self performSelector:@selector(animateDogIdle) withObject:nil afterDelay:2.0f];
@@ -125,15 +123,13 @@
 
 - (void)animatePipe
 {
-    [self animateImageView:_pipe
-                WithImages:[self imagesFromName:@"pipe_bones_" count:6]
+    [_pipe animateWithImages:[UIImageView imagesFromName:@"pipe_bones_" count:6]
                   duration:0.7f];
 }
 
 - (void)animateBowl
 {
-    [self animateImageView:_bowl
-                WithImages:[self imagesFromName:@"bowl" count:5]
+    [_bowl animateWithImages:[UIImageView imagesFromName:@"bowl" count:5]
                   duration:0.7f];
 }
 
@@ -141,8 +137,7 @@
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateDogIdle) object:nil];
     
-    [self animateImageView:_doggy
-                WithImages:[self imagesFromName:@"sad_slots_" count:11]
+    [_doggy animateWithImages:[UIImageView imagesFromName:@"sad_slots_" count:11]
                   duration:2.0f];
     
     [self performSelector:@selector(animateDogIdle) withObject:nil afterDelay:2.0f];
@@ -172,31 +167,9 @@
 
 - (void)goBackToMainViewController
 {
+    [CoinsController sharedController].coins = self.coins;
+    
     [self dismissModalViewControllerAnimated:YES];
-}
-
-- (void)animateImageView:(UIImageView *)imageView
-              WithImages:(NSArray *)images
-                duration:(NSTimeInterval)duration
-{
-    [imageView setAnimationImages:images];
-    
-    [imageView setAnimationDuration:duration];
-    imageView.animationRepeatCount = 1;
-    
-    [imageView startAnimating];
-}
-
-- (NSArray *)imagesFromName:(NSString *)name count:(NSInteger)count
-{
-    NSMutableArray *images = [NSMutableArray arrayWithCapacity:count];
-    
-    for (int i = 0; i < count; i++)
-    {
-        [images addObject:[UIImage imageNamed:[NSString stringWithFormat:@"%@%.2d",name,i+1]]];
-    }
-    
-    return images;
 }
 
 @end
