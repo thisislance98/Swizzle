@@ -28,6 +28,7 @@
     NSMutableArray* _allWordObjs;
     
 }
+- (IBAction)onFacebookTouch:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UILabel *bonesLabel;
 

@@ -581,33 +581,75 @@
     [super viewDidUnload];
 }
 
+-(NSString*)composeFacebookMessage
+{
+    int numLetters = self.blankSlots.count;
+    
+    NSString* message = [NSString stringWithFormat:@"Can anyone give me a %d letter word that can only use these letters",numLetters];
+    
+    for (int i=0; i < self.allLetterButtons.count; i++)
+    {
+        LetterButton* button = self.allLetterButtons[i];
+        NSString* letter = [button.titleLabel.text uppercaseString];
+        
+        if (i < self.allLetterButtons.count-1)
+            message = [NSString stringWithFormat:@"%@ %@,",message,letter];
+        else
+            message = [NSString stringWithFormat:@"%@ %@ and is related to these words:",message,letter];
+        
+    }
+    
+    for (int i=0; i < 4; i++)
+    {
+        if (i < 3)
+            message = [NSString stringWithFormat:@"%@ %@,",message, _currentWordObj.hints[i]];
+        else
+             message = [NSString stringWithFormat:@"%@ and %@?",message, _currentWordObj.hints[i]];
+    }
+    return message;
+}
 
 #pragma -mark Facebook Stuff
 
--(void)publishToFBWall
+- (IBAction)onFacebookTouch:(id)sender
 {
     
+    NSString* message = [self composeFacebookMessage];
     
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"Uploaded thru app",  @"message", nil];
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"Uploaded thru app",  @"test test", nil];
     [params setObject:[UIImage imageNamed:@"clear_btn1.png"] forKey:@"source"];
     //    [params setObject:[UIImage imageNamed:@"image-name.png"] forKey:@"source"];
-    FBRequest* request = [FBRequest requestWithGraphPath:@"me/photos" parameters:params HTTPMethod:@"POST" ];
+//    FBRequest* request = [FBRequest requestWithGraphPath:@"me/photos" parameters:params HTTPMethod:@"POST" ];
     
-    //   FBRequest* request = [FBRequest requestForPostStatusUpdate:<#(NSString *)#>:@"me/photos"];
+       FBRequest* request = [FBRequest requestForPostStatusUpdate:message];
     //   FBRequest* request = [FBRequest req:<#(UIImage *)#>:@"test test"];
     //    FBRequest * request = [[FBRequest alloc] initWithSession:[PFFacebookUtils session] graphPath:@"me" parameters:params HTTPMethod:@"POST"];
     
     // Send request to Facebook
     [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+       
+        NSString* alert;
         if (!error) {
             // result is a dictionary with the user's Facebook data
-            
+
+            alert = @"A help request has been sent to your Facebook wall for this word.";
             NSLog(@"Facebook request complete");
         }
         else
         {
+            alert = @"Error could not post to Facebook. Please try again later";
             NSLog(@"got FB error: %@",[error localizedDescription]);
         }
+        
+        UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle: @"Facebook Lifeline"
+                              message:alert
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alertView show];
+        
     }];
 }
 
