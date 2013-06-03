@@ -78,10 +78,10 @@
         [slot removeFromSuperview];
     }
     [self.blankSlots removeAllObjects];
-    
+
     float letterPadding = 5;
-    
-    float lastLabelXPos = self.startBlankImage.center.x + ((letterCount+1) * self.startBlankImage.frame.size.width + letterPadding);
+
+    float lastLabelXPos = self.startBlankImage.center.x + ((letterCount-.8) * self.startBlankImage.frame.size.width + letterPadding);
     float center = (lastLabelXPos + self.startBlankImage.center.x) / 2;
     float screenCenter = [[UIScreen mainScreen] bounds].size.width / 2;
     float offset = screenCenter - center;
@@ -96,8 +96,6 @@
         [self.blankSlots addObject:blankSlot];
     }
     
-    CGPoint lastBlankCenter = ((UIImageView*)self.blankSlots[self.blankSlots.count-1]).center;
-    self.facebookButton.center =  CGPointMake(lastBlankCenter.x + self.startBlankImage.frame.size.width + letterPadding*2, self.facebookButton.center.y);
 }
 
 // sets the letter titles on all the buttons to include all the letters in the word along and the rest being random
@@ -580,7 +578,6 @@
 - (void)viewDidUnload {
     [self setAllLetterButtons:nil];
     [self setStartBlankImage:nil];
-    [self setFacebookButton:nil];
     [super viewDidUnload];
 }
 

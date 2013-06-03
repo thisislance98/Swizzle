@@ -16,7 +16,7 @@
 #define NUM_WIN_COINS 20
 #define NUM_HINTS 4
 #define SMALL_BUTTON_SCALE .85
-#define MAX_NUM_LETTERS 7
+#define MAX_NUM_LETTERS 8
 
 @interface GuessViewController : UIViewController
 {
@@ -28,7 +28,6 @@
     NSMutableArray* _allWordObjs;
     
 }
-@property (strong, nonatomic) IBOutlet UIButton *facebookButton;
 
 @property (strong, nonatomic) IBOutlet UILabel *bonesLabel;
 
