@@ -11,12 +11,21 @@
 @implementation UIImageView (AnimateImages)
 
 - (void)animateWithImages:(NSArray *)images
-                duration:(NSTimeInterval)duration
+                 duration:(NSTimeInterval)duration
+{
+    
+    [self animateWithImages:images duration:duration looping:NO];
+    
+}
+
+- (void)animateWithImages:(NSArray *)images
+duration:(NSTimeInterval)duration looping:(BOOL)looping
 {
     [self setAnimationImages:images];
     
     [self setAnimationDuration:duration];
-    self.animationRepeatCount = 1;
+    
+    self.animationRepeatCount = (looping) ? -1 : 1;
     
     [self startAnimating];
 }
