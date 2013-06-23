@@ -11,6 +11,7 @@
 @interface UIImageView (AnimateImages)
 
 - (void)animateWithImages:(NSArray *)images duration:(NSTimeInterval)duration;
+- (void)animateWithImages:(NSArray *)images duration:(NSTimeInterval)duration looping:(BOOL)looping;
 
 + (NSArray *)imagesFromName:(NSString *)name count:(NSInteger)count;
 
