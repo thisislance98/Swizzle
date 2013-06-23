@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "WordObj.h"
+#import <iAd/iAd.h>
 #import "LetterButton.h"
 #import "BlankSlot.h"
 
@@ -18,7 +19,7 @@
 #define SMALL_BUTTON_SCALE .85
 #define MAX_NUM_LETTERS 8
 
-@interface GuessViewController : UIViewController
+@interface GuessViewController : UIViewController <ADBannerViewDelegate>
 {
     WordObj* _currentWordObj;
     int _currentWordObjIndex;

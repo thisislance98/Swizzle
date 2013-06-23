@@ -657,5 +657,19 @@
     }];
 }
 
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
+    NSLog(@"bannerview did not receive any banner due to %@", error);}
+
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner{NSLog(@"bannerview was selected");}
+
+- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
+{
+    return YES;
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner {NSLog(@"banner was loaded");}
+
+
+
 
 @end

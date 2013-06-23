@@ -10,6 +10,7 @@
 		2D08BA51171DFF6800A1833A /* SlotMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08BA50171DFF6800A1833A /* SlotMachine.m */; };
 		2D08BA53171E08CD00A1833A /* SlotMachine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D08BA52171E08CD00A1833A /* SlotMachine.storyboard */; };
 		2D08BA56171E099100A1833A /* SlotMachineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08BA55171E099100A1833A /* SlotMachineViewController.m */; };
+		2D3539601777A89D00FE56DB /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D35395F1777A89D00FE56DB /* iAd.framework */; };
 		2D62E2751718CDC700624AE1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D62E2741718CDC700624AE1 /* FacebookSDK.framework */; };
 		2D62E27A1718D15E00624AE1 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D62E2791718D15E00624AE1 /* libsqlite3.0.dylib */; };
 		2D9DC5D8171F18D800A72D56 /* SlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9DC5D7171F18D700A72D56 /* SlotView.m */; };
@@ -154,6 +155,7 @@
 		2D08BA52171E08CD00A1833A /* SlotMachine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SlotMachine.storyboard; path = ../../SlotMachine.storyboard; sourceTree = "<group>"; };
 		2D08BA54171E099100A1833A /* SlotMachineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlotMachineViewController.h; sourceTree = "<group>"; };
 		2D08BA55171E099100A1833A /* SlotMachineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlotMachineViewController.m; sourceTree = "<group>"; };
+		2D35395F1777A89D00FE56DB /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		2D62E2741718CDC700624AE1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		2D62E2791718D15E00624AE1 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		2D9DC5D6171F18D700A72D56 /* SlotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlotView.h; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D3539601777A89D00FE56DB /* iAd.framework in Frameworks */,
 				2D62E27A1718D15E00624AE1 /* libsqlite3.0.dylib in Frameworks */,
 				8A0597BA1718890D00C09EEA /* Accounts.framework in Frameworks */,
 				8A0597B81718890200C09EEA /* Social.framework in Frameworks */,
@@ -446,6 +449,7 @@
 		8A05977A171887B900C09EEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2D35395F1777A89D00FE56DB /* iAd.framework */,
 				2D62E2791718D15E00624AE1 /* libsqlite3.0.dylib */,
 				2D62E2741718CDC700624AE1 /* FacebookSDK.framework */,
 				8A0597B91718890D00C09EEA /* Accounts.framework */,
