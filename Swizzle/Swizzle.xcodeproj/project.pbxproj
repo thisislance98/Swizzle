@@ -15,6 +15,7 @@
 		2D9DC5D8171F18D800A72D56 /* SlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9DC5D7171F18D700A72D56 /* SlotView.m */; };
 		2D9ECF21174970BC00D150FC /* pipe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D9ECF20174970BC00D150FC /* pipe@2x.png */; };
 		2D9ECF231749935700D150FC /* pipe_bones@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D9ECF221749935700D150FC /* pipe_bones@2x.png */; };
+		2DA43AD21777913900979D66 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA43AD11777913900979D66 /* MBProgressHUD.m */; };
 		2DCACAF81758420B00086DDC /* facebook_login_btn1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCACAF01758420B00086DDC /* facebook_login_btn1.png */; };
 		2DCACAF91758420B00086DDC /* facebook_login_btn2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCACAF11758420B00086DDC /* facebook_login_btn2.png */; };
 		2DCACAFA1758420B00086DDC /* login_pup_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCACAF21758420B00086DDC /* login_pup_01.png */; };
@@ -261,6 +262,8 @@
 		2D9DC5D7171F18D700A72D56 /* SlotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlotView.m; sourceTree = "<group>"; };
 		2D9ECF20174970BC00D150FC /* pipe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pipe@2x.png"; path = "SlotMachine/pipe@2x.png"; sourceTree = "<group>"; };
 		2D9ECF221749935700D150FC /* pipe_bones@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pipe_bones@2x.png"; path = "SlotMachine/pipe_bones@2x.png"; sourceTree = "<group>"; };
+		2DA43AD01777913900979D66 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Global/MBProgressHUD.h; sourceTree = "<group>"; };
+		2DA43AD11777913900979D66 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Global/MBProgressHUD.m; sourceTree = "<group>"; };
 		2DCACAF01758420B00086DDC /* facebook_login_btn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook_login_btn1.png; path = login/facebook_login_btn1.png; sourceTree = "<group>"; };
 		2DCACAF11758420B00086DDC /* facebook_login_btn2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook_login_btn2.png; path = login/facebook_login_btn2.png; sourceTree = "<group>"; };
 		2DCACAF21758420B00086DDC /* login_pup_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_pup_01.png; path = login/login_pup_01.png; sourceTree = "<group>"; };
@@ -535,6 +538,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DA43AD31777914800979D66 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				2DA43AD01777913900979D66 /* MBProgressHUD.h */,
+				2DA43AD11777913900979D66 /* MBProgressHUD.m */,
+				2DCACB04175846E400086DDC /* UIImageView+AnimateImages.h */,
+				2DCACB05175846E400086DDC /* UIImageView+AnimateImages.m */,
+			);
+			name = Global;
+			sourceTree = "<group>";
+		};
 		2DCACAEF175841BE00086DDC /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -687,6 +701,7 @@
 		8A47AD83171C6EFC00283AF9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2DA43AD31777914800979D66 /* Global */,
 				8A47AD84171C6EFC00283AF9 /* AppDelegate.h */,
 				8A47AD85171C6EFC00283AF9 /* AppDelegate.m */,
 				8A7DA436172754D70091249C /* BlankSlot.h */,
@@ -701,8 +716,6 @@
 				2D08BA50171DFF6800A1833A /* SlotMachine.m */,
 				2D9DC5D6171F18D700A72D56 /* SlotView.h */,
 				2D9DC5D7171F18D700A72D56 /* SlotView.m */,
-				2DCACB04175846E400086DDC /* UIImageView+AnimateImages.h */,
-				2DCACB05175846E400086DDC /* UIImageView+AnimateImages.m */,
 				8A47AD98171C6F4000283AF9 /* ViewControllers */,
 			);
 			path = Classes;
@@ -1278,6 +1291,7 @@
 				2D9DC5D8171F18D800A72D56 /* SlotView.m in Sources */,
 				8A7DA438172754D70091249C /* BlankSlot.m in Sources */,
 				2DCACB06175846E400086DDC /* UIImageView+AnimateImages.m in Sources */,
+				2DA43AD21777913900979D66 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

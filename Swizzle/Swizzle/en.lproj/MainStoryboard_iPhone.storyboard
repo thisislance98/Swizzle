@@ -65,7 +65,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginButtonTouchHandler:" destination="KMK-tR-DDD" eventType="touchUpInside" id="1If-hY-qsz"/>
+                                    <action selector="skipButtonTouched:" destination="KMK-tR-DDD" eventType="touchUpInside" id="FQE-5b-bFf"/>
                                 </connections>
                             </button>
                         </subviews>
