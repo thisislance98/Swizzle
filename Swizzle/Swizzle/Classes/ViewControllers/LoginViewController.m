@@ -8,11 +8,11 @@
 
 #import "LoginViewController.h"
 #import "UIImageView+AnimateImages.h"
+#import "MBProgressHUD.h"
 #import <Parse/PFFacebookUtils.h>
 
 @interface LoginViewController ()
 
-@property (nonatomic, weak) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, weak) IBOutlet UIImageView* pupImageView;
 
 @end
@@ -24,13 +24,6 @@
     [super viewDidLoad];
     
     [self animatePuppy];
-    
-	// Do any additional setup after loading the view.
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    spinner.center = CGPointMake(160, 240);
-    spinner.hidesWhenStopped = YES;
-    [self.view addSubview:spinner];
-    _activityIndicator = spinner;
     
     if ([PFUser currentUser] && // Check if a user is cached
         [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) // Check if user is linked to Facebook
@@ -48,28 +41,37 @@
 }
 
 
-- (IBAction)loginButtonTouchHandler:(id)sender  {
+- (IBAction)loginButtonTouchHandler:(id)sender
+{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     // The permissions requested from the user
     NSArray *permissionsArray = @[  @"publish_stream", @"status_update"];
     
     // Login PFUser using Facebook
-    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
-        [_activityIndicator stopAnimating]; // Hide loading indicator
-        
-        if (!user) {
-            if (!error) {
-                NSLog(@"Uh oh. The user cancelled the Facebook login.");
-            } else {
-                NSLog(@"Uh oh. An error occurred: %@", error);
-            }
-        } else if (user.isNew) {
-            NSLog(@"User with facebook signed up and logged in!");
-        } else {
-            NSLog(@"User with facebook logged in!");
-        }
-        
-        [self transitionToFirstScreen];
-    }];
+    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error)
+     {
+         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+         
+         if (!user) {
+             if (!error) {
+                 NSLog(@"Uh oh. The user cancelled the Facebook login.");
+             } else {
+                 NSLog(@"Uh oh. An error occurred: %@", error);
+             }
+         } else if (user.isNew) {
+             NSLog(@"User with facebook signed up and logged in!");
+         } else {
+             NSLog(@"User with facebook logged in!");
+         }
+         
+         [self transitionToFirstScreen];
+     }];
+}
+
+- (IBAction)skipButtonTouched:(id)sender
+{
+    [self transitionToFirstScreen];
 }
 
 -(void)transitionToFirstScreen

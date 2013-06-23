@@ -8,7 +8,7 @@
 
 #import "GuessViewController.h"
 #import "CoinsController.h"
-
+#import "MBProgressHUD.h"
 
 
 @implementation GuessViewController
@@ -627,8 +627,12 @@
     //    FBRequest * request = [[FBRequest alloc] initWithSession:[PFFacebookUtils session] graphPath:@"me" parameters:params HTTPMethod:@"POST"];
     
     // Send request to Facebook
+    
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-       
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
         NSString* alert;
         if (!error) {
             // result is a dictionary with the user's Facebook data
