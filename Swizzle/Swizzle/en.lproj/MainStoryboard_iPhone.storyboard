@@ -325,6 +325,7 @@
                     <connections>
                         <outlet property="bonesLabel" destination="RsM-qg-UBr" id="rMe-93-frr"/>
                         <outlet property="correctLabel" destination="d6d-ZN-kjt" id="ftJ-ai-Ey3"/>
+                        <outlet property="dog" destination="eA8-PN-rbp" id="iWy-LR-sFg"/>
                         <outlet property="hintLabel" destination="WQN-bu-DY7" id="Y2U-gA-Xyt"/>
                         <outlet property="startBlankImage" destination="Umf-23-fd9" id="vww-qh-s4L"/>
                         <outletCollection property="allLetterButtons" destination="BvM-g1-pxg" id="gMD-Uz-J2X"/>
@@ -372,6 +373,7 @@
                 <relationship kind="action" name="onFacebookTouch:"/>
                 <relationship kind="outlet" name="bonesLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="correctLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dog" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="hintButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="hintLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
