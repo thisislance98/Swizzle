@@ -26,6 +26,7 @@
     _nameLabel.text = [[PFUser currentUser] username];
     _numCorrectWords = 0;
     
+    
     self.bonesLabel.text = [[CoinsController sharedController] coinsString];
     
     
@@ -45,6 +46,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    _currentWordObjIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"WordIndex"];
+
     [self gotoNextWord];
 }
 
@@ -204,6 +207,7 @@
     _currentWordObjIndex = (_currentWordObjIndex) % _allWordObjs.count;
     [self setupForWordAtIndex:_currentWordObjIndex];
     _currentWordObjIndex++;
+    
      [self.dog animateWithImages:[UIImageView imagesFromName:@"sleeping_" count:6] duration:1 looping:YES];
 }
 
@@ -226,6 +230,8 @@
         [self.dog animateWithImages:[UIImageView imagesFromName:@"running_" count:17] duration:2];
         [self performSelector:@selector(showSlotMachine) withObject:nil afterDelay:2];
     }
+    
+    [[NSUserDefaults standardUserDefaults] setInteger:_currentWordObjIndex forKey:@"WordIndex"];
     
 }
 
