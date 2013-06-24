@@ -24,6 +24,7 @@
     self.blankSlots = [[NSMutableArray alloc] init];
     _letterButtons = [[NSMutableArray alloc] init];
     _nameLabel.text = [[PFUser currentUser] username];
+    _numCorrectWords = 0;
     
     self.bonesLabel.text = [[CoinsController sharedController] coinsString];
     
@@ -36,6 +37,10 @@
     [self.hintLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:34]];
     
     [self.bonesLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:24]];
+    
+    [self.dog animateWithImages:[UIImageView imagesFromName:@"sleeping_" count:6] duration:1 looping:YES];
+    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -199,6 +204,7 @@
     _currentWordObjIndex = (_currentWordObjIndex) % _allWordObjs.count;
     [self setupForWordAtIndex:_currentWordObjIndex];
     _currentWordObjIndex++;
+     [self.dog animateWithImages:[UIImageView imagesFromName:@"sleeping_" count:6] duration:1 looping:YES];
 }
 
 
@@ -207,8 +213,20 @@
 {
     [self.correctLabel setHidden:NO];
     [[CoinsController sharedController] increaseCoins:NUM_WIN_COINS labelToUpdate:self.bonesLabel];
-    [self showSlotMachine];
-    //[self performSelector:@selector(gotoNextWord) withObject:nil afterDelay:2];
+    
+    _numCorrectWords++;
+    
+    if (_numCorrectWords < WORD_FOR_SLOTS)
+    {
+        [self.dog animateWithImages:[UIImageView imagesFromName:@"sleeping_happy_" count:14] duration:2];
+        [self performSelector:@selector(gotoNextWord) withObject:nil afterDelay:2];
+    }
+    else
+    {
+        [self.dog animateWithImages:[UIImageView imagesFromName:@"running_" count:17] duration:2];
+        [self performSelector:@selector(showSlotMachine) withObject:nil afterDelay:2];
+    }
+    
 }
 
 - (void)showSlotMachine
@@ -578,6 +596,7 @@
 - (void)viewDidUnload {
     [self setAllLetterButtons:nil];
     [self setStartBlankImage:nil];
+    [self setDog:nil];
     [super viewDidUnload];
 }
 
