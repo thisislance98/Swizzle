@@ -13,6 +13,7 @@
 #import "LetterButton.h"
 #import "BlankSlot.h"
 #import "UIImageView+AnimateImages.h"
+#import "IAPHelper.h"
 
 #define BUY_LETTER_COST 10
 #define NUM_WIN_COINS 20
@@ -23,6 +24,7 @@
 
 @interface GuessViewController : UIViewController <ADBannerViewDelegate>
 {
+
     WordObj* _currentWordObj;
     int _currentWordObjIndex;
     int _hintIndex;
