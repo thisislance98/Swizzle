@@ -17,14 +17,16 @@
 
 #define BUY_LETTER_COST 10
 #define NUM_WIN_COINS 20
+#define NUM_IAP_BONES 10
 #define NUM_HINTS 4
 #define SMALL_BUTTON_SCALE .85
 #define MAX_NUM_LETTERS 8
 #define WORD_FOR_SLOTS 3
 
-@interface GuessViewController : UIViewController <ADBannerViewDelegate>
+@interface GuessViewController : UIViewController <ADBannerViewDelegate,UIAlertViewDelegate>
 {
 
+    NSArray *_products;
     WordObj* _currentWordObj;
     int _currentWordObjIndex;
     int _hintIndex;

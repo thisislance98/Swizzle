@@ -1416,6 +1416,8 @@
 		8A05979F171887B900C09EEA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lance Hughes (EFS3233WW9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lance Hughes (EFS3233WW9)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1425,6 +1427,8 @@
 				INFOPLIST_FILE = "Swizzle/Swizzle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = Word4Words;
+				PROVISIONING_PROFILE = "AAA80A5B-84A6-46D2-98A8-7CFD4DE1970D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AAA80A5B-84A6-46D2-98A8-7CFD4DE1970D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1432,6 +1436,7 @@
 		8A0597A0171887B900C09EEA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lance Hughes (EFS3233WW9)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1441,6 +1446,7 @@
 				INFOPLIST_FILE = "Swizzle/Swizzle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = Word4Words;
+				PROVISIONING_PROFILE = "AAA80A5B-84A6-46D2-98A8-7CFD4DE1970D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

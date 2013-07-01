@@ -41,7 +41,7 @@
     
     [self.dog animateWithImages:[UIImageView imagesFromName:@"sleeping_" count:6] duration:1 looping:YES];
     
-
+    [self loadProducts];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -58,15 +58,31 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)productPurchased:(NSNotification *)notification {
-    
-    NSString * productIdentifier = notification.object;
-    [_products enumerateObjectsUsingBlock:^(SKProduct * product, NSUInteger idx, BOOL *stop) {
-        if ([product.productIdentifier isEqualToString:productIdentifier]) {
-//            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-//            *stop = YES;
+#pragma mark - IAP
+
+- (void)loadProducts {
+    _products = nil;
+
+    [[IAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success) {
+            _products = products;
+
         }
     }];
+}
+
+
+- (void)productPurchased:(NSNotification *)notification {
+
+    [[CoinsController sharedController] increaseCoins:NUM_IAP_BONES labelToUpdate:self.bonesLabel];
+    
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle: @"SUCCESS!!!"
+                              message:@"You just got 10 more bones!"
+                              delegate: self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+    [alertView show];
     
 }
 
@@ -559,6 +575,31 @@
         [self buyLetter];
         
         self.bonesLabel.text = [[CoinsController sharedController] coinsString];
+    }
+    else
+    {
+
+        
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle: @"Out of bones."
+                                  message:@"Do you want to buy more for more hints?"
+                                  delegate: self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:@"YES", nil];
+        [alertView show];
+        
+    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // They said yes to wanting to by more bones
+    if (buttonIndex == 1)
+    {
+        if (_products.count > 0 && _products[0] != nil)
+            [[IAPHelper sharedInstance] buyProduct:_products[0]];
+        
     }
     
 }
