@@ -41,6 +41,7 @@
     
     [self.dog animateWithImages:[UIImageView imagesFromName:@"sleep" count:22 zeroBased:YES hasLeadingZeros:NO] duration:.91 looping:YES];
     
+    
     [self loadProducts];
 }
 
@@ -253,7 +254,7 @@
     
     _numCorrectWords++;
     
-    if (_numCorrectWords < WORD_FOR_SLOTS)
+    if (false) //_numCorrectWords < WORD_FOR_SLOTS)
     {
         [self.dog animateWithImages:[UIImageView imagesFromName:@"sleeping_happy_" count:14] duration:2];
         [self performSelector:@selector(gotoNextWord) withObject:nil afterDelay:2];
@@ -262,12 +263,14 @@
     {
         float animTime = 3;
         [self.dog animateWithImages:[UIImageView imagesFromName:@"run" count:31 zeroBased:YES hasLeadingZeros:NO] duration:animTime looping:NO];
+        
         [self performSelector:@selector(showSlotMachine) withObject:nil afterDelay:animTime];
     }
     
     [[NSUserDefaults standardUserDefaults] setInteger:_currentWordObjIndex forKey:@"WordIndex"];
     
 }
+
 
 - (void)showSlotMachine
 {

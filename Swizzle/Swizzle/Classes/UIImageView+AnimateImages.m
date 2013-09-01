@@ -27,6 +27,8 @@ duration:(NSTimeInterval)duration looping:(BOOL)looping
     
     self.animationRepeatCount = (looping) ? -1 : 1;
     
+    self.image = [self.animationImages lastObject];
+    
     [self startAnimating];
 }
 
@@ -43,7 +45,9 @@ duration:(NSTimeInterval)duration looping:(BOOL)looping
     {
         int index = (zeroBased) ? i : i+1;
         NSString* formatString = (hasLeadingZeros) ? @"%@%.2d" : @"%@%d";
-        [images addObject:[UIImage imageNamed:[NSString stringWithFormat:formatString,name,index]]];
+        NSString* fileName = [NSString stringWithFormat:formatString,name,index];
+        NSLog(@"adding file: %@",fileName);
+        [images addObject:[UIImage imageNamed:fileName]];
     }
     
     return images;
