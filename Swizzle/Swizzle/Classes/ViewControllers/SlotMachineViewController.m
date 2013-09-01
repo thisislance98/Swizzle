@@ -169,8 +169,7 @@
 - (void)goBackToMainViewController
 {
     [CoinsController sharedController].coins = self.coins;
-    
-  //  [self dismissModalViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end
