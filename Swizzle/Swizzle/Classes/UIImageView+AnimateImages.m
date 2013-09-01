@@ -30,16 +30,23 @@ duration:(NSTimeInterval)duration looping:(BOOL)looping
     [self startAnimating];
 }
 
-+ (NSArray *)imagesFromName:(NSString *)name count:(NSInteger)count
++ (NSArray *)imagesFromName:(NSString *)name count:(NSInteger)count zeroBased:(BOOL)zeroBased
 {
     NSMutableArray *images = [NSMutableArray arrayWithCapacity:count];
     
     for (int i = 0; i < count; i++)
     {
-        [images addObject:[UIImage imageNamed:[NSString stringWithFormat:@"%@%.2d",name,i+1]]];
+        int index = (zeroBased) ? i : i+1;
+        [images addObject:[UIImage imageNamed:[NSString stringWithFormat:@"%@%.2d",name,index]]];
     }
     
     return images;
+    
+}
+
++ (NSArray *)imagesFromName:(NSString *)name count:(NSInteger)count
+{
+    return [UIImageView imagesFromName:name count:count zeroBased:NO];
 }
 
 @end
