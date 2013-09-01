@@ -32,12 +32,18 @@ duration:(NSTimeInterval)duration looping:(BOOL)looping
 
 + (NSArray *)imagesFromName:(NSString *)name count:(NSInteger)count zeroBased:(BOOL)zeroBased
 {
+    return [UIImageView imagesFromName:name count:count zeroBased:zeroBased hasLeadingZeros:NO];
+}
+
++ (NSArray *)imagesFromName:(NSString *)name count:(NSInteger)count zeroBased:(BOOL)zeroBased hasLeadingZeros:(BOOL)hasLeadingZeros
+{
     NSMutableArray *images = [NSMutableArray arrayWithCapacity:count];
     
     for (int i = 0; i < count; i++)
     {
         int index = (zeroBased) ? i : i+1;
-        [images addObject:[UIImage imageNamed:[NSString stringWithFormat:@"%@%.2d",name,index]]];
+        NSString* formatString = (hasLeadingZeros) ? @"%@%.2d" : @"%@%d";
+        [images addObject:[UIImage imageNamed:[NSString stringWithFormat:formatString,name,index]]];
     }
     
     return images;
