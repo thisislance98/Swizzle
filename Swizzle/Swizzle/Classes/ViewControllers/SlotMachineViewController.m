@@ -76,7 +76,7 @@
     {
         SlotItemType slotItemType = [_slotMachine.resultSlots[i] integerValue];
         SlotView *slotView = (SlotView *)[self.view viewWithTag:(i+1)];
-        [slotView spinToSlotType:slotItemType delay:(1 * 0.15)];
+        [slotView spinToSlotType:slotItemType delay:((i+1) * 0.15)];
         
         if (i == 2)
         {
@@ -105,20 +105,20 @@
 
 - (void)animateDogIdle
 {
-    [_doggy animateWithImages:[UIImageView imagesFromName:@"idle_slots_" count:4]
-                  duration:0.31f];
+    [_doggy animateWithImages:[UIImageView imagesFromName:@"sit" count:5 zeroBased:YES hasLeadingZeros:NO]
+                  duration:0.35f];
     
-    [self performSelector:@selector(animateDogIdle) withObject:nil afterDelay:0.31f];
+    [self performSelector:@selector(animateDogIdle) withObject:nil afterDelay:0.36f];
 }
 
 - (void)animateDogHappy
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateDogIdle) object:nil];
     
-    [_doggy animateWithImages:[UIImageView imagesFromName:@"happy_slots_" count:11]
-                  duration:2.0f];
+    [_doggy animateWithImages:[UIImageView imagesFromName:@"happy" count:35 zeroBased:YES hasLeadingZeros:NO]
+                     duration:3.0f];
     
-    [self performSelector:@selector(animateDogIdle) withObject:nil afterDelay:2.0f];
+    [self performSelector:@selector(animateDogIdle) withObject:nil afterDelay:3.0f];
 }
 
 - (void)animatePipe
@@ -137,10 +137,10 @@
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateDogIdle) object:nil];
     
-    [_doggy animateWithImages:[UIImageView imagesFromName:@"sad_slots_" count:11]
-                  duration:2.0f];
+    [_doggy animateWithImages:[UIImageView imagesFromName:@"sad" count:21 zeroBased:YES hasLeadingZeros:NO]
+                     duration:2.5f];
     
-    [self performSelector:@selector(animateDogIdle) withObject:nil afterDelay:2.0f];
+    [self performSelector:@selector(animateDogIdle) withObject:nil afterDelay:2.5f];
 }
 
 - (void)animateWin
@@ -163,12 +163,12 @@
     
     _bonesLabel.text = [NSString stringWithFormat:@"%d",_coins];
     _playing = NO;
+    _playButton.userInteractionEnabled = YES;
 }
 
 - (void)goBackToMainViewController
 {
     [CoinsController sharedController].coins = self.coins;
-    
     [self dismissModalViewControllerAnimated:YES];
 }
 

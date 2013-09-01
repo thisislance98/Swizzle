@@ -9,11 +9,11 @@
             <objects>
                 <viewController id="FIC-i7-2et" customClass="SlotMachineViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kqi-eK-UJ0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Slot_bg@2x.png" id="om4-Cw-57S">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="pipe_bones@2x.png" id="DbC-Z8-EhM">
@@ -52,8 +52,8 @@
                                 <rect key="frame" x="202" y="349" width="88" height="121"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="idle_slots_01@2x.png" id="P60-6M-yWC">
-                                <rect key="frame" x="20" y="352" width="123" height="120"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="sit0.png" id="P60-6M-yWC">
+                                <rect key="frame" x="20" y="340" width="156" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="lever01@2x.png" id="hyI-ZZ-bKz">
@@ -107,14 +107,14 @@
         <image name="Case@2x.png" width="640" height="960"/>
         <image name="Slot_bg@2x.png" width="640" height="960"/>
         <image name="bowl03@2x.png" width="177" height="242"/>
-        <image name="idle_slots_01@2x.png" width="313" height="260"/>
         <image name="lever01@2x.png" width="640" height="960"/>
         <image name="pipe_bones@2x.png" width="285" height="392"/>
+        <image name="sit0.png" width="313" height="260"/>
         <image name="slider@2x.png" width="174" height="412"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
 </document>
