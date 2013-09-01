@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="SFQ-jD-9bY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="SFQ-jD-9bY">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -138,13 +138,6 @@
                                     <action selector="clearButtonTouch:" destination="Tk9-wv-AEI" eventType="touchUpInside" id="U8D-QR-2AP"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="CORRECT!!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d6d-ZN-kjt">
-                                <rect key="frame" x="77" y="101" width="133" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <color key="highlightedColor" red="0.27577101476261778" green="1" blue="0.0054056434614702109" alpha="1" colorSpace="calibratedRGB"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nxh-kV-QJA">
                                 <rect key="frame" x="131" y="360" width="59" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -339,7 +332,6 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bonesLabel" destination="RsM-qg-UBr" id="rMe-93-frr"/>
-                        <outlet property="correctLabel" destination="d6d-ZN-kjt" id="ftJ-ai-Ey3"/>
                         <outlet property="dog" destination="eA8-PN-rbp" id="iWy-LR-sFg"/>
                         <outlet property="hintLabel" destination="WQN-bu-DY7" id="Y2U-gA-Xyt"/>
                         <outlet property="startBlankImage" destination="Umf-23-fd9" id="vww-qh-s4L"/>
@@ -390,7 +382,6 @@
                 <relationship kind="action" name="nextHintTouch:"/>
                 <relationship kind="action" name="onFacebookTouch:"/>
                 <relationship kind="outlet" name="bonesLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="correctLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="dog" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="hintButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="hintLabel" candidateClass="UILabel"/>

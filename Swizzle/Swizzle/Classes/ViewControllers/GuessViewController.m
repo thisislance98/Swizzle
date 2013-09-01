@@ -39,7 +39,7 @@
     
     [self.bonesLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:24]];
     
-    [self.dog animateWithImages:[UIImageView imagesFromName:@"sleeping_" count:6] duration:1 looping:YES];
+    [self.dog animateWithImages:[UIImageView imagesFromName:@"sleep" count:22 zeroBased:YES hasLeadingZeros:NO] duration:.91 looping:YES];
     
     [self loadProducts];
 }
@@ -238,19 +238,17 @@
 
 -(void)gotoNextWord
 {
-    [self.correctLabel setHidden:YES];
     _currentWordObjIndex = (_currentWordObjIndex) % _allWordObjs.count;
     [self setupForWordAtIndex:_currentWordObjIndex];
     _currentWordObjIndex++;
     
-     [self.dog animateWithImages:[UIImageView imagesFromName:@"sleeping_" count:6] duration:1 looping:YES];
+    [self.dog animateWithImages:[UIImageView imagesFromName:@"sleep" count:22 zeroBased:YES hasLeadingZeros:NO] duration:2 looping:YES];
 }
 
 
 
 -(void)onGotCorrectWord
 {
-    [self.correctLabel setHidden:NO];
     [[CoinsController sharedController] increaseCoins:NUM_WIN_COINS labelToUpdate:self.bonesLabel];
     
     _numCorrectWords++;
@@ -262,8 +260,9 @@
     }
     else
     {
-        [self.dog animateWithImages:[UIImageView imagesFromName:@"running_" count:17] duration:2];
-        [self performSelector:@selector(showSlotMachine) withObject:nil afterDelay:2];
+        float animTime = 3;
+        [self.dog animateWithImages:[UIImageView imagesFromName:@"run" count:31 zeroBased:YES hasLeadingZeros:NO] duration:animTime looping:NO];
+        [self performSelector:@selector(showSlotMachine) withObject:nil afterDelay:animTime];
     }
     
     [[NSUserDefaults standardUserDefaults] setInteger:_currentWordObjIndex forKey:@"WordIndex"];

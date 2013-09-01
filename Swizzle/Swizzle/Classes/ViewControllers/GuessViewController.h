@@ -44,7 +44,6 @@
 @property (nonatomic, strong) NSMutableArray* blankSlots;
 @property (weak, nonatomic) IBOutlet UIButton *hintButton;
 
-@property (strong, nonatomic) IBOutlet UILabel *correctLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (nonatomic,strong) NSString* currentWord;
