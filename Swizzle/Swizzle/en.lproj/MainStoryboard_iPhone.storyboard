@@ -42,10 +42,6 @@
                                 <rect key="frame" x="71" y="142" width="179" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="login_pup_01.png" id="8oU-4F-Ygj">
-                                <rect key="frame" x="23" y="184" width="275" height="276"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jag-Rw-dVZ">
                                 <rect key="frame" x="88" y="164" width="144" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -76,12 +72,15 @@
                                     <action selector="skipButtonTouched:" destination="KMK-tR-DDD" eventType="touchUpInside" id="FQE-5b-bFf"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="happy0.png" id="BLf-VQ-C3R">
+                                <rect key="frame" x="35" y="209" width="240" height="199"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Akt-Bq-PI7"/>
                     <connections>
-                        <outlet property="pupImageView" destination="8oU-4F-Ygj" id="BrI-sz-ZSK"/>
                         <segue destination="Tk9-wv-AEI" kind="push" identifier="guessSegue" id="YRK-WW-DVt"/>
                     </connections>
                 </viewController>
@@ -361,26 +360,54 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bowl03@2x.png" width="16" height="16"/>
-        <image name="bubble.png" width="16" height="16"/>
-        <image name="clear_btn1.png" width="16" height="16"/>
-        <image name="clear_btn2.png" width="16" height="16"/>
-        <image name="empty_slot.png" width="16" height="16"/>
-        <image name="facebook_login_btn1.png" width="16" height="16"/>
-        <image name="facebook_login_btn2.png" width="16" height="16"/>
-        <image name="fb_btn2.png" width="16" height="16"/>
-        <image name="fb_life.png" width="16" height="16"/>
-        <image name="hint_btn1.png" width="16" height="16"/>
-        <image name="letter_btn1.png" width="16" height="16"/>
-        <image name="login_pup_01.png" width="16" height="16"/>
-        <image name="login_skip1.png" width="16" height="16"/>
-        <image name="login_skip2.png" width="16" height="16"/>
-        <image name="mainscreen_bg.png" width="16" height="16"/>
-        <image name="mainscreen_facebook.png" width="16" height="16"/>
-        <image name="puppy_01.png" width="16" height="16"/>
-        <image name="title.png" width="16" height="16"/>
-        <image name="wordBox.png" width="16" height="16"/>
+        <image name="bowl03@2x.png" width="177" height="242"/>
+        <image name="bubble.png" width="290" height="109"/>
+        <image name="clear_btn1.png" width="58" height="52"/>
+        <image name="clear_btn2.png" width="66" height="55"/>
+        <image name="empty_slot.png" width="31" height="31"/>
+        <image name="facebook_login_btn1.png" width="288" height="77"/>
+        <image name="facebook_login_btn2.png" width="288" height="77"/>
+        <image name="fb_btn2.png" width="33" height="33"/>
+        <image name="fb_life.png" width="62" height="69"/>
+        <image name="happy0.png" width="313" height="260"/>
+        <image name="hint_btn1.png" width="59" height="64"/>
+        <image name="letter_btn1.png" width="40" height="42"/>
+        <image name="login_skip1.png" width="175" height="77"/>
+        <image name="login_skip2.png" width="175" height="77"/>
+        <image name="mainscreen_bg.png" width="320" height="568"/>
+        <image name="mainscreen_facebook.png" width="179" height="14"/>
+        <image name="puppy_01.png" width="196" height="113"/>
+        <image name="title.png" width="170" height="90"/>
+        <image name="wordBox.png" width="291" height="108"/>
     </resources>
+    <classes>
+        <class className="GuessViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GuessViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buyLetterTouch:"/>
+                <relationship kind="action" name="clearButtonTouch:"/>
+                <relationship kind="action" name="nextHintTouch:"/>
+                <relationship kind="action" name="onFacebookTouch:"/>
+                <relationship kind="outlet" name="bonesLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="correctLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dog" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="hintButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="hintLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startBlankImage" candidateClass="UIImageView"/>
+                <relationship kind="outletCollection" name="allLetterButtons" candidateClass="LetterButton"/>
+            </relationships>
+        </class>
+        <class className="LetterButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LetterButton.h"/>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="pupImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
