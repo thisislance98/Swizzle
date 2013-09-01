@@ -163,13 +163,14 @@
     
     _bonesLabel.text = [NSString stringWithFormat:@"%d",_coins];
     _playing = NO;
+    _playButton.userInteractionEnabled = YES;
 }
 
 - (void)goBackToMainViewController
 {
     [CoinsController sharedController].coins = self.coins;
     
-    [self dismissModalViewControllerAnimated:YES];
+  //  [self dismissModalViewControllerAnimated:YES];
 }
 
 @end
