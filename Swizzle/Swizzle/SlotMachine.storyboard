@@ -116,7 +116,6 @@
         <class className="SlotMachineViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SlotMachineViewController.h"/>
             <relationships>
-                <relationship kind="action" name="playTapped:"/>
                 <relationship kind="outlet" name="bgView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="bonesLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="bowl" candidateClass="UIImageView"/>
