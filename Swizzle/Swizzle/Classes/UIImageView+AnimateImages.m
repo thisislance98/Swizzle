@@ -19,7 +19,14 @@
 }
 
 - (void)animateWithImages:(NSArray *)images
-duration:(NSTimeInterval)duration looping:(BOOL)looping
+                 duration:(NSTimeInterval)duration looping:(BOOL)looping
+{
+    [self animateWithImages:images duration:duration looping:looping stayOnLastFrame:NO];
+    
+}
+
+- (void)animateWithImages:(NSArray *)images
+duration:(NSTimeInterval)duration looping:(BOOL)looping stayOnLastFrame:(BOOL)stayOnLastFrame
 {
     [self setAnimationImages:images];
     
@@ -27,7 +34,8 @@ duration:(NSTimeInterval)duration looping:(BOOL)looping
     
     self.animationRepeatCount = (looping) ? -1 : 1;
     
-    self.image = [self.animationImages lastObject];
+    if (stayOnLastFrame)
+        self.image = [self.animationImages lastObject];
     
     [self startAnimating];
 }
@@ -46,7 +54,6 @@ duration:(NSTimeInterval)duration looping:(BOOL)looping
         int index = (zeroBased) ? i : i+1;
         NSString* formatString = (hasLeadingZeros) ? @"%@%.2d" : @"%@%d";
         NSString* fileName = [NSString stringWithFormat:formatString,name,index];
-        NSLog(@"adding file: %@",fileName);
         [images addObject:[UIImage imageNamed:fileName]];
     }
     

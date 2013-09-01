@@ -12,6 +12,8 @@
 
 - (void)animateWithImages:(NSArray *)images duration:(NSTimeInterval)duration;
 - (void)animateWithImages:(NSArray *)images duration:(NSTimeInterval)duration looping:(BOOL)looping;
+- (void)animateWithImages:(NSArray *)images
+                 duration:(NSTimeInterval)duration looping:(BOOL)looping stayOnLastFrame:(BOOL)stayOnLastFrame;
 
 + (NSArray *)imagesFromName:(NSString *)name count:(NSInteger)count zeroBased:(BOOL)zeroBased hasLeadingZeros:(BOOL)hasLeadingZeros;
 + (NSArray *)imagesFromName:(NSString *)name count:(NSInteger)count zeroBased:(BOOL)zeroBased;

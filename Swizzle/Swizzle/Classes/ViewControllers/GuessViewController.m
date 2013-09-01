@@ -262,7 +262,7 @@
     else
     {
         float animTime = 3;
-        [self.dog animateWithImages:[UIImageView imagesFromName:@"run" count:31 zeroBased:YES hasLeadingZeros:NO] duration:animTime looping:NO];
+        [self.dog animateWithImages:[UIImageView imagesFromName:@"run" count:31 zeroBased:YES hasLeadingZeros:NO] duration:animTime looping:NO stayOnLastFrame:YES];
         
         [self performSelector:@selector(showSlotMachine) withObject:nil afterDelay:animTime];
     }
