@@ -43,27 +43,6 @@
     return self;
 }
 
-+(NSString *)nameForSlotType:(SlotItemType)type
-{
-    switch (type)
-    {
-        case SlotItemTypeCherry:
-            return @"Cherry";
-        case SlotItemTypeDoubleSeven:
-            return @"7 7";
-        case SlotItemTypeSeven:
-            return @"7";
-        case SlotItemTypeTripleSeven:
-            return @"7 7 7";
-        case SlotItemTypeBar:
-            return @"BAR";
-        case SlotItemTypeSmiley:
-            return @"=)";
-        default:
-            return @"UNKNOWN";
-    }
-}
-
 - (BOOL)playWithCoins:(NSInteger *)coins
 {
     if (*coins < 10) return NO;
