@@ -32,7 +32,7 @@ duration:(NSTimeInterval)duration looping:(BOOL)looping
 
 + (NSArray *)imagesFromName:(NSString *)name count:(NSInteger)count zeroBased:(BOOL)zeroBased
 {
-    return [UIImageView imagesFromName:name count:count zeroBased:zeroBased hasLeadingZeros:NO];
+    return [UIImageView imagesFromName:name count:count zeroBased:zeroBased hasLeadingZeros:YES];
 }
 
 + (NSArray *)imagesFromName:(NSString *)name count:(NSInteger)count zeroBased:(BOOL)zeroBased hasLeadingZeros:(BOOL)hasLeadingZeros
