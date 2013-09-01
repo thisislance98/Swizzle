@@ -7,13 +7,19 @@
 //
 
 #import "LoginViewController.h"
+#import "GuessViewController.h"
 #import "UIImageView+AnimateImages.h"
 #import "MBProgressHUD.h"
-#import <Parse/PFFacebookUtils.h>
+#import <Parse/Parse.h>
+#import "WordObj.h"
 
 @interface LoginViewController ()
 
 @property (nonatomic, weak) IBOutlet UIImageView* pupImageView;
+@property (nonatomic, weak) IBOutlet UIButton* loginButton;
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView* activityIndicator;
+
+@property (nonatomic, strong) NSArray *words;
 
 @end
 
@@ -23,7 +29,48 @@
 {
     [super viewDidLoad];
     
-    [self animatePuppy];
+    _loginButton.alpha = 0;
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Words"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         [_activityIndicator stopAnimating];
+         
+         [UIView animateWithDuration:0.3f animations:^{
+             _loginButton.alpha = 1.0f;
+         }];
+         
+         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+         if (!error)
+         {
+             // The find succeeded.
+             NSLog(@"Successfully retrieved %d objects.", objects.count);
+             // Do something with the found objects
+             
+             NSMutableArray *words =[@[] mutableCopy];
+             
+             for (PFObject *object in objects)
+             {
+                 
+                 NSString *word =  [object objectForKey:@"Word"];
+                 NSArray *hints = [object objectForKey:@"Hints"];
+                 
+                 WordObj *wordObj = [[WordObj alloc] initWithWord:word andHints:hints];
+                 
+                 [words addObject:wordObj];
+                 
+                 NSLog(@"%@", object.objectId);
+             }
+             
+             _words = words;
+         }
+         else
+         {
+             // Log details of the failure
+             NSLog(@"Error: %@ %@", error, [error userInfo]);
+         }
+     }];
+    
     
     if ([PFUser currentUser] && // Check if a user is cached
         [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) // Check if user is linked to Facebook
@@ -33,13 +80,6 @@
     
     [PFFacebookUtils initializeFacebook];
 }
-
-- (void)animatePuppy
-{
-    [_pupImageView animateWithImages:[UIImageView imagesFromName:@"login_pup_" count:4] duration:1.0f];
-    [self performSelector:@selector(animatePuppy) withObject:nil afterDelay:7.0f];
-}
-
 
 - (IBAction)loginButtonTouchHandler:(id)sender
 {
@@ -74,9 +114,18 @@
     [self transitionToFirstScreen];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    GuessViewController *gvc = segue.destinationViewController;
+    gvc.words = self.words;
+}
+
 -(void)transitionToFirstScreen
 {
-    [self performSegueWithIdentifier:@"guessSegue" sender:self];
+    if (self.words)
+    {
+        [self performSegueWithIdentifier:@"guessSegue" sender:self];
+    }
 }
 
 @end

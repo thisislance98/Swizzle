@@ -10,7 +10,7 @@
 
 @implementation CoinsController
 
-#define DEFAULT_COINS 60
+#define DEFAULT_COINS 10
 
 static CoinsController* sharedController;
 

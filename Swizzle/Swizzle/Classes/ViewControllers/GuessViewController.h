@@ -33,10 +33,10 @@
     int _numCorrectWords;
     NSMutableArray* _letterButtons;
     
-    NSMutableArray* _allWordObjs;
-    
 }
 - (IBAction)onFacebookTouch:(id)sender;
+
+@property (nonatomic, strong) NSArray *words;
 
 @property (strong, nonatomic) IBOutlet UILabel *bonesLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *dog;

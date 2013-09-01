@@ -93,7 +93,7 @@
 -(void)setupForWordAtIndex:(int)index
 {
     _currentWordObjIndex = index;
-    _currentWordObj = [_allWordObjs objectAtIndex:_currentWordObjIndex];
+    _currentWordObj = [_words objectAtIndex:_currentWordObjIndex];
     _hintIndex = 0;
     
     //   [self.hintButton setHidden:NO];
@@ -190,16 +190,16 @@
 
 -(void)initWordObjs
 {
-    _allWordObjs = [[NSMutableArray alloc] init];
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"WordAndHints" ofType:@"plist"];
-    NSArray* words = [NSArray arrayWithContentsOfFile:path];
-    
-    for (NSDictionary* wordDict in words)
-    {
-        NSString* word = [wordDict objectForKey:@"Word"];
-        NSArray* hints = [wordDict objectForKey:@"Hints"];
-        [_allWordObjs addObject:[[WordObj alloc] initWithWord:word andHints:hints]];
-    }
+//    _allWordObjs = [[NSMutableArray alloc] init];
+//    NSString* path = [[NSBundle mainBundle] pathForResource:@"WordAndHints" ofType:@"plist"];
+//    NSArray* words = [NSArray arrayWithContentsOfFile:path];
+//    
+//    for (NSDictionary* wordDict in words)
+//    {
+//        NSString* word = [wordDict objectForKey:@"Word"];
+//        NSArray* hints = [wordDict objectForKey:@"Hints"];
+//        [_allWordObjs addObject:[[WordObj alloc] initWithWord:word andHints:hints]];
+//    }
 }
 
 #pragma mark word functions
@@ -239,7 +239,7 @@
 
 -(void)gotoNextWord
 {
-    _currentWordObjIndex = (_currentWordObjIndex) % _allWordObjs.count;
+    _currentWordObjIndex = (_currentWordObjIndex) % _words.count;
     [self setupForWordAtIndex:_currentWordObjIndex];
     _currentWordObjIndex++;
     
