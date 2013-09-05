@@ -11,11 +11,14 @@
 #import "CoinsController.h"
 #import "UIImageView+AnimateImages.h"
 #import "SlotView.h"
+#import "AudioPlayer.h"
 
 @interface SlotMachineViewController ()<SlotViewDelegate>
 {
     UIButton *_playButton;
     BOOL _playing;
+    AVAudioPlayer* _pantingPlayer;
+    AVAudioPlayer* _winPlayer;
 }
 
 @property (nonatomic)  NSInteger coins;
@@ -45,6 +48,9 @@
     [self.bonesLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:24]];
     _bonesLabel.text = [NSString stringWithFormat:@"%d",_coins];
     
+    _pantingPlayer = [[AudioPlayer sharedController] playSound:@"longPant" extension:@"wav"];
+    _pantingPlayer.numberOfLoops = -1;
+    
     [self animateDogIdle];
 }
 
@@ -71,7 +77,7 @@
 - (void)play
 {
     _didWin = [_slotMachine playWithCoins:&_coins];
-    
+    [[AudioPlayer sharedController] playSound:@"slots" extension:@"wav"];
     for (int i = 0; i < _slotMachine.resultSlots.count; i++)
     {
         SlotItemType slotItemType = [_slotMachine.resultSlots[i] integerValue];
@@ -115,6 +121,8 @@
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateDogIdle) object:nil];
     
+    [_pantingPlayer stop];
+    [[AudioPlayer sharedController] playSound:@"pant" extension:@"wav"];
     [_doggy animateWithImages:[UIImageView imagesFromName:@"happy" count:35 zeroBased:YES hasLeadingZeros:NO]
                      duration:3.0f];
     
@@ -137,6 +145,8 @@
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateDogIdle) object:nil];
     
+    [_pantingPlayer stop];
+    [[AudioPlayer sharedController] playSound:@"growl" extension:@"wav"];
     [_doggy animateWithImages:[UIImageView imagesFromName:@"sad" count:21 zeroBased:YES hasLeadingZeros:NO]
                      duration:2.5f];
     
@@ -145,6 +155,7 @@
 
 - (void)animateWin
 {
+    _winPlayer = [[AudioPlayer sharedController] playSound:@"slotsPayout" extension:@"wav"];
     [self animateDogHappy];
     [self animateBowl];
     [self animatePipe];

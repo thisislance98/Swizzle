@@ -15,6 +15,7 @@
 #import "UIImageView+AnimateImages.h"
 #import "IAPHelper.h"
 
+
 #define BUY_LETTER_COST 10
 #define NUM_WIN_COINS 20
 #define NUM_IAP_BONES 10
@@ -32,6 +33,7 @@
     int _hintIndex;
     int _numCorrectWords;
     NSMutableArray* _letterButtons;
+
     
 }
 - (IBAction)onFacebookTouch:(id)sender;

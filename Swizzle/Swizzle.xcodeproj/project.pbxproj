@@ -301,6 +301,15 @@
 		8AC76C1117D3B8D3003AA1A9 /* sleep19.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC76BFB17D3B8D3003AA1A9 /* sleep19.png */; };
 		8AC76C1217D3B8D3003AA1A9 /* sleep20.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC76BFC17D3B8D3003AA1A9 /* sleep20.png */; };
 		8AC76C1317D3B8D3003AA1A9 /* sleep21.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC76BFD17D3B8D3003AA1A9 /* sleep21.png */; };
+		8ADB27F817D91977007BC1EB /* button-22.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8ADB27F717D91977007BC1EB /* button-22.wav */; };
+		8ADB27FA17D91B64007BC1EB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADB27F917D91B64007BC1EB /* AVFoundation.framework */; };
+		8ADB27FD17D91DA8007BC1EB /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADB27FC17D91DA8007BC1EB /* AudioPlayer.m */; };
+		8ADB27FF17D91FD6007BC1EB /* button-30.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8ADB27FE17D91FD6007BC1EB /* button-30.wav */; };
+		8ADB280117D924BD007BC1EB /* pant.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8ADB280017D924BD007BC1EB /* pant.wav */; };
+		8ADB280317D92596007BC1EB /* longPant.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8ADB280217D92596007BC1EB /* longPant.wav */; };
+		8ADB280517D92C7B007BC1EB /* growl.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8ADB280417D92C7B007BC1EB /* growl.wav */; };
+		8ADB280717D92F7E007BC1EB /* slots.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8ADB280617D92F7E007BC1EB /* slots.wav */; };
+		8ADB280917D93207007BC1EB /* slotsPayout.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8ADB280817D93207007BC1EB /* slotsPayout.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -616,6 +625,16 @@
 		8AC76BFB17D3B8D3003AA1A9 /* sleep19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sleep19.png; sourceTree = "<group>"; };
 		8AC76BFC17D3B8D3003AA1A9 /* sleep20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sleep20.png; sourceTree = "<group>"; };
 		8AC76BFD17D3B8D3003AA1A9 /* sleep21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sleep21.png; sourceTree = "<group>"; };
+		8ADB27F717D91977007BC1EB /* button-22.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "button-22.wav"; sourceTree = "<group>"; };
+		8ADB27F917D91B64007BC1EB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8ADB27FB17D91DA8007BC1EB /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
+		8ADB27FC17D91DA8007BC1EB /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
+		8ADB27FE17D91FD6007BC1EB /* button-30.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "button-30.wav"; sourceTree = "<group>"; };
+		8ADB280017D924BD007BC1EB /* pant.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pant.wav; sourceTree = "<group>"; };
+		8ADB280217D92596007BC1EB /* longPant.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = longPant.wav; sourceTree = "<group>"; };
+		8ADB280417D92C7B007BC1EB /* growl.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = growl.wav; sourceTree = "<group>"; };
+		8ADB280617D92F7E007BC1EB /* slots.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slots.wav; sourceTree = "<group>"; };
+		8ADB280817D93207007BC1EB /* slotsPayout.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slotsPayout.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -623,6 +642,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ADB27FA17D91B64007BC1EB /* AVFoundation.framework in Frameworks */,
 				2D3539601777A89D00FE56DB /* iAd.framework in Frameworks */,
 				2D62E27A1718D15E00624AE1 /* libsqlite3.0.dylib in Frameworks */,
 				8A0597BA1718890D00C09EEA /* Accounts.framework in Frameworks */,
@@ -651,6 +671,8 @@
 		2DA43AD31777914800979D66 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				8ADB27FB17D91DA8007BC1EB /* AudioPlayer.h */,
+				8ADB27FC17D91DA8007BC1EB /* AudioPlayer.m */,
 				2DA43AD01777913900979D66 /* MBProgressHUD.h */,
 				2DA43AD11777913900979D66 /* MBProgressHUD.m */,
 				2DCACB04175846E400086DDC /* UIImageView+AnimateImages.h */,
@@ -792,6 +814,7 @@
 		8A05977A171887B900C09EEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8ADB27F917D91B64007BC1EB /* AVFoundation.framework */,
 				2D35395F1777A89D00FE56DB /* iAd.framework */,
 				2D62E2791718D15E00624AE1 /* libsqlite3.0.dylib */,
 				2D62E2741718CDC700624AE1 /* FacebookSDK.framework */,
@@ -1075,6 +1098,7 @@
 		8A67F4E4171B8B8D005385C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8ADB27F617D91977007BC1EB /* Sounds */,
 				2DCACAEF175841BE00086DDC /* Login */,
 				2DCB333917345987007E8636 /* SlotMachine */,
 				8A7DA43317272C410091249C /* Fonts */,
@@ -1148,6 +1172,20 @@
 				8A7DA43417272C410091249C /* LuckiestGuy.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		8ADB27F617D91977007BC1EB /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				8ADB280817D93207007BC1EB /* slotsPayout.wav */,
+				8ADB280617D92F7E007BC1EB /* slots.wav */,
+				8ADB280417D92C7B007BC1EB /* growl.wav */,
+				8ADB280217D92596007BC1EB /* longPant.wav */,
+				8ADB280017D924BD007BC1EB /* pant.wav */,
+				8ADB27FE17D91FD6007BC1EB /* button-30.wav */,
+				8ADB27F717D91977007BC1EB /* button-22.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1460,6 +1498,13 @@
 				8AA7E3EF17D3C96B002A588B /* run28.png in Resources */,
 				8AA7E3F017D3C96B002A588B /* run29.png in Resources */,
 				8AA7E3F117D3C96B002A588B /* run30.png in Resources */,
+				8ADB27F817D91977007BC1EB /* button-22.wav in Resources */,
+				8ADB27FF17D91FD6007BC1EB /* button-30.wav in Resources */,
+				8ADB280117D924BD007BC1EB /* pant.wav in Resources */,
+				8ADB280317D92596007BC1EB /* longPant.wav in Resources */,
+				8ADB280517D92C7B007BC1EB /* growl.wav in Resources */,
+				8ADB280717D92F7E007BC1EB /* slots.wav in Resources */,
+				8ADB280917D93207007BC1EB /* slotsPayout.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1486,6 +1531,7 @@
 				8A4AEC62177A9D0900DABE06 /* IAPHelper.m in Sources */,
 				8A4AEC68177AA0CB00DABE06 /* NSData+Base64.m in Sources */,
 				8A4AEC69177AA0CB00DABE06 /* VerificationController.m in Sources */,
+				8ADB27FD17D91DA8007BC1EB /* AudioPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

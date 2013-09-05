@@ -9,6 +9,7 @@
 #import "GuessViewController.h"
 #import "CoinsController.h"
 #import "MBProgressHUD.h"
+#import "AudioPlayer.h"
 
 
 @implementation GuessViewController
@@ -102,7 +103,7 @@
     [self setupLetterButtons:_currentWordObj.word];
     
     
-    
+
     // this will stop the hint words from cycling
     self.hintLabel.alpha = 0;
     [self cycleHintWords];
@@ -265,10 +266,16 @@
         [self.dog animateWithImages:[UIImageView imagesFromName:@"run" count:31 zeroBased:YES hasLeadingZeros:NO] duration:animTime looping:NO stayOnLastFrame:YES];
         
         [self performSelector:@selector(showSlotMachine) withObject:nil afterDelay:animTime];
+        [self performSelector:@selector(playPantSound) withObject:nil afterDelay:.3f];
     }
     
     [[NSUserDefaults standardUserDefaults] setInteger:_currentWordObjIndex forKey:@"WordIndex"];
     
+}
+
+-(void)playPantSound
+{
+    [[AudioPlayer sharedController] playSound:@"pant" extension:@"wav"];
 }
 
 
@@ -554,6 +561,7 @@
         BlankSlot* slot = self.blankSlots[[self getIndexForLetterButton:button]];
         slot.button = nil;
     }
+    [[AudioPlayer sharedController] playSound:@"button-30" extension:@"wav"];
     
     [self onLetterSelected:button];
     
@@ -561,7 +569,7 @@
 
 - (IBAction)nextHintTouch:(id)sender {
     _hintIndex++;
-    
+    [[AudioPlayer sharedController] playSound:@"button-30" extension:@"wav"];
     if (_hintIndex == 2)
     {
         [self.hintButton setHidden:YES];
@@ -571,6 +579,8 @@
 }
 
 - (IBAction)buyLetterTouch:(id)sender {
+    
+    [[AudioPlayer sharedController] playSound:@"button-30" extension:@"wav"];
     
     if ([[CoinsController sharedController] buyForAmount:BUY_LETTER_COST labelToUpdate:self.bonesLabel])
     {
@@ -607,6 +617,8 @@
 }
 
 - (IBAction)clearButtonTouch:(id)sender {
+    [[AudioPlayer sharedController] playSound:@"button-30" extension:@"wav"];
+    
     if (_letterButtons.count == 0)
         return;
     
@@ -700,7 +712,7 @@
 
 - (IBAction)onFacebookTouch:(id)sender
 {
-    
+    [[AudioPlayer sharedController] playSound:@"button-30" extension:@"wav"];
     NSString* message = [self composeFacebookMessage];
     
     
