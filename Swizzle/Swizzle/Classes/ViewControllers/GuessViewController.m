@@ -28,9 +28,6 @@
     _numCorrectWords = 0;
     
     
-    self.bonesLabel.text = [[CoinsController sharedController] coinsString];
-    
-    
     for (LetterButton* button in self.allLetterButtons)
     {
         [button.titleLabel setFont:[UIFont fontWithName:@"Luckiest Guy" size:23]];
@@ -48,6 +45,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.bonesLabel.text = [[CoinsController sharedController] coinsString];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
     
     _currentWordObjIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"WordIndex"];
@@ -207,30 +206,28 @@
 
 -(void)cycleHintWords
 {
-    self.hintLabel.text = [_currentWordObj.hints objectAtIndex:_hintIndex];
+    
     
     __weak GuessViewController* weakSelf = self;
     
     [UIView animateWithDuration:1 animations:^(void)
      {
-         weakSelf.hintLabel.alpha = 1;
+         weakSelf.hintLabel.alpha = 0;
          
      }completion:^(BOOL finished)
      {
          if (finished)
          {
+             _hintIndex = (_hintIndex + 1) % _currentWordObj.hints.count;
+             self.hintLabel.text = [_currentWordObj.hints objectAtIndex:_hintIndex];
+             
              [UIView animateWithDuration:1 delay:1 options:UIViewAnimationOptionCurveEaseInOut animations:^(void)
               {
-                  weakSelf.hintLabel.alpha = 0;
+                  weakSelf.hintLabel.alpha = 1;
                   
               }completion:^(BOOL finished)
               {
-                  if (finished)
-                  {
-                      _hintIndex = (_hintIndex + 1) % _currentWordObj.hints.count;
-                      
-                      [weakSelf cycleHintWords];
-                  }
+
               }];
          }
          
@@ -254,8 +251,10 @@
     [[CoinsController sharedController] increaseCoins:NUM_WIN_COINS labelToUpdate:self.bonesLabel];
     
     _numCorrectWords++;
+ //   [[AudioPlayer sharedController] playSound:@"bark" extension:@"wav"];
+    [[AudioPlayer sharedController] playSound:@"win" extension:@"wav"];
     
-    if (false) //_numCorrectWords < WORD_FOR_SLOTS)
+    if (_numCorrectWords < WORD_FOR_SLOTS)
     {
         [self.dog animateWithImages:[UIImageView imagesFromName:@"sleeping_happy_" count:14] duration:2];
         [self performSelector:@selector(gotoNextWord) withObject:nil afterDelay:2];
@@ -267,6 +266,8 @@
         
         [self performSelector:@selector(showSlotMachine) withObject:nil afterDelay:animTime];
         [self performSelector:@selector(playPantSound) withObject:nil afterDelay:.3f];
+     
+        _numCorrectWords = 0;
     }
     
     [[NSUserDefaults standardUserDefaults] setInteger:_currentWordObjIndex forKey:@"WordIndex"];
@@ -442,6 +443,7 @@
         [self onGotCorrectWord];
 }
 
+- (BOOL)prefersStatusBarHidden {return YES;}
 
 -(void)onLetterPanned:(LetterButton*)letterButton
 {
@@ -458,6 +460,7 @@
 
 -(void)onLetterSelected:(LetterButton*)letterButton
 {
+    [self.view bringSubviewToFront:letterButton];
     
     // is the button in the bottom letter pad?
     if ([_letterButtons containsObject:letterButton] == NO && _letterButtons.count < self.blankSlots.count)
@@ -525,6 +528,7 @@
 {
     LetterButton* button = (LetterButton*)recognizer.view;
     static CGPoint startPos;
+    [self.view bringSubviewToFront:button];
     
     if (recognizer.state == UIGestureRecognizerStateBegan )
     {
@@ -581,12 +585,18 @@
 - (IBAction)buyLetterTouch:(id)sender {
     
     [[AudioPlayer sharedController] playSound:@"button-30" extension:@"wav"];
+
     
     if ([[CoinsController sharedController] buyForAmount:BUY_LETTER_COST labelToUpdate:self.bonesLabel])
     {
-        [self buyLetter];
-        
-        self.bonesLabel.text = [[CoinsController sharedController] coinsString];
+        if (_hintIndex < _currentWordObj.hints.count-1)
+            [self cycleHintWords];
+        else
+        {
+            [self buyLetter];
+            
+            self.bonesLabel.text = [[CoinsController sharedController] coinsString];
+        }
     }
     else
     {
@@ -596,7 +606,7 @@
                                   initWithTitle: @"Out of bones."
                                   message:@"Do you want to buy more for more hints?"
                                   delegate: self
-                                  cancelButtonTitle:@"OK"
+                                  cancelButtonTitle:@"NO"
                                   otherButtonTitles:@"YES", nil];
         [alertView show];
         
@@ -684,7 +694,7 @@
 {
     int numLetters = self.blankSlots.count;
     
-    NSString* message = [NSString stringWithFormat:@"Can anyone give me a %d letter word that can only use these letters",numLetters];
+    NSString* message = [NSString stringWithFormat:@"I'm playing the iPhone game Word4Words and need a %d letter word that can only use these letters",numLetters];
     
     for (int i=0; i < self.allLetterButtons.count; i++)
     {

@@ -148,6 +148,8 @@
 		8A0597B6171888ED00C09EEA /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0597B5171888ED00C09EEA /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8A0597B81718890200C09EEA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0597B71718890200C09EEA /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8A0597BA1718890D00C09EEA /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0597B91718890D00C09EEA /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8A12FCB71873933600AE4714 /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8A12FCB51873933600AE4714 /* win.wav */; };
+		8A12FCB81873933600AE4714 /* bark.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8A12FCB61873933600AE4714 /* bark.wav */; };
 		8A443515175C43A000C61FDD /* fb_life_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A443513175C43A000C61FDD /* fb_life_down.png */; };
 		8A443516175C43A000C61FDD /* fb_life.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A443514175C43A000C61FDD /* fb_life.png */; };
 		8A443519175C43AA00C61FDD /* fb_life_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A443517175C43AA00C61FDD /* fb_life_@2x.png */; };
@@ -462,6 +464,8 @@
 		8A0597B5171888ED00C09EEA /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8A0597B71718890200C09EEA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		8A0597B91718890D00C09EEA /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		8A12FCB51873933600AE4714 /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
+		8A12FCB61873933600AE4714 /* bark.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bark.wav; sourceTree = "<group>"; };
 		8A443513175C43A000C61FDD /* fb_life_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fb_life_down.png; sourceTree = "<group>"; };
 		8A443514175C43A000C61FDD /* fb_life.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fb_life.png; sourceTree = "<group>"; };
 		8A443517175C43AA00C61FDD /* fb_life_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fb_life_@2x.png"; sourceTree = "<group>"; };
@@ -1177,6 +1181,8 @@
 		8ADB27F617D91977007BC1EB /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				8A12FCB51873933600AE4714 /* win.wav */,
+				8A12FCB61873933600AE4714 /* bark.wav */,
 				8ADB280817D93207007BC1EB /* slotsPayout.wav */,
 				8ADB280617D92F7E007BC1EB /* slots.wav */,
 				8ADB280417D92C7B007BC1EB /* growl.wav */,
@@ -1216,6 +1222,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Lance Hughes";
+				TargetAttributes = {
+					8A059777171887B900C09EEA = {
+						DevelopmentTeam = HYCZLDT6C5;
+					};
+				};
 			};
 			buildConfigurationList = 8A059773171887B900C09EEA /* Build configuration list for PBXProject "Swizzle" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1293,6 +1304,7 @@
 				2DCB338F173459C7007E8636 /* lever03@2x.png in Resources */,
 				2DCB3390173459C7007E8636 /* lever04@2x.png in Resources */,
 				2DCB3391173459C7007E8636 /* lever05@2x.png in Resources */,
+				8A12FCB71873933600AE4714 /* win.wav in Resources */,
 				2DCB3392173459C7007E8636 /* lever06@2x.png in Resources */,
 				2DCB3393173459C7007E8636 /* pipe_bones_01@2x.png in Resources */,
 				2DCB3394173459C7007E8636 /* pipe_bones_02@2x.png in Resources */,
@@ -1302,6 +1314,7 @@
 				2DCB3398173459C7007E8636 /* pipe_bones_06@2x.png in Resources */,
 				2DCB33A7173459C7007E8636 /* slider@2x.png in Resources */,
 				2DCB33A8173459C7007E8636 /* Slot_bg@2x.png in Resources */,
+				8A12FCB81873933600AE4714 /* bark.wav in Resources */,
 				2DCB33A9173459C7007E8636 /* squirrel_slot@2x.png in Resources */,
 				2D9ECF21174970BC00D150FC /* pipe@2x.png in Resources */,
 				2D9ECF231749935700D150FC /* pipe_bones@2x.png in Resources */,
@@ -1627,7 +1640,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Lance Hughes (EFS3233WW9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lance Hughes (EFS3233WW9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1637,8 +1650,8 @@
 				INFOPLIST_FILE = "Swizzle/Swizzle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = Word4Words;
-				PROVISIONING_PROFILE = "AAA80A5B-84A6-46D2-98A8-7CFD4DE1970D";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AAA80A5B-84A6-46D2-98A8-7CFD4DE1970D";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0C606003-401F-445E-B861-A8DFBFED1BBE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1647,6 +1660,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Lance Hughes (EFS3233WW9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1656,7 +1670,7 @@
 				INFOPLIST_FILE = "Swizzle/Swizzle-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = Word4Words;
-				PROVISIONING_PROFILE = "AAA80A5B-84A6-46D2-98A8-7CFD4DE1970D";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

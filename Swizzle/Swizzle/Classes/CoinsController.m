@@ -56,7 +56,7 @@ static CoinsController* sharedController;
 {
     if (amount <= self.coins)
     {
-        [self decreaseCoins:amount labelToUpdate:label];
+        [self increaseCoins:-amount labelToUpdate:label];
 
         return YES;
     }
@@ -66,22 +66,35 @@ static CoinsController* sharedController;
 
 -(void)increaseCoins:(int)increase labelToUpdate:(UILabel*)label
 {
-    self.coins += increase;
+
+    updatingLabel = label;
     
-    if (label != nil)
-        label.text = [self coinsString];
+    if (increase == 0)
+        return;
+
+    float increment = increase/ABS(increase);
+ 
+    
+    for (int i=0; ABS(i) < ABS(increase); i += increment)
+    {
+        
+
+        [self performSelector:@selector(increaseCoins:) withObject:@(increment) afterDelay:ABS(i) / 20.0];
+        
+        
+    }
+    
+}
+
+-(void)increaseCoins:(NSNumber*)increase
+{
+    self.coins += increase.intValue;
+    
+    if (updatingLabel != nil)
+        updatingLabel.text = [self coinsString];
     
     [[NSUserDefaults standardUserDefaults] setInteger:self.coins forKey:@"Coins"];
 }
 
--(void)decreaseCoins:(int)decrease labelToUpdate:(UILabel*)label
-{
-    self.coins -= decrease;
-    
-    if (label != nil)
-        label.text = [self coinsString];
-    
-    [[NSUserDefaults standardUserDefaults] setInteger:self.coins forKey:@"Coins"];
-}
 
 @end

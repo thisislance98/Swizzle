@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>AEC267D2-CE70-4738-A636-27A94D8F02BB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Swizzle</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0FE13CA0-C168-4C6F-9EA3-81C2A75BFBAB</key>
+		<string>https://github.com/chavez98/Swizzle.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Swizzle/Swizzle.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0FE13CA0-C168-4C6F-9EA3-81C2A75BFBAB</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/chavez98/Swizzle.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0FE13CA0-C168-4C6F-9EA3-81C2A75BFBAB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0FE13CA0-C168-4C6F-9EA3-81C2A75BFBAB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Swizzle</string>
+		</dict>
+	</array>
+</dict>
+</plist>

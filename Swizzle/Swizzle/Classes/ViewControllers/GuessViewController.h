@@ -16,8 +16,8 @@
 #import "IAPHelper.h"
 
 
-#define BUY_LETTER_COST 10
-#define NUM_WIN_COINS 20
+#define BUY_LETTER_COST 5
+#define NUM_WIN_COINS 10
 #define NUM_IAP_BONES 10
 #define NUM_HINTS 4
 #define SMALL_BUTTON_SCALE .85

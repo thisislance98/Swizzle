@@ -339,16 +339,16 @@ static VerificationController *singleton;
 #endif
     } else {
         // Pre iOS 6 
-        NSString *localIdentifier           = [UIDevice currentDevice].uniqueIdentifier;
-        NSString *purchaseInfoUniqueId      = [purchaseInfoFromTransaction objectForKey:@"unique-identifier"];
-
-        
-        if (![purchaseInfoUniqueId isEqualToString:verifiedReceiptUniqueIdentifier]
-            || ![purchaseInfoUniqueId isEqualToString:localIdentifier])
-        {
-            // Comment this line out to test in the Simulator.
-            failCount++;
-        }        
+//        NSString *localIdentifier           = [UIDevice currentDevice].uniqueIdentifier;
+//        NSString *purchaseInfoUniqueId      = [purchaseInfoFromTransaction objectForKey:@"unique-identifier"];
+//
+//        
+//        if (![purchaseInfoUniqueId isEqualToString:verifiedReceiptUniqueIdentifier]
+//            || ![purchaseInfoUniqueId isEqualToString:localIdentifier])
+//        {
+//            // Comment this line out to test in the Simulator.
+//            failCount++;
+//        }        
     }
     
     

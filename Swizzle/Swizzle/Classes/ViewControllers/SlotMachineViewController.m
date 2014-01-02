@@ -177,6 +177,8 @@
     _playButton.userInteractionEnabled = YES;
 }
 
+- (BOOL)prefersStatusBarHidden {return YES;}
+
 - (void)goBackToMainViewController
 {
     [CoinsController sharedController].coins = self.coins;

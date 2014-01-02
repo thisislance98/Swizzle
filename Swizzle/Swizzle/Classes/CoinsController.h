@@ -10,7 +10,7 @@
 
 @interface CoinsController : NSObject
 {
-    
+    UILabel* updatingLabel;
 }
 
 @property (readwrite) int coins;
@@ -20,7 +20,6 @@
 -(BOOL)buyForAmount:(int)amount labelToUpdate:(UILabel*)label;
 
 -(void)increaseCoins:(int)increase labelToUpdate:(UILabel*)label;
--(void)decreaseCoins:(int)decrease labelToUpdate:(UILabel*)label;
 
 -(NSString*)coinsString;
 

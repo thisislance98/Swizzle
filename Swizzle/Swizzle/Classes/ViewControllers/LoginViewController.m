@@ -31,7 +31,14 @@
     
     _loginButton.alpha = 0;
     
+    [PFFacebookUtils initializeFacebook];
+    BOOL userCached = [PFUser currentUser] != nil;
+    BOOL isLinked = [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]];
+    BOOL gotoGuessScreenOnDownload = userCached && isLinked;
+    
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Words"];
+    query.limit = 1000;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
          [_activityIndicator stopAnimating];
@@ -63,6 +70,9 @@
              }
              
              _words = words;
+             
+             if (gotoGuessScreenOnDownload)
+                 [self transitionToFirstScreen];
          }
          else
          {
@@ -71,14 +81,9 @@
          }
      }];
     
+
     
-    if ([PFUser currentUser] && // Check if a user is cached
-        [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) // Check if user is linked to Facebook
-    {
-        [self transitionToFirstScreen];
-    }
     
-    [PFFacebookUtils initializeFacebook];
 }
 
 - (IBAction)loginButtonTouchHandler:(id)sender
@@ -108,6 +113,8 @@
          [self transitionToFirstScreen];
      }];
 }
+
+- (BOOL)prefersStatusBarHidden {return YES;}
 
 - (IBAction)skipButtonTouched:(id)sender
 {
