@@ -41,6 +41,8 @@
 {
     [super viewDidLoad];
     
+    _playing = NO;
+    
     [self readjustHeightForiPhone5];
     
     _slotMachine = [[SlotMachine alloc] init];
@@ -173,7 +175,7 @@
     (_didWin) ? [self animateWin] : [self animateLoss];
     
     _bonesLabel.text = [NSString stringWithFormat:@"%d",_coins];
-    _playing = NO;
+
     _playButton.userInteractionEnabled = YES;
 }
 

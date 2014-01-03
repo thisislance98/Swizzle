@@ -210,7 +210,7 @@
     
     __weak GuessViewController* weakSelf = self;
     
-    [UIView animateWithDuration:1 animations:^(void)
+    [UIView animateWithDuration:.5 animations:^(void)
      {
          weakSelf.hintLabel.alpha = 0;
          
@@ -218,7 +218,7 @@
      {
          if (finished)
          {
-             _hintIndex = (_hintIndex + 1) % _currentWordObj.hints.count;
+             _hintIndex = (_hintIndex + 1) % (1 + _numBoughtHints);
              self.hintLabel.text = [_currentWordObj.hints objectAtIndex:_hintIndex];
              
              [UIView animateWithDuration:1 delay:1 options:UIViewAnimationOptionCurveEaseInOut animations:^(void)
@@ -227,7 +227,8 @@
                   
               }completion:^(BOOL finished)
               {
-
+                  if (_numBoughtHints > 0)
+                      [self cycleHintWords];
               }];
          }
          
@@ -251,6 +252,7 @@
     [[CoinsController sharedController] increaseCoins:NUM_WIN_COINS labelToUpdate:self.bonesLabel];
     
     _numCorrectWords++;
+    _numBoughtHints = 0;
  //   [[AudioPlayer sharedController] playSound:@"bark" extension:@"wav"];
     [[AudioPlayer sharedController] playSound:@"win" extension:@"wav"];
     
@@ -451,11 +453,17 @@
     
     if (slotIndex != -1)
     {
+        
         [self resetLetterButton:letterButton animated:NO sendToStartPos:NO];
         [self moveLetterButton:letterButton toSlotAtIndex:slotIndex];
     }
-    else
+    else{
+
         [self resetLetterButton:letterButton];
+    }
+    
+    
+
 }
 
 -(void)onLetterSelected:(LetterButton*)letterButton
@@ -547,8 +555,15 @@
         }
     }
     else if (recognizer.state == UIGestureRecognizerStateEnded)
-        [self onLetterPanned:button];
-    else
+    {
+        float moveDist = [self distanceBetween:startPos and:button.center];
+        
+        if (moveDist < 15)
+            [self onLetterSelected:button];
+        else
+            [self onLetterPanned:button];
+    }
+    else //moving finger
     {
         CGPoint delta = [recognizer translationInView:self.view];
         button.center = CGPointMake(startPos.x + delta.x, startPos.y + delta.y);
@@ -589,8 +604,13 @@
     
     if ([[CoinsController sharedController] buyForAmount:BUY_LETTER_COST labelToUpdate:self.bonesLabel])
     {
-        if (_hintIndex < _currentWordObj.hints.count-1)
+        if (_numBoughtHints < _currentWordObj.hints.count-1)
+        {
+            _numBoughtHints++;
+            
+            _hintIndex = _numBoughtHints-1;
             [self cycleHintWords];
+        }
         else
         {
             [self buyLetter];
@@ -637,6 +657,11 @@
 
 
 #pragma mark - helper functions
+
+- (float) distanceBetween : (CGPoint) p1 and: (CGPoint)p2
+{
+    return sqrt(pow(p2.x-p1.x,2)+pow(p2.y-p2.y,2));
+}
 
 -(int)getFirstVisibleBlankLabelIndex
 {
@@ -766,8 +791,11 @@
     }];
 }
 
+#pragma mark - IADS
+
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
+    banner.hidden = YES;
     NSLog(@"bannerview did not receive any banner due to %@", error);
 }
 

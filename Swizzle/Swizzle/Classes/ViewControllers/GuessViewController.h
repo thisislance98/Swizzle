@@ -31,6 +31,7 @@
     WordObj* _currentWordObj;
     int _currentWordObjIndex;
     int _hintIndex;
+    int _numBoughtHints;
     int _numCorrectWords;
     NSMutableArray* _letterButtons;
 

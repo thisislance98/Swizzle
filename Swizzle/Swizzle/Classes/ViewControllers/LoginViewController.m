@@ -118,7 +118,7 @@
 
 - (IBAction)skipButtonTouched:(id)sender
 {
-    [self transitionToFirstScreen];
+//    [self transitionToFirstScreen];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
