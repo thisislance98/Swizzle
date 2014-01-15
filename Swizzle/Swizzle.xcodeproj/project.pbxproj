@@ -281,6 +281,10 @@
 		8AA7E3EF17D3C96B002A588B /* run28.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA7E3D017D3C96B002A588B /* run28.png */; };
 		8AA7E3F017D3C96B002A588B /* run29.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA7E3D117D3C96B002A588B /* run29.png */; };
 		8AA7E3F117D3C96B002A588B /* run30.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA7E3D217D3C96B002A588B /* run30.png */; };
+		8AA8FC871887164D00F64089 /* W4WIcon-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA8FC851887164D00F64089 /* W4WIcon-57x57.png */; };
+		8AA8FC881887164D00F64089 /* W4WIcon-120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA8FC861887164D00F64089 /* W4WIcon-120x120.png */; };
+		8AA8FC8A188716DD00F64089 /* W4WIcon-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA8FC89188716DD00F64089 /* W4WIcon-114x114.png */; };
+		8AA8FC8D188733BD00F64089 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA8FC8C188733BD00F64089 /* Reachability.m */; };
 		8AC76BFE17D3B8D3003AA1A9 /* sleep0.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC76BE817D3B8D3003AA1A9 /* sleep0.png */; };
 		8AC76BFF17D3B8D3003AA1A9 /* sleep1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC76BE917D3B8D3003AA1A9 /* sleep1.png */; };
 		8AC76C0017D3B8D3003AA1A9 /* sleep2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC76BEA17D3B8D3003AA1A9 /* sleep2.png */; };
@@ -607,6 +611,11 @@
 		8AA7E3D017D3C96B002A588B /* run28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = run28.png; sourceTree = "<group>"; };
 		8AA7E3D117D3C96B002A588B /* run29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = run29.png; sourceTree = "<group>"; };
 		8AA7E3D217D3C96B002A588B /* run30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = run30.png; sourceTree = "<group>"; };
+		8AA8FC851887164D00F64089 /* W4WIcon-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "W4WIcon-57x57.png"; sourceTree = "<group>"; };
+		8AA8FC861887164D00F64089 /* W4WIcon-120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "W4WIcon-120x120.png"; sourceTree = "<group>"; };
+		8AA8FC89188716DD00F64089 /* W4WIcon-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "W4WIcon-114x114.png"; sourceTree = "<group>"; };
+		8AA8FC8B188733BD00F64089 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		8AA8FC8C188733BD00F64089 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		8AC76BE817D3B8D3003AA1A9 /* sleep0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sleep0.png; sourceTree = "<group>"; };
 		8AC76BE917D3B8D3003AA1A9 /* sleep1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sleep1.png; sourceTree = "<group>"; };
 		8AC76BEA17D3B8D3003AA1A9 /* sleep2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sleep2.png; sourceTree = "<group>"; };
@@ -679,6 +688,8 @@
 				8ADB27FC17D91DA8007BC1EB /* AudioPlayer.m */,
 				2DA43AD01777913900979D66 /* MBProgressHUD.h */,
 				2DA43AD11777913900979D66 /* MBProgressHUD.m */,
+				8AA8FC8B188733BD00F64089 /* Reachability.h */,
+				8AA8FC8C188733BD00F64089 /* Reachability.m */,
 				2DCACB04175846E400086DDC /* UIImageView+AnimateImages.h */,
 				2DCACB05175846E400086DDC /* UIImageView+AnimateImages.m */,
 			);
@@ -857,6 +868,9 @@
 		8A059782171887B900C09EEA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8AA8FC851887164D00F64089 /* W4WIcon-57x57.png */,
+				8AA8FC89188716DD00F64089 /* W4WIcon-114x114.png */,
+				8AA8FC861887164D00F64089 /* W4WIcon-120x120.png */,
 				8A059783171887B900C09EEA /* Swizzle-Info.plist */,
 				8A059784171887B900C09EEA /* InfoPlist.strings */,
 				8A059787171887B900C09EEA /* main.m */,
@@ -1252,6 +1266,7 @@
 			files = (
 				8A059786171887B900C09EEA /* InfoPlist.strings in Resources */,
 				8A05978E171887B900C09EEA /* Default.png in Resources */,
+				8AA8FC881887164D00F64089 /* W4WIcon-120x120.png in Resources */,
 				8A059790171887B900C09EEA /* Default@2x.png in Resources */,
 				8A059792171887B900C09EEA /* Default-568h@2x.png in Resources */,
 				8A059795171887B900C09EEA /* MainStoryboard_iPhone.storyboard in Resources */,
@@ -1343,6 +1358,7 @@
 				8A4AEC031777941700DABE06 /* sleeping_happy_10.png in Resources */,
 				8A4AEC041777941700DABE06 /* sleeping_happy_11.png in Resources */,
 				8A4AEC051777941700DABE06 /* sleeping_happy_12.png in Resources */,
+				8AA8FC8A188716DD00F64089 /* W4WIcon-114x114.png in Resources */,
 				8A4AEC061777941700DABE06 /* sleeping_happy_13.png in Resources */,
 				8A4AEC071777941700DABE06 /* sleeping_happy_14.png in Resources */,
 				8A4AEC081777941700DABE06 /* sleeping_happy_01@2x.png in Resources */,
@@ -1469,6 +1485,7 @@
 				2D24365A17D3BFE400142805 /* sad7.png in Resources */,
 				2D24365B17D3BFE400142805 /* sad8.png in Resources */,
 				2D24365C17D3BFE400142805 /* sad9.png in Resources */,
+				8AA8FC871887164D00F64089 /* W4WIcon-57x57.png in Resources */,
 				2D24365D17D3BFE400142805 /* sad10.png in Resources */,
 				2D24365E17D3BFE400142805 /* sad11.png in Resources */,
 				2D24365F17D3BFE400142805 /* sad12.png in Resources */,
@@ -1544,6 +1561,7 @@
 				8A4AEC62177A9D0900DABE06 /* IAPHelper.m in Sources */,
 				8A4AEC68177AA0CB00DABE06 /* NSData+Base64.m in Sources */,
 				8A4AEC69177AA0CB00DABE06 /* VerificationController.m in Sources */,
+				8AA8FC8D188733BD00F64089 /* Reachability.m in Sources */,
 				8ADB27FD17D91DA8007BC1EB /* AudioPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1648,10 +1666,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Swizzle/Swizzle-Prefix.pch";
 				INFOPLIST_FILE = "Swizzle/Swizzle-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = Word4Words;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0C606003-401F-445E-B861-A8DFBFED1BBE";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1668,9 +1687,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Swizzle/Swizzle-Prefix.pch";
 				INFOPLIST_FILE = "Swizzle/Swizzle-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = Word4Words;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

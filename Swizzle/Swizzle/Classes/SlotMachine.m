@@ -73,12 +73,12 @@
         int count = [countedSet countForObject:@(i)];
         if (count == 3)
         {
-            addedAmount = 1000;
+            addedAmount = 50;
             break;
         }
         if (count == 2)
         {
-            addedAmount = 10;
+            addedAmount = 20;
             break;
         }
     }

@@ -12,6 +12,7 @@
 #import "MBProgressHUD.h"
 #import <Parse/Parse.h>
 #import "WordObj.h"
+#import "Reachability.h"
 
 @interface LoginViewController ()
 
@@ -29,9 +30,30 @@
 {
     [super viewDidLoad];
     
+    Reachability* reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus status = [reachability currentReachabilityStatus];
+    
+    // just go to the guess screen if no internect connection
+    if (status == NotReachable)
+    {
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle: @"Internet connection required"
+                                  message:@"Please check your internect connection and try again."
+                                  delegate: self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+    
     _loginButton.alpha = 0;
     
     [PFFacebookUtils initializeFacebook];
+    
+    [self downloadWords];
+  }
+
+-(void)downloadWords
+{
     BOOL userCached = [PFUser currentUser] != nil;
     BOOL isLinked = [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]];
     BOOL gotoGuessScreenOnDownload = userCached && isLinked;
@@ -39,6 +61,8 @@
     
     PFQuery *query = [PFQuery queryWithClassName:@"Words"];
     query.limit = 1000;
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
          [_activityIndicator stopAnimating];
@@ -78,9 +102,9 @@
          {
              // Log details of the failure
              NSLog(@"Error: %@ %@", error, [error userInfo]);
+             [self transitionToFirstScreen];
          }
      }];
-    
 
     
     
@@ -110,7 +134,10 @@
              NSLog(@"User with facebook logged in!");
          }
          
-         [self transitionToFirstScreen];
+         if (self.words == nil)
+             [self downloadWords];
+         else
+             [self transitionToFirstScreen];
      }];
 }
 

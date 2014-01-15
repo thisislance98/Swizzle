@@ -27,6 +27,20 @@
     _nameLabel.text = [[PFUser currentUser] username];
     _numCorrectWords = 0;
     
+    if ( [[NSUserDefaults standardUserDefaults] objectForKey:@"showedInstructions"] == nil)
+    {
+
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle: @"Instructions"
+                                  message:@"Try to guess what the word is based on the shown hint word. You can get up to 4 hint words by pressing the hint button. Each hint costs 5 bones."
+                                  delegate: self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil, nil];
+        [alertView show];
+        
+        
+        [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"showedInstructions"];
+    }
     
     for (LetterButton* button in self.allLetterButtons)
     {
@@ -751,20 +765,13 @@
     NSString* message = [self composeFacebookMessage];
     
     
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"Uploaded thru app",  @"test test", nil];
-    [params setObject:[UIImage imageNamed:@"clear_btn1.png"] forKey:@"source"];
-    //    [params setObject:[UIImage imageNamed:@"image-name.png"] forKey:@"source"];
-//    FBRequest* request = [FBRequest requestWithGraphPath:@"me/photos" parameters:params HTTPMethod:@"POST" ];
-    
-       FBRequest* request = [FBRequest requestForPostStatusUpdate:message];
-    //   FBRequest* request = [FBRequest req:<#(UIImage *)#>:@"test test"];
-    //    FBRequest * request = [[FBRequest alloc] initWithSession:[PFFacebookUtils session] graphPath:@"me" parameters:params HTTPMethod:@"POST"];
-    
-    // Send request to Facebook
+    FBRequest *req = [FBRequest requestForUploadPhoto:[UIImage imageNamed:@"W4WIcon-120x120.png"]];
+    [req.parameters addEntriesFromDictionary:[NSMutableDictionary dictionaryWithObjectsAndKeys:message, @"message", nil]];
+
     
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+    [req startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
         NSString* alert;
